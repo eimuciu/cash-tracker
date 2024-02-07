@@ -5,10 +5,11 @@ import { MdLogout } from 'react-icons/md';
 import { iconClassNames } from '@/app/styles/classNames';
 import { IoIosArrowForward } from 'react-icons/io';
 import Link from 'next/link';
+import { RefObject } from 'react';
 
 interface Props {
   show: boolean;
-  myRef: any;
+  myRef: RefObject<HTMLDivElement>;
 }
 
 const commonPaddingX = 'px-[25px]';
@@ -37,6 +38,7 @@ export default function AccountNavBar({ show, myRef }: Props) {
           <div className="w-[6.25rem] h-[6.25rem] relative rounded-[50%] overflow-hidden mx-auto mb-[10px]">
             <Image src="/profile.jpg" fill alt="Profile picture" />
           </div>
+          {/* AWAITING DATA */}
           email@email.com
         </div>
         <div className={commonPaddingX + ' ' + 'flex flex-col pt-[25px]'}>
