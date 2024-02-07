@@ -49,7 +49,14 @@ export default function NavBar() {
       <div className="flex flex-col gap-y-[25px]">
         <div
           onClick={handleShowAccountNavBar}
-          className="flex flex-col justify-center items-center mb-[50px] cursor-pointer"
+          className={
+            'flex flex-col justify-center items-center mb-[50px] cursor-pointer' +
+            ' ' +
+            `${
+              (pathname === '/account' || pathname === '/settings') &&
+              activeNavLinkClassName
+            }`
+          }
         >
           <MdOutlineMenuBook className={iconClassNames} />
         </div>
