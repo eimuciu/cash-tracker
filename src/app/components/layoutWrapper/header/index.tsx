@@ -1,9 +1,9 @@
 export default function Header() {
   return (
     <>
-      <section className="flex flex-col items-center bg-[#D8D4F2] rounded-[10px] p-[25px]">
-        <div className="font-bold mb-[25px]">
-          <p className="text-[1.33rem]">
+      <section className="flex flex-col items-center bg-[#D8D4F2] rounded-[10px] p-[10px]">
+        <div className="font-bold mb-[5px]">
+          <p className="text-[20px]">
             {/* AWAITING DATA */}
             January
           </p>

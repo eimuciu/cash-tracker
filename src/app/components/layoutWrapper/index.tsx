@@ -3,6 +3,7 @@
 import React from 'react';
 import NavBar from '../navbar';
 import Header from './header';
+import DateSeperator from './dateSeperator';
 import { usePathname } from 'next/navigation';
 
 interface Props {
@@ -32,12 +33,16 @@ export default function LayoutWrapper({ children }: Props) {
         <NavBar />
       </div>
       <div
-        className="w-[100%] bg-[lightblue] pl-[91.125px] pr-[25px] py-[50px] md:pl-[25px]"
+        className="w-[100%] pl-[91.125px] pr-[25px] py-[25px] md:pl-[25px]"
         // style={{
         //   paddingLeft: `${elementWidth}px`,
         // }}
       >
-        {!restrictedPaths.includes(pathname) && <Header />}
+        {!restrictedPaths.includes(pathname) && (
+          <>
+            <Header /> <DateSeperator />
+          </>
+        )}
         {children}
       </div>
     </div>
