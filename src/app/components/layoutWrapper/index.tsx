@@ -33,7 +33,7 @@ export default function LayoutWrapper({ children }: Props) {
         <NavBar />
       </div>
       <div
-        className="w-[100%] pl-[91.125px] pr-[25px] py-[25px] md:pl-[25px]"
+        className="w-[100%] pl-[91.125px] pr-[25px] py-[25px] md:pl-[25px] min-h-screen flex flex-col"
         // style={{
         //   paddingLeft: `${elementWidth}px`,
         // }}
