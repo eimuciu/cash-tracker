@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 interface Props {
   show: boolean;
+  myRef: any;
 }
 
 const commonPaddingX = 'px-[25px]';
@@ -17,10 +18,11 @@ const commonNavItem = 'flex items-center my-[15px] gap-[25px]';
 const commonBorder =
   'flex items-center justify-between w-[100%] border-b border-black border-solid pb-[10px]';
 
-export default function AccountNavBar({ show }: Props) {
+export default function AccountNavBar({ show, myRef }: Props) {
   return (
     <>
       <div
+        ref={myRef}
         className={`fixed top-0 left-0 bg-[white] h-screen py-[25px] border-solid border-black border-r min-w-[25%] ${
           !show && 'hidden'
         }`}

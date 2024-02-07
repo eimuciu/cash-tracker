@@ -1,3 +1,4 @@
+import React from 'react';
 import { MdAccountBalanceWallet } from 'react-icons/md';
 import { FaList } from 'react-icons/fa';
 import { ImStatsBars } from 'react-icons/im';
@@ -13,13 +14,43 @@ const navItemClassNames =
 const activeNavLinkClassName = 'text-[#880D1E]';
 
 export default function NavBar() {
+  const [showAccountNavBar, setShowAccountNavBar] =
+    React.useState<boolean>(false);
+
+  const childRefEl = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleOutsideClick = (e: any) => {
+      if (
+        childRefEl.current &&
+        !childRefEl.current.contains(e.target) &&
+        showAccountNavBar
+      ) {
+        setShowAccountNavBar(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [showAccountNavBar]);
+
   const pathname = usePathname();
+
+  const handleShowAccountNavBar = () => {
+    setShowAccountNavBar(true);
+  };
 
   return (
     <>
-      <AccountNavBar show={true} />
+      <AccountNavBar myRef={childRefEl} show={showAccountNavBar} />
       <div className="flex flex-col gap-y-[25px]">
-        <div className="flex flex-col justify-center items-center mb-[50px] cursor-pointer">
+        <div
+          onClick={handleShowAccountNavBar}
+          className="flex flex-col justify-center items-center mb-[50px] cursor-pointer"
+        >
           <MdOutlineMenuBook className={iconClassNames} />
         </div>
         <Link href="/">
