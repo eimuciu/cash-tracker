@@ -25,7 +25,7 @@ export default function LayoutWrapper({ children }: Props) {
         <NavBar />
       </div>
       <div
-        className={`w-[100%] bg-[red] pr-[25px] py-[50px] pl-[114.18px] md:pl-[25px]`}
+        className={`w-[100%] bg-[lightblue] pr-[25px] py-[50px] pl-[114.18px] md:pl-[25px]`}
       >
         {children}
       </div>
