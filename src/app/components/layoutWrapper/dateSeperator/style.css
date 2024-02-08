@@ -16,7 +16,8 @@
   padding-bottom: 5px;
 }
 
-.swiper-button-next::after, .swiper-button-prev::after {
+.swiper-button-next::after,
+.swiper-button-prev::after {
   font-size: 8px;
   color: black;
 }
