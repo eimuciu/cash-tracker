@@ -14,38 +14,35 @@ export default function SelectPicker() {
     e.stopPropagation();
     setSelectValue(e.target.innerHTML);
     setShowPicker(false);
-    console.log(showPicker);
   };
-
-  // onMouseEnter
-  // onMouseLeave
 
   return (
     <div className="">
       <div
         onClick={() => {
-          setShowPicker(true);
-          console.log('am a executing');
+          setShowPicker(!showPicker);
         }}
         className={commonClasses + ' cursor-pointer relative'}
       >
         {!selectValue ? data[0] : selectValue}
         <div
           style={{ display: `${!showPicker ? 'none' : 'block'}` }}
-          className={
-            'absolute left-0 top-[120%] w-[100%] bg-[red] p-[10px]'
-            //  +
-            // `${showPicker ? 'block' : 'hidden'}`
-          }
+          className={'absolute left-0 top-[100%] w-[100%] bg-[white]'}
         >
           <div>
             {data.map((x) => (
               <div
+                onMouseEnter={(e) => {
+                  (e.target as HTMLDivElement).style.backgroundColor =
+                    '#D8D4F2';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLDivElement).style.backgroundColor =
+                    '#F5F5F5';
+                }}
                 onClick={handleSelection}
                 className={
-                  commonClasses +
-                  ' ' +
-                  'rounded-none text-center mb-[0px] bg-[red]'
+                  'rounded-none text-center p-[5px] bg-[#F5F5F5] mb-[1px]'
                 }
                 key={x}
               >
