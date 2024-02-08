@@ -1,7 +1,7 @@
 export default function DateSeperator() {
   return (
     <>
-      <section className="flex justify-between items-center bg-[#D1AC00] rounded-[10px] px-[10px] my-[10px]">
+      <section className="flex justify-around items-center bg-[#D1AC00] rounded-[10px] px-[10px] my-[10px]">
         <p>
           {/* AWAITING DATA*/}
           This year
