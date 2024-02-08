@@ -20,6 +20,7 @@ const config: Config = {
       lg: { max: '1024px' },
       md: { max: '768px' },
       sm: { max: '640px' },
+      xs: { max: '425px' },
     },
   },
   plugins: [],

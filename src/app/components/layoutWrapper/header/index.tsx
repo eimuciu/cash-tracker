@@ -8,7 +8,7 @@ export default function Header() {
             January
           </p>
         </div>
-        <div className="flex w-[50%] justify-between">
+        <div className="flex w-[50%] justify-around sm:w-[75%] xs:w-[100%]">
           <div className="text-center">
             <p>Income</p>
             <p className="font-bold">
