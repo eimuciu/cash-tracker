@@ -4,6 +4,7 @@ import React from 'react';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded bg-[white]';
 
+// AWAITING DATA
 const data = ['one', 'two', 'three', 'four'];
 
 export default function SelectPicker() {
@@ -34,16 +35,14 @@ export default function SelectPicker() {
               <div
                 onMouseEnter={(e) => {
                   (e.target as HTMLDivElement).style.backgroundColor =
-                    '#D8D4F2';
+                    '#C6E0FF';
                 }}
                 onMouseLeave={(e) => {
                   (e.target as HTMLDivElement).style.backgroundColor =
                     '#F5F5F5';
                 }}
                 onClick={handleSelection}
-                className={
-                  'rounded-none text-center p-[5px] bg-[#F5F5F5] mb-[1px]'
-                }
+                className={'rounded-none text-center p-[5px] bg-[#F5F5F5]'}
                 key={x}
               >
                 {x}
