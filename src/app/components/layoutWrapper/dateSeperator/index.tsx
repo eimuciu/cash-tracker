@@ -1,24 +1,24 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import './style.css';
+
 export default function DateSeperator() {
   return (
     <>
-      <section className="flex justify-around items-center bg-[#D1AC00] rounded-[10px] px-[10px] my-[10px]">
-        <p>
-          {/* AWAITING DATA*/}
-          This year
-        </p>
-        <p>
-          {/* AWAITING DATA*/}
-          Previous month
-        </p>
-        <p className="text-[#880D1E] font-bold">
-          {/* AWAITING DATA*/}
+      <Swiper
+        slidesPerView={4}
+        modules={[Pagination, Navigation]}
+        navigation={true}
+      >
+        <SwiperSlide>This year</SwiperSlide>
+        <SwiperSlide>Previous month</SwiperSlide>
+        <SwiperSlide className="text-[#880D1E] font-bold">
           Current month
-        </p>
-        <p>
-          {/* AWAITING DATA*/}
-          Custom date
-        </p>
-      </section>
+        </SwiperSlide>
+        <SwiperSlide>Custom date</SwiperSlide>
+      </Swiper>
     </>
   );
 }

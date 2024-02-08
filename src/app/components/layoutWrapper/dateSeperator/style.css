@@ -1,0 +1,22 @@
+.swiper {
+  position: relative;
+  padding: 0 10px;
+  background-color: #d1ac00;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.swiper-slide {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 8px;
+  color: black;
+}
