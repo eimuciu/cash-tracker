@@ -1,4 +1,5 @@
-import DatePicker from "./datepicker";
+import DatePicker from './datepicker';
+import SelectPicker from './selectPicker';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded';
 
@@ -7,6 +8,7 @@ export default function DataInflow() {
     <div className="flex flex-col h-[100%]">
       {/* <input className={commonClasses + ' '} placeholder="date" /> */}
       <DatePicker />
+      <SelectPicker />
       <input className={commonClasses + ' '} placeholder="category" />
       <input className={commonClasses + ' '} placeholder="0.00" type="text" />
       <textarea className={commonClasses + ' ' + 'grow'} placeholder="note" />
