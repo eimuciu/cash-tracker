@@ -1,5 +1,6 @@
 import LayoutWrapper from '../../layoutWrapper';
 import DataInflow from './dataInflow';
+import Budget from './budget';
 
 export default function HomePage() {
   return (
@@ -15,12 +16,12 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex flex-col  p-[10px] h-[100%] bg-[#C6E0FF] rounded-e-[10px] rounded-b-[10px]">
-          <p className='pt-[10px] pb-[10px] font-bold'>Expense</p>
+            <p className="pt-[10px] pb-[10px] font-bold">Expense</p>
             <DataInflow />
           </div>
         </div>
         <div className="w-[80%] bg-[#91F5AD] rounded-[10px] p-[10px] md:w-[100%]">
-          Budget Setter
+          <Budget />
         </div>
       </section>
     </LayoutWrapper>
