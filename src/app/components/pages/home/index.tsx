@@ -27,7 +27,7 @@ export default function HomePage() {
                 handlePickTab('expense');
               }}
               className={
-                'w-[50%] text-center p-[10px] rounded-t-[10px] cursor-pointer' +
+                'w-[30%] text-center p-[10px] rounded-t-[10px] cursor-pointer' +
                 ' ' +
                 `${tab === 'expense' ? 'bg-[#C6E0FF]' : 'bg-[white]'}`
               }
@@ -39,7 +39,7 @@ export default function HomePage() {
                 handlePickTab('income');
               }}
               className={
-                'w-[50%] text-center p-[10px] cursor-pointer' +
+                'w-[30%] text-center p-[10px] cursor-pointer' +
                 ' ' +
                 `${
                   tab === 'income'
@@ -55,7 +55,7 @@ export default function HomePage() {
             className={
               'flex flex-col p-[10px] h-[100%] bg-[#C6E0FF] rounded-b-[10px]' +
               ' ' +
-              `${tab === 'expense' ? 'rounded-e-[10px]' : 'rounded-s-[10px]'}`
+              `${tab === 'expense' ? 'rounded-e-[10px]' : 'rounded-t-[10px]'}`
             }
           >
             <p className="pt-[10px] pb-[10px] font-bold">
