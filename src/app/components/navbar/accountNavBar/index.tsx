@@ -24,7 +24,7 @@ export default function AccountNavBar({ show, myRef }: Props) {
     <>
       <div
         ref={myRef}
-        className={`fixed top-0 left-0 bg-[white] h-screen py-[25px] border-solid border-black border-r min-w-[25%] ${
+        className={`fixed top-0 left-0 bg-[white] h-screen py-[25px] border-solid border-black border-r min-w-[25%] md:min-w-[75%] ${
           !show && 'hidden'
         }`}
       >
