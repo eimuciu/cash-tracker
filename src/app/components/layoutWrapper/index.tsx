@@ -28,6 +28,7 @@ export default function LayoutWrapper({ children }: Props) {
     <div className="flex">
       <div
         ref={elRef}
+        style={{ zIndex: 2 }}
         className="py-[50px] px-[10px] bg-[#D1AC00] min-h-screen fixed md:hidden"
       >
         <NavBar />
