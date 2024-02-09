@@ -13,6 +13,7 @@ interface Props {
 export default function LayoutWrapper({ children }: Props) {
   // const [elementWidth, setElementWidht] = React.useState<number>(0);
   const elRef = React.useRef<HTMLDivElement>(null);
+  const [navbarStatus, setNavbarStatus] = React.useState<boolean>(false);
 
   const pathname = usePathname();
   const restrictedPaths = ['/account', '/settings'];
@@ -24,14 +25,24 @@ export default function LayoutWrapper({ children }: Props) {
   //   }
   // }, []);
 
-  // md:hidden
+  const toggleNavbar = () => {
+    setNavbarStatus(!navbarStatus);
+  };
 
   return (
     <div className="flex">
       <div
+        onClick={toggleNavbar}
+        className="w-[25px] h-[25px] bg-[#D1AC00] fixed rounded-[50%] right-0 bottom-[25%] hidden md:block"
+      ></div>
+      <div
         ref={elRef}
         style={{ zIndex: 2 }}
-        className="py-[50px] px-[10px] bg-[#D1AC00] min-h-screen fixed"
+        className={
+          'py-[50px] px-[10px] bg-[#D1AC00] min-h-screen fixed ' +
+          ' ' +
+          `${navbarStatus ? 'md:block' : 'md:hidden'}`
+        }
       >
         <NavBar />
       </div>
