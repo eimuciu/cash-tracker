@@ -19,6 +19,12 @@ export default function DateSeperator() {
       }
     };
 
+    if (window.innerWidth <= 640) {
+      setSlideUnits(1);
+    } else if (window.innerWidth <= 768) {
+      setSlideUnits(3);
+    }
+
     window.addEventListener('resize', resizeHandler);
 
     return () => {
