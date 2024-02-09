@@ -38,6 +38,7 @@ export default function DateSeperator() {
         slidesPerView={slideUnits}
         modules={[Pagination, Navigation]}
         navigation={true}
+        style={{ zIndex: -1 }}
       >
         <SwiperSlide>
           {/* AWAITING DATA */}

@@ -20,7 +20,10 @@ export default function HomePage() {
   return (
     <LayoutWrapper>
       <section className="flex gap-[10px] h-[100%] md:flex-col">
-        <div className="flex flex-col w-[20%] rounded-[10px] h-[100%] md:w-[100%] ">
+        <div
+          style={{ zIndex: -1 }}
+          className="flex flex-col w-[20%] rounded-[10px] h-[100%] md:w-[100%] "
+        >
           <div className="flex">
             <p
               onClick={() => {
