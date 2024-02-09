@@ -4,11 +4,7 @@ import React from 'react';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded bg-[white]';
 
-// AWAITING DATA
-const data = ['one', 'two', 'three', 'four'];
-
-export default function SelectPicker() {
-  const [selectValue, setSelectValue] = React.useState<string>();
+export default function SelectPicker({ selectValue, setSelectValue, selectData }: any) {
   const [showPicker, setShowPicker] = React.useState<boolean>(false);
 
   const handleSelection = (e: any) => {
@@ -25,13 +21,13 @@ export default function SelectPicker() {
         }}
         className={commonClasses + ' cursor-pointer relative'}
       >
-        {!selectValue ? data[0] : selectValue}
+        {!selectValue ? selectData[0] : selectValue}
         <div
           style={{ display: `${!showPicker ? 'none' : 'block'}` }}
           className={'absolute left-0 top-[100%] w-[100%] bg-[white]'}
         >
           <div>
-            {data.map((x) => (
+            {selectData.map((x: string) => (
               <div
                 onMouseEnter={(e) => {
                   (e.target as HTMLDivElement).style.backgroundColor =

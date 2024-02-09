@@ -4,14 +4,12 @@ import React from 'react';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded bg-[white]';
 
-export default function DatePicker() {
-  const [dateValue, setDateValue] = React.useState<string>();
-
+export default function DatePicker({ dateValue, setDateValue }: any) {
   const refEl = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     setDateValue(new Date().toLocaleDateString());
-  }, []);
+  }, [setDateValue]);
 
   const changeHandler = (e: any) => {
     setDateValue(new Date(e.target.value).toLocaleDateString());
