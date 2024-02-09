@@ -1,14 +1,5 @@
-import LayoutWrapper from '../../components/layoutWrapper';
+import SettingsPage from '@/app/components/pages/settings';
 
 export default function Settings() {
-  return (
-    <LayoutWrapper>
-      <h1 className="text-[green]">
-        settings settings settings settings settings settings settings settings
-        settings settings settings settings settings settings settings settings
-        settings settings settings settings settings settings settings settings
-        settings
-      </h1>
-    </LayoutWrapper>
-  );
+  return <SettingsPage />;
 }

@@ -1,12 +1,5 @@
-import LayoutWrapper from '../../components/layoutWrapper';
+import AccountPage from '@/app/components/pages/account';
 
 export default function Account() {
-  return (
-    <LayoutWrapper>
-      <h1 className="text-[green]">
-        account account account account account account account account account account account account account account
-        account account account account account account account account account account account
-      </h1>
-    </LayoutWrapper>
-  );
+  return <AccountPage />;
 }
