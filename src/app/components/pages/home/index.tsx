@@ -5,9 +5,10 @@ import LayoutWrapper from '../../layoutWrapper';
 import DataInflow from './dataInflow';
 import Budget from './budget';
 
-// AWAITING DATA
+// AWAITING DATA START
 const expenseCategory = ['Exone', 'Extwo', 'Exthree', 'Exfour'];
 const incomeCategory = ['Inone', 'Intwo', 'Inthree', 'Infour'];
+// AWAITING DATA FINISH
 
 export default function HomePage() {
   const [tab, setTab] = React.useState<string>('expense');
