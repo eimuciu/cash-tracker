@@ -1,12 +1,5 @@
-import LayoutWrapper from '../../components/layoutWrapper';
+import StatsPage from '@/app/components/pages/stats';
 
 export default function Stats() {
-  return (
-    <LayoutWrapper>
-      <h1 className="text-[green]">
-        stats stats stats stats stats stats stats stats stats stats stats stats stats stats
-        stats stats stats stats stats stats stats stats stats stats stats
-      </h1>
-    </LayoutWrapper>
-  );
+  return <StatsPage />;
 }
