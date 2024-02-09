@@ -1,12 +1,5 @@
-import LayoutWrapper from '../../components/layoutWrapper';
+import ListPage from '@/app/components/pages/list';
 
 export default function List() {
-  return (
-    <LayoutWrapper>
-      <h1 className="text-[green]">
-        list list list list list list list list list list list list list list
-        list list list list list list list list list list list
-      </h1>
-    </LayoutWrapper>
-  );
+  return <ListPage />;
 }
