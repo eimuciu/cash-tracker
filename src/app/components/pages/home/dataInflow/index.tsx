@@ -16,13 +16,18 @@ const validationChema = Yup.object().shape({
   note: Yup.string().required('Required'),
 });
 
-// AWAITING DATA
-const selectData = ['one', 'two', 'three', 'four'];
-
-export default function DataInflow() {
+export default function DataInflow({
+  selectCategory,
+}: {
+  selectCategory: string[];
+}) {
   const [dateValue, setDateValue] = React.useState<string>('');
   const [dateError, setDateError] = React.useState<string>('');
-  const [selectValue, setSelectValue] = React.useState<string>(selectData[0]);
+  const [selectValue, setSelectValue] = React.useState<string>('');
+
+  React.useEffect(() => {
+    setSelectValue(selectCategory[0]);
+  }, [selectCategory]);
 
   const formik = useFormik({
     initialValues: {
@@ -38,6 +43,7 @@ export default function DataInflow() {
         return;
       }
       setDateError('');
+      // AWAITING DATA START
       alert(
         JSON.stringify(
           { ...values, date: dateValue, category: selectValue },
@@ -45,6 +51,7 @@ export default function DataInflow() {
           2,
         ),
       );
+      // AWAITING DATA FINISH
       bag.resetForm();
     },
   });
@@ -56,7 +63,7 @@ export default function DataInflow() {
       <SelectPicker
         selectValue={selectValue}
         setSelectValue={setSelectValue}
-        selectData={selectData}
+        selectData={selectCategory}
       />
       <form onSubmit={formik.handleSubmit} className="flex flex-col h-[100%]">
         <div className="text-[#880D1E] text-[12px]">
