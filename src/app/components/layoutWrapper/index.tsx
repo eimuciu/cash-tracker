@@ -33,7 +33,7 @@ export default function LayoutWrapper({ children }: Props) {
     <div className="flex">
       <div
         onClick={toggleNavbar}
-        className="w-[15px] h-[15px] bg-[#D1AC00] fixed rounded-[50%] right-[4px] bottom-[25%] hidden md:block outline-[#D1AC00] outline-2 outline outline-offset-2 "
+        className="w-[15px] h-[15px] bg-[#D1AC00] fixed rounded-[50%] right-[5px] bottom-[25%] hidden md:block outline-[#D1AC00] outline-2 outline outline-offset-2 "
       ></div>
       <div
         ref={elRef}
