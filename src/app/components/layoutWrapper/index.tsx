@@ -5,6 +5,7 @@ import NavBar from '../navbar';
 import Header from './header';
 import DateSeperator from './dateSeperator';
 import { usePathname } from 'next/navigation';
+import './style.css';
 
 interface Props {
   children: React.ReactElement;
@@ -32,6 +33,7 @@ export default function LayoutWrapper({ children }: Props) {
   return (
     <div className="flex">
       <div
+        id="shockwave"
         onClick={toggleNavbar}
         className="w-[15px] h-[15px] bg-[#D1AC00] fixed rounded-[50%] right-[5px] bottom-[25%] hidden md:block outline-[#D1AC00] outline-2 outline outline-offset-2 "
       ></div>
