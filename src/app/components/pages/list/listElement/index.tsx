@@ -7,7 +7,7 @@ interface Props {
   iconUrl: string;
   category: string;
   date: string;
-  price: number;
+  amount: number;
   currency: string;
   note: string;
 }
@@ -18,7 +18,7 @@ export default function ListElement({
   date,
   note,
   currency,
-  price,
+  amount,
 }: Props) {
   const [hasMouseEntered, setHasMouseEntered] = React.useState<boolean>(false);
 
@@ -54,7 +54,7 @@ export default function ListElement({
       >
         <p className="font-bold">
           {currency}
-          {price.toFixed(2)}
+          {amount.toFixed(2)}
         </p>
         {note}
       </div>
