@@ -12,6 +12,12 @@ export default function ListElement() {
       onDoubleClick={() => {
         alert('double clicked');
       }}
+      onClick={() => {
+        setHasMouseEntered(true);
+      }}
+      onMouseLeave={() => {
+        setHasMouseEntered(false);
+      }}
       //   onMouseDown={() => {
       //     clearTimeout(mouseHoldTimer);
       //     mouseHoldTimer = setTimeout(function () {
@@ -33,12 +39,6 @@ export default function ListElement() {
         <p>02.02.2024</p>
       </div>
       <div
-        onMouseEnter={() => {
-          setHasMouseEntered(true);
-        }}
-        onMouseLeave={() => {
-          setHasMouseEntered(false);
-        }}
         className="w-[45%]"
         style={{
           overflow: `${hasMouseEntered ? 'visible' : 'hidden'}`,
