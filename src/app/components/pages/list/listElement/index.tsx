@@ -7,7 +7,12 @@ export default function ListElement() {
   const [hasMouseEntered, setHasMouseEntered] = React.useState<boolean>(false);
 
   return (
-    <div className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]">
+    <div
+      onClick={() => {
+        alert('popup');
+      }}
+      className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]"
+    >
       <div className="w-[20%]">
         <div className="w-[25px] h-[25px] relative">
           <Image src="/burger.png" alt="icon" fill />
