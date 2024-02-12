@@ -5,9 +5,21 @@ import Image from 'next/image';
 
 export default function ListElement() {
   const [hasMouseEntered, setHasMouseEntered] = React.useState<boolean>(false);
+  let mouseHoldTimer: any;
 
   return (
-    <div className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]">
+    <div
+      onMouseDown={() => {
+        clearTimeout(mouseHoldTimer);
+        mouseHoldTimer = setTimeout(function () {
+          alert('holding');
+        }, 500);
+      }}
+      onMouseUp={() => {
+        clearTimeout(mouseHoldTimer);
+      }}
+      className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]"
+    >
       <div className="w-[20%]">
         <div className="w-[25px] h-[25px] relative">
           <Image src="/burger.png" alt="icon" fill />
@@ -26,8 +38,6 @@ export default function ListElement() {
         }}
         className="w-[45%]"
         style={{
-          // visible
-          // wrap
           overflow: `${hasMouseEntered ? 'visible' : 'hidden'}`,
           whiteSpace: `${hasMouseEntered ? 'wrap' : 'nowrap'}`,
           textOverflow: 'ellipsis',
