@@ -5,8 +5,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
 
-export default function DateSeperator() {
-  const [activeSlide, setActiveSlide] = React.useState<string>('Current month');
+interface Props {
+  activeSlide: string;
+  setActiveSlide: any;
+}
+
+export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
   const [slideUnits, setSlideUnits] = React.useState<number>(1);
   const [loading, setLoading] = React.useState<boolean>(true);
   const swiperRef = React.useRef<any>(null);
@@ -20,7 +24,6 @@ export default function DateSeperator() {
       } else {
         setSlideUnits(4);
       }
-      swiperRef.current.swiper.slideTo(2);
     };
 
     if (window.innerWidth <= 640) {
@@ -30,14 +33,38 @@ export default function DateSeperator() {
     } else {
       setSlideUnits(4);
     }
-    swiperRef.current.swiper.slideTo(2);
+
+    console.log('active slide', activeSlide);
+
+    switch (activeSlide) {
+      case 'This year': {
+        swiperRef.current.swiper.slideTo(0);
+        break;
+      }
+      case 'Previous month': {
+        swiperRef.current.swiper.slideTo(1);
+        break;
+      }
+      case 'Current month': {
+        swiperRef.current.swiper.slideTo(2);
+        break;
+      }
+      case 'Custom date': {
+        swiperRef.current.swiper.slideTo(3);
+        break;
+      }
+      default: {
+        swiperRef.current.swiper.slideTo(2);
+        break;
+      }
+    }
 
     window.addEventListener('resize', resizeHandler);
     setLoading(false);
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
-  }, []);
+  }, [activeSlide]);
 
   return (
     <>

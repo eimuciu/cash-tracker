@@ -15,6 +15,8 @@ export default function LayoutWrapper({ children }: Props) {
   // const [elementWidth, setElementWidht] = React.useState<number>(0);
   const elRef = React.useRef<HTMLDivElement>(null);
   const [navbarStatus, setNavbarStatus] = React.useState<boolean>(false);
+  const [activeDateFilterSlide, setActiveDateFilterSlide] =
+    React.useState<string>('Current month');
 
   const pathname = usePathname();
   const restrictedPaths = ['/account', '/settings'];
@@ -72,7 +74,11 @@ export default function LayoutWrapper({ children }: Props) {
       >
         {!restrictedPaths.includes(pathname) && (
           <>
-            <Header /> <DateSeperator />
+            <Header />{' '}
+            <DateSeperator
+              activeSlide={activeDateFilterSlide}
+              setActiveSlide={setActiveDateFilterSlide}
+            />
           </>
         )}
         {children}
