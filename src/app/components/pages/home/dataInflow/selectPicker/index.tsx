@@ -4,8 +4,27 @@ import React from 'react';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded bg-[white]';
 
-export default function SelectPicker({ selectValue, setSelectValue, selectData }: any) {
+export default function SelectPicker({
+  selectValue,
+  setSelectValue,
+  selectData,
+}: any) {
   const [showPicker, setShowPicker] = React.useState<boolean>(false);
+  const refEl = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const docClickHandler = (e: any) => {
+      if (refEl.current && !refEl.current.contains(e.target)) {
+        setShowPicker(false);
+      }
+    };
+
+    document.addEventListener('click', docClickHandler);
+
+    return () => {
+      document.removeEventListener('click', docClickHandler);
+    };
+  }, []);
 
   const handleSelection = (e: any) => {
     e.stopPropagation();
@@ -14,7 +33,7 @@ export default function SelectPicker({ selectValue, setSelectValue, selectData }
   };
 
   return (
-    <div className="">
+    <div ref={refEl} className="">
       <div
         onClick={() => {
           setShowPicker(!showPicker);
