@@ -1,0 +1,23 @@
+export default function ListElement() {
+  return (
+    <div className="w-[75%] my-[20px] mx-auto flex items-center md:w-[95%]">
+      <div className="w-[25%]">icon</div>
+      <div className="w-[30%]">
+        <p className="font-bold">Food</p>
+        <p>02.02.2024</p>
+      </div>
+      <div
+        className="w-[45%]"
+        style={{
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+        }}
+      >
+        <p className="font-bold">$25.00</p>
+        
+          I have bought some food etc etc... I have bought some food etc etc...
+      </div>
+    </div>
+  );
+}

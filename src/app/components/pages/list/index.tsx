@@ -1,5 +1,6 @@
 import LayoutWrapper from '../../layoutWrapper';
 import { colorPalette } from '@/utils/themeUnits';
+import ListElement from './listElement';
 
 export default function ListPage() {
   return (
@@ -16,6 +17,10 @@ export default function ListPage() {
           <button className="text-center rounded bg-[#F5F5F5] border border-black border-solid px-[5px]">
             Earnings
           </button>
+        </div>
+        <div>
+          <ListElement />
+          <ListElement />
         </div>
       </section>
     </LayoutWrapper>
