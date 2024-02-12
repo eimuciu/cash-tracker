@@ -1,11 +1,12 @@
 import React from 'react';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
 
 export default function DateSeperator() {
+  const [activeSlide, setActiveSlide] = React.useState<string>('Current month');
   const [slideUnits, setSlideUnits] = React.useState<number>(1);
   const [loading, setLoading] = React.useState<boolean>(true);
   const swiperRef = React.useRef<any>(null);
@@ -48,19 +49,55 @@ export default function DateSeperator() {
       >
         {!loading && (
           <>
-            <SwiperSlide>
+            <SwiperSlide
+              onClick={() => {
+                setActiveSlide('This year');
+              }}
+              className={
+                (activeSlide === 'This year'
+                  ? 'text-[#880D1E] font-bold'
+                  : 'text-[black] font-normal') + ' cursor-pointer'
+              }
+            >
               {/* AWAITING DATA */}
               This year
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide
+              onClick={() => {
+                setActiveSlide('Previous month');
+              }}
+              className={
+                (activeSlide === 'Previous month'
+                  ? 'text-[#880D1E] font-bold'
+                  : 'text-[black] font-normal') + ' cursor-pointer'
+              }
+            >
               {/* AWAITING DATA */}
               Previous month
             </SwiperSlide>
-            <SwiperSlide className="text-[#880D1E] font-bold">
+            <SwiperSlide
+              onClick={() => {
+                setActiveSlide('Current month');
+              }}
+              className={
+                (activeSlide === 'Current month'
+                  ? 'text-[#880D1E] font-bold'
+                  : 'text-[black] font-normal') + ' cursor-pointer'
+              }
+            >
               {/* AWAITING DATA */}
               Current month
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide
+              onClick={() => {
+                setActiveSlide('Custom date');
+              }}
+              className={
+                (activeSlide === 'Custom date'
+                  ? 'text-[#880D1E] font-bold'
+                  : 'text-[black] font-normal') + ' cursor-pointer'
+              }
+            >
               {/* AWAITING DATA */}
               Custom date
             </SwiperSlide>
