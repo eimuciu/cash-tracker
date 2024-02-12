@@ -19,8 +19,22 @@ export default function ListPage() {
           </button>
         </div>
         <div>
-          <ListElement />
-          <ListElement />
+          <ListElement
+            iconUrl="/burger.png"
+            category="Food"
+            date="02.02.2024"
+            note="Bought food etc etc etc etc"
+            currency="$"
+            price={26.58}
+          />
+          <ListElement
+            iconUrl="/car.png"
+            category="Car"
+            date="02.02.2024"
+            note="Petrol"
+            currency="$"
+            price={25.0}
+          />
         </div>
       </section>
     </LayoutWrapper>

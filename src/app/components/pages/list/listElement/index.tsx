@@ -3,9 +3,24 @@
 import React from 'react';
 import Image from 'next/image';
 
-export default function ListElement() {
+interface Props {
+  iconUrl: string;
+  category: string;
+  date: string;
+  price: number;
+  currency: string;
+  note: string;
+}
+
+export default function ListElement({
+  iconUrl,
+  category,
+  date,
+  note,
+  currency,
+  price,
+}: Props) {
   const [hasMouseEntered, setHasMouseEntered] = React.useState<boolean>(false);
-  let mouseHoldTimer: any;
 
   return (
     <div
@@ -18,25 +33,16 @@ export default function ListElement() {
       onMouseLeave={() => {
         setHasMouseEntered(false);
       }}
-      //   onMouseDown={() => {
-      //     clearTimeout(mouseHoldTimer);
-      //     mouseHoldTimer = setTimeout(function () {
-      //       alert('holding');
-      //     }, 500);
-      //   }}
-      //   onMouseUp={() => {
-      //     clearTimeout(mouseHoldTimer);
-      //   }}
       className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]"
     >
       <div className="w-[20%]">
         <div className="w-[25px] h-[25px] relative">
-          <Image src="/burger.png" alt="icon" fill />
+          <Image src={iconUrl} alt="icon" fill />
         </div>
       </div>
       <div className="w-[35%]">
-        <p className="font-bold">Food</p>
-        <p>02.02.2024</p>
+        <p className="font-bold">{category}</p>
+        <p>{date}</p>
       </div>
       <div
         className="w-[45%]"
@@ -46,8 +52,11 @@ export default function ListElement() {
           textOverflow: 'ellipsis',
         }}
       >
-        <p className="font-bold">$25.00</p>
-        Bought food etc etc etc etc etc...
+        <p className="font-bold">
+          {currency}
+          {price.toFixed(2)}
+        </p>
+        {note}
       </div>
     </div>
   );
