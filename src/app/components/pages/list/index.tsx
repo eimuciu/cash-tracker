@@ -54,7 +54,6 @@ export default function ListPage() {
   };
 
   return (
-    <LayoutWrapper>
       <section
         className={
           'rounded-[10px] h-[100%] p-[10px]' +
@@ -125,6 +124,5 @@ export default function ListPage() {
           /> */}
         </div>
       </section>
-    </LayoutWrapper>
   );
 }

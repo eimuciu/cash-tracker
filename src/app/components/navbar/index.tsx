@@ -36,6 +36,7 @@ export default function NavBar() {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [showAccountNavBar]);
+  // Fix it 
 
   const pathname = usePathname();
 

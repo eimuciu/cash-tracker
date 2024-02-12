@@ -18,7 +18,6 @@ export default function HomePage() {
   };
 
   return (
-    <LayoutWrapper>
       <section className="flex gap-[10px] h-[100%] md:flex-col">
         <div
           className="flex flex-col w-[20%] rounded-[10px] h-[100%] md:w-[100%] "
@@ -74,6 +73,5 @@ export default function HomePage() {
           <Budget />
         </div>
       </section>
-    </LayoutWrapper>
   );
 }

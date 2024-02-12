@@ -3,7 +3,6 @@ import { colorPalette } from '@/utils/themeUnits';
 
 export default function AccountPage() {
   return (
-    <LayoutWrapper>
       <section
         className={
           'rounded-[10px] h-[100%] p-[10px]' +
@@ -16,6 +15,5 @@ export default function AccountPage() {
         Account page Account page Account page Account page Account page Account
         page Account page Account page Stats page Account page
       </section>
-    </LayoutWrapper>
   );
 }

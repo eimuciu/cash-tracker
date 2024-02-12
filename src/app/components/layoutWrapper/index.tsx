@@ -54,7 +54,7 @@ export default function LayoutWrapper({ children }: Props) {
         //   paddingLeft: `${elementWidth}px`,
         // }}
       >
-        {!restrictedPaths.includes(pathname) && (
+        {!restrictedPaths.includes(pathname as string) && (
           <>
             <Header /> <DateSeperator />
           </>
