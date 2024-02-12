@@ -34,8 +34,6 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
       setSlideUnits(4);
     }
 
-    console.log('active slide', activeSlide);
-
     switch (activeSlide) {
       case 'This year': {
         swiperRef.current.swiper.slideTo(0);
