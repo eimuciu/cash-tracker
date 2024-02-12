@@ -10,6 +10,7 @@ import { RefObject } from 'react';
 interface Props {
   show: boolean;
   myRef: RefObject<HTMLDivElement>;
+  setNavbarStatus: any;
 }
 
 const commonPaddingX = 'px-[25px]';
@@ -19,7 +20,11 @@ const commonNavItem = 'flex items-center my-[15px] gap-[25px]';
 const commonBorder =
   'flex items-center justify-between w-[100%] border-b border-black border-solid pb-[10px]';
 
-export default function AccountNavBar({ show, myRef }: Props) {
+export default function AccountNavBar({ show, myRef, setNavbarStatus }: Props) {
+  const closeNavBar = () => {
+    setNavbarStatus(false);
+  };
+
   return (
     <>
       <div
@@ -42,7 +47,7 @@ export default function AccountNavBar({ show, myRef }: Props) {
           email@email.com
         </div>
         <div className={commonPaddingX + ' ' + 'flex flex-col pt-[25px]'}>
-          <Link href="/account">
+          <Link onClick={closeNavBar} href="/account">
             <div className={commonNavItem}>
               <MdManageAccounts className={iconClassNames} />
               <div className={commonBorder}>
@@ -51,7 +56,7 @@ export default function AccountNavBar({ show, myRef }: Props) {
               </div>
             </div>
           </Link>
-          <Link href="/settings">
+          <Link onClick={closeNavBar} href="/settings">
             <div className={commonNavItem}>
               <IoSettingsSharp className={iconClassNames} />
               <div className={commonBorder}>

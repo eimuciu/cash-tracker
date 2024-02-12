@@ -13,7 +13,12 @@ const navItemClassNames =
 
 const activeNavLinkClassName = 'text-[#880D1E]';
 
-export default function NavBar() {
+interface Props {
+  toggleNavbar: () => void;
+  setNavbarStatus: any;
+}
+
+export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
   const [showAccountNavBar, setShowAccountNavBar] =
     React.useState<boolean>(false);
 
@@ -45,7 +50,11 @@ export default function NavBar() {
 
   return (
     <>
-      <AccountNavBar myRef={childRefEl} show={showAccountNavBar} />
+      <AccountNavBar
+        myRef={childRefEl}
+        show={showAccountNavBar}
+        setNavbarStatus={setNavbarStatus}
+      />
       <div className="flex flex-col gap-y-[25px]">
         <div
           onClick={handleShowAccountNavBar}
@@ -60,42 +69,44 @@ export default function NavBar() {
         >
           <MdOutlineMenuBook className={iconClassNames} />
         </div>
-        <Link href="/">
-          <div
-            className={
-              navItemClassNames +
-              ' ' +
-              `${pathname === '/' && activeNavLinkClassName}`
-            }
-          >
-            <MdAccountBalanceWallet className={iconClassNames} />
-            Wallet
-          </div>
-        </Link>
-        <Link href="/list">
-          <div
-            className={
-              navItemClassNames +
-              ' ' +
-              `${pathname === '/list' && activeNavLinkClassName}`
-            }
-          >
-            <FaList className={iconClassNames} />
-            List
-          </div>
-        </Link>
-        <Link href="/stats">
-          <div
-            className={
-              navItemClassNames +
-              ' ' +
-              `${pathname === '/stats' && activeNavLinkClassName}`
-            }
-          >
-            <ImStatsBars className={iconClassNames} />
-            Stats
-          </div>
-        </Link>
+        <div onClick={toggleNavbar} className="flex flex-col gap-y-[25px]">
+          <Link href="/">
+            <div
+              className={
+                navItemClassNames +
+                ' ' +
+                `${pathname === '/' && activeNavLinkClassName}`
+              }
+            >
+              <MdAccountBalanceWallet className={iconClassNames} />
+              Wallet
+            </div>
+          </Link>
+          <Link href="/list">
+            <div
+              className={
+                navItemClassNames +
+                ' ' +
+                `${pathname === '/list' && activeNavLinkClassName}`
+              }
+            >
+              <FaList className={iconClassNames} />
+              List
+            </div>
+          </Link>
+          <Link href="/stats">
+            <div
+              className={
+                navItemClassNames +
+                ' ' +
+                `${pathname === '/stats' && activeNavLinkClassName}`
+              }
+            >
+              <ImStatsBars className={iconClassNames} />
+              Stats
+            </div>
+          </Link>
+        </div>
       </div>
     </>
   );

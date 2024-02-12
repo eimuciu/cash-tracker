@@ -26,6 +26,22 @@ export default function LayoutWrapper({ children }: Props) {
   //   }
   // }, []);
 
+  React.useEffect(() => {
+    const resizeHandler = (e: any) => {
+      if (e.target.innerWidth <= 768) {
+        setNavbarStatus(false);
+      }
+    };
+    if (window.innerWidth <= 768) {
+      setNavbarStatus(false);
+    }
+
+    window.addEventListener('resize', resizeHandler);
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
+
   const toggleNavbar = () => {
     setNavbarStatus(!navbarStatus);
   };
@@ -46,7 +62,7 @@ export default function LayoutWrapper({ children }: Props) {
           `${navbarStatus ? 'md:block' : 'md:hidden'}`
         }
       >
-        <NavBar />
+        <NavBar toggleNavbar={toggleNavbar} setNavbarStatus={setNavbarStatus} />
       </div>
       <div
         className="w-[100%] pl-[91.125px] pr-[25px] py-[25px] md:pl-[25px] min-h-screen flex flex-col"
