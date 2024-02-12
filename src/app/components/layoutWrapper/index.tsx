@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import './style.css';
 
 interface Props {
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
 
 export default function LayoutWrapper({ children }: Props) {

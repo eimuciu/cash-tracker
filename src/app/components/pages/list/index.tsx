@@ -54,60 +54,55 @@ export default function ListPage() {
   };
 
   return (
-    <LayoutWrapper>
-      <section
-        className={
-          'rounded-[10px] h-[100%] p-[10px]' +
-          ' ' +
-          `bg-[${colorPalette.greened}]`
-        }
-      >
-        <div className="flex justify-between">
-          <p className="font-bold">
-            {tabSelectionClicked ? 'Earnings' : 'Spendings'}{' '}
-          </p>
-          <button
-            onClick={handleSelection}
-            className="text-center rounded bg-[#F5F5F5] border border-black border-solid px-[5px]"
-          >
-            {tabSelectionClicked ? 'Spendings' : 'Earnings'}
-          </button>
-        </div>
-        <div>
-          {!tabSelectionClicked
-            ? expenseData.map((x) => (
-                <>
-                  <ListElement
-                    iconUrl={
-                      (settingsData.expenseIcons as any)[
-                        x.category.toLowerCase()
-                      ]
-                    }
-                    currency={settingsData.currency}
-                    category={x.category}
-                    date={x.date}
-                    note={x.note}
-                    amount={x.amount}
-                  />
-                </>
-              ))
-            : incomeData.map((x) => (
-                <>
-                  <ListElement
-                    iconUrl={
-                      (settingsData.incomeIcons as any)[
-                        x.category.toLowerCase()
-                      ]
-                    }
-                    currency={settingsData.currency}
-                    category={x.category}
-                    date={x.date}
-                    note={x.note}
-                    amount={x.amount}
-                  />
-                </>
-              ))}
-          {/* <ListElement
+    <section
+      className={
+        'rounded-[10px] h-[100%] p-[10px]' +
+        ' ' +
+        `bg-[${colorPalette.greened}]`
+      }
+    >
+      <div className="flex justify-between">
+        <p className="font-bold">
+          {tabSelectionClicked ? 'Earnings' : 'Spendings'}{' '}
+        </p>
+        <button
+          onClick={handleSelection}
+          className="text-center rounded bg-[#F5F5F5] border border-black border-solid px-[5px]"
+        >
+          {tabSelectionClicked ? 'Spendings' : 'Earnings'}
+        </button>
+      </div>
+      <div>
+        {!tabSelectionClicked
+          ? expenseData.map((x) => (
+              <>
+                <ListElement
+                  iconUrl={
+                    (settingsData.expenseIcons as any)[x.category.toLowerCase()]
+                  }
+                  currency={settingsData.currency}
+                  category={x.category}
+                  date={x.date}
+                  note={x.note}
+                  amount={x.amount}
+                />
+              </>
+            ))
+          : incomeData.map((x) => (
+              <>
+                <ListElement
+                  iconUrl={
+                    (settingsData.incomeIcons as any)[x.category.toLowerCase()]
+                  }
+                  currency={settingsData.currency}
+                  category={x.category}
+                  date={x.date}
+                  note={x.note}
+                  amount={x.amount}
+                />
+              </>
+            ))}
+        {/* <ListElement
             iconUrl="/burger.png"
             currency="$"
             category="Food"
@@ -123,8 +118,7 @@ export default function ListPage() {
             note="Petrol"
             amount={25.0}
           /> */}
-        </div>
-      </section>
-    </LayoutWrapper>
+      </div>
+    </section>
   );
 }

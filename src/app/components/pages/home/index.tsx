@@ -18,62 +18,58 @@ export default function HomePage() {
   };
 
   return (
-    <LayoutWrapper>
-      <section className="flex gap-[10px] h-[100%] md:flex-col">
-        <div
-          className="flex flex-col w-[20%] rounded-[10px] h-[100%] md:w-[100%] "
-        >
-          <div className="flex">
-            <p
-              onClick={() => {
-                handlePickTab('expense');
-              }}
-              className={
-                'w-[30%] text-center p-[10px] rounded-t-[10px] cursor-pointer' +
-                ' ' +
-                `${tab === 'expense' ? 'bg-[#C6E0FF]' : 'bg-[white]'}`
-              }
-            >
-              Expense
-            </p>
-            <p
-              onClick={() => {
-                handlePickTab('income');
-              }}
-              className={
-                'w-[30%] text-center p-[10px] cursor-pointer' +
-                ' ' +
-                `${
-                  tab === 'income'
-                    ? 'bg-[#C6E0FF] rounded-t-[10px]'
-                    : 'bg-[white]'
-                }`
-              }
-            >
-              Income
-            </p>
-          </div>
-          <div
+    <section className="flex gap-[10px] h-[100%] md:flex-col">
+      <div className="flex flex-col w-[20%] rounded-[10px] h-[100%] md:w-[100%] ">
+        <div className="flex">
+          <p
+            onClick={() => {
+              handlePickTab('expense');
+            }}
             className={
-              'flex flex-col p-[10px] h-[100%] bg-[#C6E0FF] rounded-b-[10px]' +
+              'w-[30%] text-center p-[10px] rounded-t-[10px] cursor-pointer' +
               ' ' +
-              `${tab === 'expense' ? 'rounded-e-[10px]' : 'rounded-t-[10px]'}`
+              `${tab === 'expense' ? 'bg-[#C6E0FF]' : 'bg-[white]'}`
             }
           >
-            <p className="pt-[10px] pb-[10px] font-bold">
-              {tab === 'expense' ? 'Expense' : 'Income'}
-            </p>
-            <DataInflow
-              selectCategory={
-                tab === 'expense' ? expenseCategory : incomeCategory
-              }
-            />
-          </div>
+            Expense
+          </p>
+          <p
+            onClick={() => {
+              handlePickTab('income');
+            }}
+            className={
+              'w-[30%] text-center p-[10px] cursor-pointer' +
+              ' ' +
+              `${
+                tab === 'income'
+                  ? 'bg-[#C6E0FF] rounded-t-[10px]'
+                  : 'bg-[white]'
+              }`
+            }
+          >
+            Income
+          </p>
         </div>
-        <div className="w-[80%] bg-[#91F5AD] rounded-[10px] p-[10px] md:w-[100%]">
-          <Budget />
+        <div
+          className={
+            'flex flex-col p-[10px] h-[100%] bg-[#C6E0FF] rounded-b-[10px]' +
+            ' ' +
+            `${tab === 'expense' ? 'rounded-e-[10px]' : 'rounded-t-[10px]'}`
+          }
+        >
+          <p className="pt-[10px] pb-[10px] font-bold">
+            {tab === 'expense' ? 'Expense' : 'Income'}
+          </p>
+          <DataInflow
+            selectCategory={
+              tab === 'expense' ? expenseCategory : incomeCategory
+            }
+          />
         </div>
-      </section>
-    </LayoutWrapper>
+      </div>
+      <div className="w-[80%] bg-[#91F5AD] rounded-[10px] p-[10px] md:w-[100%]">
+        <Budget />
+      </div>
+    </section>
   );
 }
