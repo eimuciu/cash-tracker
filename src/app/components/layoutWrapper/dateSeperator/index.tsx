@@ -1,12 +1,13 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
 
 export default function DateSeperator() {
-  const [slideUnits, setSlideUnits] = React.useState<number>(4);
+  const [slideUnits, setSlideUnits] = React.useState<number>(1);
+  const swiperRef = React.useRef<any>(null);
 
   React.useEffect(() => {
     const resizeHandler = (e: any) => {
@@ -17,13 +18,17 @@ export default function DateSeperator() {
       } else {
         setSlideUnits(4);
       }
+      swiperRef.current.swiper.slideTo(2);
     };
 
     if (window.innerWidth <= 640) {
       setSlideUnits(1);
     } else if (window.innerWidth <= 768) {
       setSlideUnits(3);
+    } else {
+      setSlideUnits(4);
     }
+    swiperRef.current.swiper.slideTo(2);
 
     window.addEventListener('resize', resizeHandler);
 
@@ -35,6 +40,7 @@ export default function DateSeperator() {
   return (
     <>
       <Swiper
+        ref={swiperRef}
         slidesPerView={slideUnits}
         modules={[Pagination, Navigation]}
         navigation={true}
