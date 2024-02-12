@@ -75,7 +75,7 @@ export default function ListPage() {
       <div>
         {!tabSelectionClicked
           ? expenseData.map((x) => (
-              <>
+              <div key={x.note}>
                 <ListElement
                   iconUrl={
                     (settingsData.expenseIcons as any)[x.category.toLowerCase()]
@@ -86,10 +86,10 @@ export default function ListPage() {
                   note={x.note}
                   amount={x.amount}
                 />
-              </>
+              </div>
             ))
           : incomeData.map((x) => (
-              <>
+              <div key={x.note}>
                 <ListElement
                   iconUrl={
                     (settingsData.incomeIcons as any)[x.category.toLowerCase()]
@@ -100,7 +100,7 @@ export default function ListPage() {
                   note={x.note}
                   amount={x.amount}
                 />
-              </>
+              </div>
             ))}
         {/* <ListElement
             iconUrl="/burger.png"

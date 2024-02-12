@@ -13,4 +13,5 @@ export const colorPalette = {
   reded: '#880D1E',
   violeted: '#D8D4F2',
   greyed: '#F5F5F5',
+  blueued: '#C6E0FF',
 };
