@@ -9,15 +9,18 @@ export default function ListElement() {
 
   return (
     <div
-      onMouseDown={() => {
-        clearTimeout(mouseHoldTimer);
-        mouseHoldTimer = setTimeout(function () {
-          alert('holding');
-        }, 500);
+      onDoubleClick={() => {
+        alert('double clicked');
       }}
-      onMouseUp={() => {
-        clearTimeout(mouseHoldTimer);
-      }}
+      //   onMouseDown={() => {
+      //     clearTimeout(mouseHoldTimer);
+      //     mouseHoldTimer = setTimeout(function () {
+      //       alert('holding');
+      //     }, 500);
+      //   }}
+      //   onMouseUp={() => {
+      //     clearTimeout(mouseHoldTimer);
+      //   }}
       className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]"
     >
       <div className="w-[20%]">
