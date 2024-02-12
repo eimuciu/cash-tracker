@@ -1,24 +1,40 @@
-import Image from "next/image";
+'use client';
+
+import React from 'react';
+import Image from 'next/image';
 
 export default function ListElement() {
+  const [hasMouseEntered, setHasMouseEntered] = React.useState<boolean>(false);
+
   return (
     <div className="w-[75%] my-[20px] mx-auto flex items-center gap-[10px] md:w-[95%]">
-      <div className="w-[20%]"><div className="w-[25px] h-[25px] relative"><Image src='/burger.png' alt="icon" fill /></div></div>
+      <div className="w-[20%]">
+        <div className="w-[25px] h-[25px] relative">
+          <Image src="/burger.png" alt="icon" fill />
+        </div>
+      </div>
       <div className="w-[35%]">
         <p className="font-bold">Food</p>
         <p>02.02.2024</p>
       </div>
       <div
+        onMouseEnter={() => {
+          setHasMouseEntered(true);
+        }}
+        onMouseLeave={() => {
+          setHasMouseEntered(false);
+        }}
         className="w-[45%]"
         style={{
-          overflow: 'hidden',
-          whiteSpace: 'nowrap',
+          // visible
+          // wrap
+          overflow: `${hasMouseEntered ? 'visible' : 'hidden'}`,
+          whiteSpace: `${hasMouseEntered ? 'wrap' : 'nowrap'}`,
           textOverflow: 'ellipsis',
         }}
       >
         <p className="font-bold">$25.00</p>
-        
-          I have bought some food etc etc... I have bought some food etc etc...
+        Bought food etc etc etc etc etc...
       </div>
     </div>
   );
