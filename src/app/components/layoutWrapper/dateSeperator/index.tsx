@@ -7,12 +7,13 @@ import './style.css';
 
 export default function DateSeperator() {
   const [slideUnits, setSlideUnits] = React.useState<number>(1);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const swiperRef = React.useRef<any>(null);
 
   React.useEffect(() => {
     const resizeHandler = (e: any) => {
       if (e.target.innerWidth <= 640) {
-        setSlideUnits(2);
+        setSlideUnits(1);
       } else if (e.target.innerWidth <= 768) {
         setSlideUnits(3);
       } else {
@@ -31,7 +32,7 @@ export default function DateSeperator() {
     swiperRef.current.swiper.slideTo(2);
 
     window.addEventListener('resize', resizeHandler);
-
+    setLoading(false);
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
@@ -45,22 +46,26 @@ export default function DateSeperator() {
         modules={[Pagination, Navigation]}
         navigation={true}
       >
-        <SwiperSlide>
-          {/* AWAITING DATA */}
-          This year
-        </SwiperSlide>
-        <SwiperSlide>
-          {/* AWAITING DATA */}
-          Previous month
-        </SwiperSlide>
-        <SwiperSlide className="text-[#880D1E] font-bold">
-          {/* AWAITING DATA */}
-          Current month
-        </SwiperSlide>
-        <SwiperSlide>
-          {/* AWAITING DATA */}
-          Custom date
-        </SwiperSlide>
+        {!loading && (
+          <>
+            <SwiperSlide>
+              {/* AWAITING DATA */}
+              This year
+            </SwiperSlide>
+            <SwiperSlide>
+              {/* AWAITING DATA */}
+              Previous month
+            </SwiperSlide>
+            <SwiperSlide className="text-[#880D1E] font-bold">
+              {/* AWAITING DATA */}
+              Current month
+            </SwiperSlide>
+            <SwiperSlide>
+              {/* AWAITING DATA */}
+              Custom date
+            </SwiperSlide>
+          </>
+        )}
       </Swiper>
     </>
   );
