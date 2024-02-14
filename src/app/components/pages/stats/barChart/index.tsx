@@ -100,7 +100,7 @@ export default function BarChartElement() {
         <BarChart
           data={data}
         >
-          <YAxis dataKey="amount" />
+          {/* <YAxis dataKey="amount" /> */}
           <Tooltip
             cursor={{ fill: '#A09EBB' }}
             wrapperStyle={{
