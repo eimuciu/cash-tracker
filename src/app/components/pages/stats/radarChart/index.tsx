@@ -44,24 +44,20 @@ const data = [
 
 export default function RadarChartElement() {
   return (
-      <main className="flex w-[100%] h-[75%] mx-auto">
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
-          className="bg-[#91F5AD]"
-        >
-          <RadarChart outerRadius="75%" data={data}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="name" />
-            <PolarRadiusAxis />
-            <Radar
-              dataKey="amount"
-              stroke="#8884d8"
-              fill="#8884d8"
-              fillOpacity={0.6}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
-      </main>
+    <main className="flex w-[100%] h-[75%] mx-auto">
+      <ResponsiveContainer width="100%" height="100%" className="bg-[#91F5AD]">
+        <RadarChart outerRadius="70%" data={data}>
+          <PolarGrid />
+          <PolarAngleAxis dataKey="name" />
+          <PolarRadiusAxis />
+          <Radar
+            dataKey="amount"
+            stroke="#8884d8"
+            fill="#8884d8"
+            fillOpacity={0.6}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    </main>
   );
 }
