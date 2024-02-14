@@ -30,14 +30,18 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function RadarChartElement() {
   return (
-    <main className="flex w-[100%] h-[75%] mx-auto ">
-      <div
-        className="h-[100%] w-[100%] mx-auto exampleScroll"
-        style={{ overflow: 'auto' }}
-      >
-        <ResponsiveContainer width="130%" height="130%">
+    <main
+      className="w-[100%] h-[75%]"
+      style={{ overflow: 'scroll', display: 'block', boxSizing: 'border-box' }}
+    >
+      <div style={{ width: '1000px', height: '500px', margin: '0 auto' }}>
+        <ResponsiveContainer
+          width={'100%'}
+          height={'100%'}
+          style={{ margin: '0 auto' }}
+        >
           <RadarChart
-            outerRadius="90%"
+            outerRadius="100%"
             data={data}
             margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
           >
