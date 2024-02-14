@@ -6,3 +6,15 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+#scrollContainer {
+  width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  #scrollContainer {
+    height: 400px;
+  }
+}

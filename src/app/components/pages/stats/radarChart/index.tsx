@@ -34,7 +34,7 @@ export default function RadarChartElement() {
       className="w-[100%] h-[75%]"
       style={{ overflow: 'scroll', display: 'block', boxSizing: 'border-box' }}
     >
-      <div style={{ width: '1000px', height: '500px', margin: '0 auto' }}>
+      <div id="scrollContainer">
         <ResponsiveContainer
           width={'100%'}
           height={'100%'}
