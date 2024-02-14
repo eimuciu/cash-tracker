@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from 'recharts';
 import { data } from '../manifestData';
+import './style.css';
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   console.log(payload);
@@ -29,11 +30,14 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function RadarChartElement() {
   return (
-    <main className="flex w-[100%] h-[75%] mx-auto">
-      <div className="h-[100%] w-[100%] mx-auto">
-        <ResponsiveContainer width="100%" height="100%">
+    <main className="flex w-[100%] h-[75%] mx-auto ">
+      <div
+        className="h-[100%] w-[100%] mx-auto exampleScroll"
+        style={{ overflow: 'auto' }}
+      >
+        <ResponsiveContainer width="130%" height="130%">
           <RadarChart
-            outerRadius="100%"
+            outerRadius="90%"
             data={data}
             margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
           >
@@ -47,7 +51,7 @@ export default function RadarChartElement() {
               content={<CustomTooltip />}
             />
             <PolarGrid />
-            <PolarAngleAxis dataKey="name" />
+            <PolarAngleAxis dataKey="name" overflow="auto" />
             <PolarRadiusAxis />
             <Radar
               dataKey="amount"

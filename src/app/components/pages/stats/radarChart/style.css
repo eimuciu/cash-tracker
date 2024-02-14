@@ -1,0 +1,8 @@
+.exampleScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.exampleScroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
