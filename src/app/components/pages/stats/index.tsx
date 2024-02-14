@@ -1,5 +1,5 @@
-import LayoutWrapper from '../../layoutWrapper';
 import { colorPalette } from '@/utils/themeUnits';
+import BarChartElement from './barChart';
 
 export default function StatsPage() {
   return (
@@ -10,10 +10,7 @@ export default function StatsPage() {
         `bg-[${colorPalette.greened}]`
       }
     >
-      Stats page Stats page Stats page Stats page Stats page Stats page Stats
-      page Stats page Stats page Stats page Stats page Stats page Stats page
-      Stats page Stats page Stats page Stats page Stats page Stats page Stats
-      page Stats page
+      <BarChartElement />
     </section>
   );
 }
