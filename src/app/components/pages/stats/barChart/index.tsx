@@ -97,9 +97,7 @@ export default function BarChartElement() {
   return (
     <main className="flex w-[100%] h-[75%] mx-auto">
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={data}
-        >
+        <BarChart data={data}>
           {/* <YAxis dataKey="amount" /> */}
           <Tooltip
             cursor={{ fill: '#A09EBB' }}
@@ -120,6 +118,7 @@ export default function BarChartElement() {
           <XAxis
             dataKey="name"
             tickLine={false}
+            interval={0}
             tick={<CustomizedAxisTick />}
           />
         </BarChart>
