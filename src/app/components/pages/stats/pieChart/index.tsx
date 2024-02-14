@@ -15,39 +15,7 @@ import {
   PieChart,
   Pie,
 } from 'recharts';
-
-const data = [
-  {
-    name: 'Food',
-    amount: 100,
-    color: '#ADA8B6',
-  },
-  {
-    name: 'Sport',
-    amount: 35,
-    color: '#FFEEDB',
-  },
-  {
-    name: 'Car',
-    amount: 150,
-    color: '#D6D1B1',
-  },
-  {
-    name: 'Entertainment',
-    amount: 100,
-    color: '#A53860',
-  },
-  {
-    name: 'Rent',
-    amount: 35,
-    color: '#838184',
-  },
-  {
-    name: 'Holiday',
-    amount: 150,
-    color: '#FF6F59',
-  },
-];
+import { data } from '../manifestData';
 
 const renderCustomizedLabel = ({
   cx,

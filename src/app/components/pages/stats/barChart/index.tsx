@@ -13,39 +13,7 @@ import {
   ResponsiveContainer,
   LabelList,
 } from 'recharts';
-
-const data = [
-  {
-    name: 'Food',
-    amount: 25,
-    color: '#ADA8B6',
-  },
-  {
-    name: 'Sport',
-    amount: 35,
-    color: '#FFEEDB',
-  },
-  {
-    name: 'Car',
-    amount: 150,
-    color: '#5AFF15',
-  },
-  {
-    name: 'Entertainment',
-    amount: 25,
-    color: '#A53860',
-  },
-  {
-    name: 'Rent',
-    amount: 35,
-    color: '#838184',
-  },
-  {
-    name: 'Holiday',
-    amount: 150,
-    color: '#FF6F59',
-  },
-];
+import { data } from '../manifestData';
 
 const renderCustomizedLabel = (props: any) => {
   const { x, y, width, height, value } = props;
