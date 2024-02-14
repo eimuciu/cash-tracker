@@ -5,9 +5,9 @@ import RadarChartElement from './radarChart';
 
 export default function StatsPage() {
   return (
-    <section
+    <div
       className={
-        'rounded-[10px] h-[100%] p-[10px]' +
+        'flex flex-col rounded-[10px] h-[100%] p-[10px]' +
         ' ' +
         `bg-[${colorPalette.greened}]`
       }
@@ -15,6 +15,6 @@ export default function StatsPage() {
       {/* <BarChartElement /> */}
       {/* <PieChartElement /> */}
       <RadarChartElement />
-    </section>
+    </div>
   );
 }

@@ -30,42 +30,55 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function RadarChartElement() {
   return (
-    <main
-      className="w-[100%] h-[75%]"
-      style={{ overflow: 'scroll', display: 'block', boxSizing: 'border-box' }}
+    <div
+      className="w-[100%]"
+      style={{
+        height: '75%',
+        display: 'block',
+        position: 'relative',
+      }}
     >
-      <div id="scrollContainer">
-        <ResponsiveContainer
-          width={'100%'}
-          height={'100%'}
-          style={{ margin: '0 auto' }}
-        >
-          <RadarChart
-            outerRadius="100%"
-            data={data}
-            margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+      <div
+        style={{
+          overflow: 'scroll',
+          position: 'absolute',
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <div id="scrollContainer">
+          <ResponsiveContainer
+            width={'100%'}
+            height={'100%'}
+            style={{ margin: '0 auto' }}
           >
-            <Tooltip
-              cursor={{ fill: 'transparent' }}
-              wrapperStyle={{
-                backgroundColor: 'black',
-                color: 'white',
-                padding: '5px',
-              }}
-              content={<CustomTooltip />}
-            />
-            <PolarGrid />
-            <PolarAngleAxis dataKey="name" overflow="auto" />
-            <PolarRadiusAxis />
-            <Radar
-              dataKey="amount"
-              stroke="#8884d8"
-              fill="#8884d8"
-              fillOpacity={0.6}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
+            <RadarChart
+              outerRadius="100%"
+              data={data}
+              margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+            >
+              <Tooltip
+                cursor={{ fill: 'transparent' }}
+                wrapperStyle={{
+                  backgroundColor: 'black',
+                  color: 'white',
+                  padding: '5px',
+                }}
+                content={<CustomTooltip />}
+              />
+              <PolarGrid />
+              <PolarAngleAxis dataKey="name" overflow="auto" />
+              <PolarRadiusAxis />
+              <Radar
+                dataKey="amount"
+                stroke="#8884d8"
+                fill="#8884d8"
+                fillOpacity={0.6}
+              />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }

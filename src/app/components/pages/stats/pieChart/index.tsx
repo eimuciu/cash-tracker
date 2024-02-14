@@ -16,6 +16,7 @@ import {
   Pie,
 } from 'recharts';
 import { data } from '../manifestData';
+import './style.css';
 
 const renderCustomizedLabel = ({
   cx,
@@ -59,32 +60,54 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function PieChartElement() {
   return (
-    <main className="flex w-[100%] h-[75%] mx-auto">
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Tooltip
-            cursor={{ fill: 'transparent' }}
-            wrapperStyle={{
-              backgroundColor: 'black',
-              color: 'white',
-              padding: '5px',
-            }}
-            content={<CustomTooltip />}
-          />
-          <Pie
-            data={data}
-            labelLine={false}
-            stroke=""
-            label={renderCustomizedLabel}
-            outerRadius={'75%'}
-            dataKey="amount"
-          >
-            {data.map((x, i) => (
-              <Cell key={`${i}`} fill={x.color} style={{ outline: 'none' }} />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
-    </main>
+    <div
+      className="w-[100%]"
+      style={{
+        height: '75%',
+        display: 'block',
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{
+          overflow: 'scroll',
+          position: 'absolute',
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <div id="scrollContainer">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Tooltip
+                cursor={{ fill: 'transparent' }}
+                wrapperStyle={{
+                  backgroundColor: 'black',
+                  color: 'white',
+                  padding: '5px',
+                }}
+                content={<CustomTooltip />}
+              />
+              <Pie
+                data={data}
+                labelLine={false}
+                stroke=""
+                label={renderCustomizedLabel}
+                outerRadius={'75%'}
+                dataKey="amount"
+              >
+                {data.map((x, i) => (
+                  <Cell
+                    key={`${i}`}
+                    fill={x.color}
+                    style={{ outline: 'none' }}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
   );
 }
