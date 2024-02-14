@@ -1,6 +1,7 @@
 import { colorPalette } from '@/utils/themeUnits';
 import BarChartElement from './barChart';
 import PieChartElement from './pieChart';
+import RadarChartElement from './radarChart';
 
 export default function StatsPage() {
   return (
@@ -12,7 +13,8 @@ export default function StatsPage() {
       }
     >
       {/* <BarChartElement /> */}
-      <PieChartElement />
+      {/* <PieChartElement /> */}
+      <RadarChartElement />
     </section>
   );
 }
