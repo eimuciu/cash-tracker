@@ -1,5 +1,6 @@
 import { colorPalette } from '@/utils/themeUnits';
 import BarChartElement from './barChart';
+import PieChartElement from './pieChart';
 
 export default function StatsPage() {
   return (
@@ -10,7 +11,8 @@ export default function StatsPage() {
         `bg-[${colorPalette.greened}]`
       }
     >
-      <BarChartElement />
+      {/* <BarChartElement /> */}
+      <PieChartElement />
     </section>
   );
 }
