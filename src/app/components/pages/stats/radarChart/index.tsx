@@ -40,6 +40,11 @@ const data = [
     amount: 150,
     color: '#FF6F59',
   },
+  {
+    name: 'Alcohol',
+    amount: 19.99,
+    color: '#E8DDB5',
+  },
 ];
 
 export default function RadarChartElement() {
