@@ -19,7 +19,7 @@ import {
 const data = [
   {
     name: 'Food',
-    amount: 25,
+    amount: 100,
     color: '#ADA8B6',
   },
   {
@@ -34,7 +34,7 @@ const data = [
   },
   {
     name: 'Entertainment',
-    amount: 25,
+    amount: 100,
     color: '#A53860',
   },
   {
@@ -59,7 +59,7 @@ const renderCustomizedLabel = ({
   index,
 }: any) => {
   const RADIAN = Math.PI / 180;
-  const radius = innerRadius + (outerRadius - innerRadius) + 10;
+  const radius = innerRadius + (outerRadius - innerRadius) + 8;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -91,36 +91,32 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function PieChartElement() {
   return (
-      <main className="flex w-[100%] h-[75%] mx-auto">
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
-          className="bg-[#91F5AD]"
-        >
-          <PieChart>
-            <Tooltip
-              cursor={{ fill: 'transparent' }}
-              wrapperStyle={{
-                backgroundColor: 'black',
-                color: 'white',
-                padding: '5px',
-              }}
-              content={<CustomTooltip />}
-            />
-            <Pie
-              data={data}
-              labelLine={false}
-              stroke=""
-              label={renderCustomizedLabel}
-              outerRadius={'85%'}
-              dataKey="amount"
-            >
-              {data.map((x, i) => (
-                <Cell key={`${i}`} fill={x.color} style={{ outline: 'none' }} />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-      </main>
+    <main className="flex w-[100%] h-[75%] mx-auto">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Tooltip
+            cursor={{ fill: 'transparent' }}
+            wrapperStyle={{
+              backgroundColor: 'black',
+              color: 'white',
+              padding: '5px',
+            }}
+            content={<CustomTooltip />}
+          />
+          <Pie
+            data={data}
+            labelLine={false}
+            stroke=""
+            label={renderCustomizedLabel}
+            outerRadius={'75%'}
+            dataKey="amount"
+          >
+            {data.map((x, i) => (
+              <Cell key={`${i}`} fill={x.color} style={{ outline: 'none' }} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </main>
   );
 }
