@@ -36,7 +36,7 @@ const renderCustomizedLabel = ({
     <text
       x={x}
       y={y}
-      fill="black"
+      fill="darkblue"
       textAnchor={x > cx ? 'start' : 'end'}
       dominantBaseline="central"
     >
@@ -63,7 +63,7 @@ export default function PieChartElement() {
     <div
       className="w-[100%]"
       style={{
-        height: '75%',
+        height: '400px',
         display: 'block',
         position: 'relative',
       }}

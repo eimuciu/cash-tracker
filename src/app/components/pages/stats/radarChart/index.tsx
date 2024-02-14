@@ -13,9 +13,7 @@ import { data } from '../manifestData';
 import './style.css';
 
 const CustomTooltip = ({ active, payload, label }: any) => {
-  console.log(payload);
   if (active && payload && payload.length) {
-    console.log(payload);
     return (
       <div>
         <p>{`${payload[0].payload.name} : ${
@@ -33,7 +31,7 @@ export default function RadarChartElement() {
     <div
       className="w-[100%]"
       style={{
-        height: '75%',
+        height: '400px',
         display: 'block',
         position: 'relative',
       }}
