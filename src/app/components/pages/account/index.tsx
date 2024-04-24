@@ -14,7 +14,7 @@ export default function AccountPage() {
     >
       <p className="font-bold">Account</p>
       <div className="text-center">
-        <div className="w-[6.25rem] h-[6.25rem] relative rounded-[50%] overflow-hidden mt-[20px] mx-auto mb-[10px]">
+        <div className="w-[6.25rem] h-[6.25rem] relative rounded-[50%] overflow-hidden mt-[10px] mx-auto">
           <Image src="/profile.jpg" fill alt="Profile picture" />
         </div>
       </div>
