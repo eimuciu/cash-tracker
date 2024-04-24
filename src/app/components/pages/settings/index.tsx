@@ -1,5 +1,6 @@
-import LayoutWrapper from '../../layoutWrapper';
 import { colorPalette } from '@/utils/themeUnits';
+
+const commonStyles = 'cursor-pointer';
 
 export default function SettingsPage() {
   return (
@@ -10,10 +11,14 @@ export default function SettingsPage() {
         `bg-[${colorPalette.violeted}]`
       }
     >
-      Settings page Settings page Settings page Settings page Settings page
-      Account page Stats page Settings page Settings page Settings page Settings
-      page Settings page Settings page Settings page Settings page Settings page
-      Account page Settings page Settings page Stats page Settings page
+      <p className="font-bold">Settings</p>
+      <div className="flex flex-col w-[90%] m-auto mt-[20px] gap-[10px]">
+        <p className={commonStyles}>Currency</p>
+        <p className={commonStyles}>Categories</p>
+        <p className={commonStyles}>Source</p>
+        <p className={commonStyles}>Colors</p>
+        <p className={commonStyles}>Icons</p>
+      </div>
     </section>
   );
 }
