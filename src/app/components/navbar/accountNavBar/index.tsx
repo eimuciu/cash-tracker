@@ -11,6 +11,7 @@ interface Props {
   show: boolean;
   myRef: RefObject<HTMLDivElement>;
   setNavbarStatus: any;
+  setShowAccountNavBar: any;
 }
 
 const commonPaddingX = 'px-[25px]';
@@ -20,9 +21,15 @@ const commonNavItem = 'flex items-center my-[15px] gap-[25px]';
 const commonBorder =
   'flex items-center justify-between w-[100%] border-b border-black border-solid pb-[10px]';
 
-export default function AccountNavBar({ show, myRef, setNavbarStatus }: Props) {
+export default function AccountNavBar({
+  show,
+  myRef,
+  setNavbarStatus,
+  setShowAccountNavBar,
+}: Props) {
   const closeNavBar = () => {
     setNavbarStatus(false);
+    setShowAccountNavBar(false);
   };
 
   return (

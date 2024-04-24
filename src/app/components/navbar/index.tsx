@@ -54,6 +54,7 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
         myRef={childRefEl}
         show={showAccountNavBar}
         setNavbarStatus={setNavbarStatus}
+        setShowAccountNavBar={setShowAccountNavBar}
       />
       <div className="flex flex-col gap-y-[25px]">
         <div
