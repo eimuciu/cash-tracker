@@ -2,6 +2,8 @@
 import { colorPalette } from '@/utils/themeUnits';
 import Modal from '../../modal';
 import useModal from '../../modal/useModal';
+import CurrencySetting from './currencySetting';
+import CategoriesSetting from './categoriesSetting';
 
 const commonStyles = 'cursor-pointer';
 
@@ -16,7 +18,8 @@ export default function SettingsPage() {
         showModal={showModal}
         closeModal={handleCloseModal}
       >
-        <div></div>
+        {settingName == 'Currency' && <CurrencySetting />}
+        {settingName == 'Categories' && <CategoriesSetting />}
       </Modal>
       <section
         className={

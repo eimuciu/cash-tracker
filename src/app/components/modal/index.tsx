@@ -33,7 +33,7 @@ export default function Modal({
       >
         <IoMdClose className="self-end cursor-pointer" onClick={closeModal} />
         <p className="font-bold mb-[10px]">{header}</p>
-        {children}
+        <div className='flex justify-center flex-col items-center'>{children}</div>
       </div>
     </section>
   );

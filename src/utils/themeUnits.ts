@@ -9,7 +9,7 @@ export const screenBreakpoints = {
 
 export const colorPalette = {
   greened: '#91F5AD',
-  gingered: '#d1ac00',
+  gingered: '#D1AC00',
   reded: '#880D1E',
   violeted: '#D8D4F2',
   greyed: '#F5F5F5',
