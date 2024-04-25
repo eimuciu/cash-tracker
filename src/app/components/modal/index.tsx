@@ -26,14 +26,16 @@ export default function Modal({
 
       <div
         className={
-          'relative z-1 w-[50%] flex flex-col mx-auto top-[15%] translate-y-[-25%] md:w-[90%] rounded-[5px] p-[10px]' +
+          'max-h-[90%] overflow-y-auto relative z-1 w-[50%] flex flex-col mx-auto top-[15%] translate-y-[-15%] md:w-[90%] rounded-[5px] p-[10px]' +
           ' ' +
           `bg-[${colorPalette.blueued}]`
         }
       >
         <IoMdClose className="self-end cursor-pointer" onClick={closeModal} />
         <p className="font-bold mb-[10px]">{header}</p>
-        <div className='flex justify-center flex-col items-center'>{children}</div>
+        <div className="flex justify-center flex-col items-center">
+          {children}
+        </div>
       </div>
     </section>
   );
