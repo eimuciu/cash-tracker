@@ -30,14 +30,16 @@ export default function IconsSetting() {
 
   return (
     <div className="flex flex-col items-center w-[100%] gap-[10px]">
-      <div className="w-[50%] flex flex-col gap-[5px]">
+      <div className="w-[50%] flex flex-col gap-[5px] md:w-[75%]">
         {iconsList.map((x) => (
           <div
             key={x.category}
             className={
               'text-center rounded-[5px] flex justify-between px-[10px] py-[2.5px] cursor-pointer' +
               ' ' +
-              ` bg-[${activeIcon?.category == x.category && colorPalette.gingered}]`
+              ` bg-[${
+                activeIcon?.category == x.category && colorPalette.gingered
+              }]`
             }
             onClick={() => setActiveIcon(x)}
           >
@@ -48,7 +50,7 @@ export default function IconsSetting() {
           </div>
         ))}
       </div>
-      <div className='mt-[10px]'>
+      <div className="mt-[10px]">
         <IconSelector
           showSelector={Boolean(true)}
           onIconSelection={handleIconSelection}
