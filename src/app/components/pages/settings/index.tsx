@@ -18,6 +18,11 @@ export default function SettingsPage() {
     <>
       <Modal
         header={settingName}
+        postHeader={
+          settingName == 'Currency'
+            ? 'I will use the last character of your text input for currency symbol'
+            : ''
+        }
         showModal={showModal}
         closeModal={handleCloseModal}
       >

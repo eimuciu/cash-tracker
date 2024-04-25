@@ -4,6 +4,7 @@ import { colorPalette } from '@/utils/themeUnits';
 interface Props {
   children: React.ReactNode;
   header: string;
+  postHeader?: string;
   showModal: boolean;
   closeModal: () => void;
 }
@@ -11,6 +12,7 @@ interface Props {
 export default function Modal({
   children,
   header,
+  postHeader,
   showModal,
   closeModal,
 }: Props) {
@@ -32,7 +34,13 @@ export default function Modal({
         }
       >
         <IoMdClose className="self-end cursor-pointer" onClick={closeModal} />
-        <p className="font-bold mb-[10px]">{header}</p>
+        <p className="font-bold mb-[10px]">
+          {header}
+          <span className="text-[10px] font-normal block">
+            {postHeader && postHeader}
+          </span>
+        </p>
+
         <div className="flex justify-center flex-col items-center">
           {children}
         </div>
