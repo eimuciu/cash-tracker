@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import IconSelector from './iconSelector';
+
 {
   /* AWAITING DATA */
 }
@@ -21,11 +23,14 @@ export default function IconsSetting() {
             className={'text-center rounded-[5px] flex justify-between'}
           >
             {x.category}
-            <div className="w-[20px] h-[20px] relative cursor-pointer">
-              <Image src={x.icon} fill alt="Profile picture" />
+            <div className="w-[25px] h-[25px] relative cursor-pointer">
+              <Image src={x.icon} fill alt="icon" />
             </div>
           </div>
         ))}
+        <div>
+          <IconSelector />
+        </div>
       </div>
       <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
         <button className="w-[100%] h-[100%]">Confirm</button>

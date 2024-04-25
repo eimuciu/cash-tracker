@@ -21,7 +21,7 @@ export default function ColorsSetting() {
             className={'text-center rounded-[5px] flex justify-between'}
           >
             {x.category}
-            <div className="w-[15px] h-[15px]">
+            <div className="w-[25px] h-[25px]">
               <input
                 type="color"
                 className="w-[100%] h-[100%] colorInput cursor-pointer"
