@@ -10,12 +10,12 @@ import ListElement from './listElement';
 const settingsData = {
   currency: '$',
   expenseIcons: {
-    food: '/burger.png',
-    car: '/car.png',
+    food: '/icons/burger.png',
+    car: '/icons/car.png',
   },
   incomeIcons: {
-    salary: '/salary.png',
-    investment: '/investment.png',
+    salary: '/icons/salary.png',
+    investment: '/icons/investment.png',
   },
 };
 

@@ -18,7 +18,7 @@ export default function Budget() {
       <BudgetListItem
         value={55}
         color="green"
-        icon="/burger.png"
+        icon="/icons/burger.png"
         category="Food"
         currency="$"
         amount={222}
@@ -26,7 +26,7 @@ export default function Budget() {
       <BudgetListItem
         value={75}
         color="darkbluereen"
-        icon="/car.png"
+        icon="/icons/car.png"
         category="Car"
         currency="$"
         amount={178}
@@ -34,7 +34,7 @@ export default function Budget() {
       <BudgetListItem
         value={85}
         color="orange"
-        icon="/sport.png"
+        icon="/icons/sport.png"
         category="Sport"
         currency="$"
         amount={178}
