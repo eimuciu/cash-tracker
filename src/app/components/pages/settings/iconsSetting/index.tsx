@@ -20,12 +20,14 @@ export default function IconsSetting() {
   const [activeIcon, setActiveIcon] = useState<any>(null);
 
   const handleIconSelection = (path: string) => {
-    setIconsList((prev) =>
-      prev.map((x) =>
-        x.category == activeIcon.category ? { ...x, icon: path } : x,
-      ),
-    );
-    setActiveIcon(null);
+    if (activeIcon) {
+      setIconsList((prev) =>
+        prev.map((x) =>
+          x.category == activeIcon.category ? { ...x, icon: path } : x,
+        ),
+      );
+      setActiveIcon(null);
+    }
   };
 
   return (

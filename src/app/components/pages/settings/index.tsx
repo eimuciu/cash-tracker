@@ -20,8 +20,16 @@ export default function SettingsPage() {
         header={settingName}
         postHeader={
           settingName == 'Currency'
-            ? 'I will use the last character of your text input for currency symbol'
-            : ''
+            ? 'I will use the last character of your text input for a currency symbol'
+            : // : settingName == 'Colors'
+              // ? 'A chosen color represents the color on a chart'
+              // : settingName == 'Categories'
+              // ? 'Expense list'
+              // : settingName == 'Source'
+              // ? 'Income list'
+              // : settingName == 'Icons'
+              // ? ''
+              ''
         }
         showModal={showModal}
         closeModal={handleCloseModal}
