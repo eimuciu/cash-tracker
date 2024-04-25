@@ -28,9 +28,9 @@ export default function IconsSetting() {
             </div>
           </div>
         ))}
-        <div>
-          <IconSelector />
-        </div>
+      </div>
+      <div>
+        <IconSelector />
       </div>
       <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
         <button className="w-[100%] h-[100%]">Confirm</button>
