@@ -4,6 +4,9 @@ import Modal from '../../modal';
 import useModal from '../../modal/useModal';
 import CurrencySetting from './currencySetting';
 import CategoriesSetting from './categoriesSetting';
+import ColorsSetting from './colorsSetting';
+import SourceSetting from './sourceSetting';
+import IconsSetting from './iconsSetting';
 
 const commonStyles = 'cursor-pointer';
 
@@ -20,6 +23,9 @@ export default function SettingsPage() {
       >
         {settingName == 'Currency' && <CurrencySetting />}
         {settingName == 'Categories' && <CategoriesSetting />}
+        {settingName == 'Colors' && <ColorsSetting />}
+        {settingName == 'Source' && <SourceSetting />}
+        {settingName == 'Icons' && <IconsSetting />}
       </Modal>
       <section
         className={

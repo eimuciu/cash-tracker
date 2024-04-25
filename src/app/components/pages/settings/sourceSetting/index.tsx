@@ -4,9 +4,9 @@ import { FaTrashAlt } from 'react-icons/fa';
 {
   /* AWAITING DATA */
 }
-const settingData = ['Food', 'Car', 'Sport', 'Clothes', 'Rent', 'Holiday'];
+const settingData = ['Salary', 'Investment'];
 
-export default function CategoriesSetting() {
+export default function SourceSetting() {
   return (
     <div className="flex flex-col items-center w-[100%] gap-[10px]">
       <div className="w-[50%] flex flex-col gap-[5px]">

@@ -42,7 +42,7 @@ export default function CurrencySetting() {
         <MdLibraryAdd className="h-[30px] w-[30px] color-[red] cursor-pointer" />
       </div>
       <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-        <button>Confirm</button>
+      <button className='w-[100%] h-[100%]'>Confirm</button>
       </div>
     </div>
   );
