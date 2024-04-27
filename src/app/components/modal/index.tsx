@@ -28,19 +28,20 @@ export default function Modal({
 
       <div
         className={
-          'max-h-[90%] overflow-y-auto relative z-1 w-[50%] flex flex-col mx-auto top-[15%] translate-y-[-15%] md:w-[90%] rounded-[5px] p-[10px]' +
+          'max-h-[85%] overflow-y-auto relative z-1 w-[50%] flex flex-col mx-auto top-[50%] translate-y-[-50%] md:w-[90%] rounded-[5px] p-[10px]' +
           ' ' +
           `bg-[${colorPalette.blueued}]`
         }
       >
-        <IoMdClose className="self-end cursor-pointer" onClick={closeModal} />
+        <div className="self-end cursor-pointer">
+          <IoMdClose onClick={closeModal} />
+        </div>
         <p className="font-bold mb-[10px]">
           {header}
           <span className="text-[10px] font-normal block">
             {postHeader && postHeader}
           </span>
         </p>
-
         <div className="flex justify-center flex-col items-center">
           {children}
         </div>
