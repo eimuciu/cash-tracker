@@ -7,6 +7,7 @@ import CategoriesSetting from './categoriesSetting';
 import ColorsSetting from './colorsSetting';
 import SourceSetting from './sourceSetting';
 import IconsSetting from './iconsSetting';
+import ThemeSetting from './themeSetting';
 
 const commonStyles = 'cursor-pointer';
 
@@ -89,6 +90,7 @@ export default function SettingsPage() {
           >
             Icons
           </p>
+          <ThemeSetting />
         </div>
       </section>
     </>

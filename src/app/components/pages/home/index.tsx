@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import LayoutWrapper from '../../layoutWrapper';
 import DataInflow from './dataInflow';
 import Budget from './budget';
 
