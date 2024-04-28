@@ -1,5 +1,4 @@
 'use client';
-import { colorPalette } from '@/utils/themeUnits';
 import Modal from '../../modal';
 import useModal from '../../modal/useModal';
 import CurrencySetting from './currencySetting';
@@ -8,12 +7,14 @@ import ColorsSetting from './colorsSetting';
 import SourceSetting from './sourceSetting';
 import IconsSetting from './iconsSetting';
 import ThemeSetting from './themeSetting';
+import { useThemeContext } from '@/app/store/themeStore';
 
 const commonStyles = 'cursor-pointer';
 
 export default function SettingsPage() {
   const { showModal, settingName, handleSettingClick, handleCloseModal } =
     useModal();
+  const { themeColorsList }: any = useThemeContext();
 
   return (
     <>
@@ -42,11 +43,8 @@ export default function SettingsPage() {
         {settingName == 'Icons' && <IconsSetting />}
       </Modal>
       <section
-        className={
-          'rounded-[10px] h-[100%] p-[10px]' +
-          ' ' +
-          `bg-[${colorPalette.violeted}]`
-        }
+        className="rounded-[10px] h-[100%] p-[10px]"
+        style={{ backgroundColor: themeColorsList.firstColor }}
       >
         <p className="font-bold">Settings</p>
         <div className="flex flex-col w-[90%] m-auto mt-[20px] gap-[10px]">

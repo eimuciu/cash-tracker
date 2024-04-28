@@ -1,16 +1,15 @@
-import { colorPalette } from '@/utils/themeUnits';
+'use client'
 import Image from 'next/image';
+import { useThemeContext } from '@/app/store/themeStore';
 
 const commonStyles = 'cursor-pointer';
 
 export default function AccountPage() {
+  const { themeColorsList }: any = useThemeContext();
   return (
     <section
-      className={
-        'rounded-[10px] h-[100%] p-[10px]' +
-        ' ' +
-        `bg-[${colorPalette.violeted}]`
-      }
+      className="rounded-[10px] h-[100%] p-[10px]"
+      style={{ backgroundColor: themeColorsList.firstColor }}
     >
       <p className="font-bold">Account</p>
       <div className="text-center">
