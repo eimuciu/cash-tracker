@@ -1,6 +1,8 @@
 import React, { ChangeEvent } from 'react';
 import { colorPalette } from '@/utils/themeUnits';
-const { greened, gingered, reded, violeted, greyed, blueued } = colorPalette;
+const { greened, gingered, reded, violeted, blueued } = colorPalette;
+import { GiConfirmed } from 'react-icons/gi';
+import { CiCircleRemove } from 'react-icons/ci';
 
 export default function ThemeSetting() {
   const [activeColor, setActiveColor] = React.useState<string>(reded);
@@ -8,6 +10,7 @@ export default function ThemeSetting() {
   const [secondColor, setSecondColor] = React.useState<string>(gingered);
   const [thirdColor, setThirdColor] = React.useState<string>(blueued);
   const [fourthColor, setFourthColor] = React.useState<string>(greened);
+  const [isAnyChanges, setIsAnyChanges] = React.useState<boolean>(false);
 
   const activeRefEl = React.useRef<HTMLInputElement>(null);
   const firstRefEl = React.useRef<HTMLInputElement>(null);
@@ -16,6 +19,7 @@ export default function ThemeSetting() {
   const fourthRefEl = React.useRef<HTMLInputElement>(null);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsAnyChanges(true);
     if (e.target.name === 'activeInput') {
       setActiveColor(e.target.value);
     }
@@ -34,7 +38,13 @@ export default function ThemeSetting() {
   };
 
   return (
-    <div className="flex bg-[white] rounded-[10px]">
+    <div className="flex bg-[white] rounded-[10px] relative">
+      <div
+        className="absolute top-1 right-3 flex cursor-pointer"
+        style={{ display: isAnyChanges ? 'block' : 'none' }}
+      >
+        <GiConfirmed />
+      </div>
       <div className="w-[100%] gap-[10px]  px-[25px] py-[25px] md:pl-[25px] flex flex-col">
         <div
           onClick={() => {
