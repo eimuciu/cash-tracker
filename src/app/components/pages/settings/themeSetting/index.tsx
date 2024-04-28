@@ -114,7 +114,7 @@ export default function ThemeSetting() {
               secondRefEl.current.showPicker();
             }
           }}
-          className="relative h-[25px] w-[100%] rounded-[10px] bg-[#d1ac00] md:w-[100%] cursor-pointer"
+          className="relative h-[25px] w-[100%] rounded-[10px] md:w-[100%] cursor-pointer"
           style={{ backgroundColor: secondColor }}
         >
           <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">

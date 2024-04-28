@@ -74,6 +74,7 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
         slidesPerView={slideUnits}
         modules={[Pagination, Navigation]}
         navigation={true}
+        style={{ backgroundColor: themeColorsList.secondColor }}
       >
         {!loading && (
           <>

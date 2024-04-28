@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { colorPalette } from '@/utils/themeUnits';
 import { MdLibraryAdd } from 'react-icons/md';
+import { useThemeContext } from '@/app/store/themeStore';
 
 {
   /* AWAITING DATA */
@@ -17,6 +18,7 @@ export default function CurrencySetting() {
   );
   const [currenciesList, setCurrenciesList] = useState(settingData);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { themeColorsList }: any = useThemeContext();
   const addNewCurrency = () => {
     if (inputRef.current && inputRef.current.value) {
       const inputValue = inputRef.current.value;
@@ -31,10 +33,11 @@ export default function CurrencySetting() {
         {currenciesList.map((x) => (
           <div
             key={x.currency}
-            className={
-              'text-center rounded-[5px] cursor-pointer' +
-              ' ' +
-              `bg-[${x.currency == activeCurrency && colorPalette.gingered}]`
+            className="text-center rounded-[5px] cursor-pointer"
+            style={
+              x.currency == activeCurrency
+                ? { backgroundColor: themeColorsList.secondColor }
+                : {}
             }
             onClick={() => {
               setActiveCurrency(x.currency);

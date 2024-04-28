@@ -11,18 +11,14 @@ const colorPalette = {
 
 const ThemeContext = createContext({});
 
-export function ThemeContextProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function ThemeContextProvider({ children }: { children: any }) {
   const [themeColorsList, setThemeColorsList] = useState(colorPalette);
 
   return (
     <ThemeContext.Provider
       value={{ themeColorsList, changeThemeColor: setThemeColorsList }}
     >
-      {children}
+      {children(themeColorsList)}
     </ThemeContext.Provider>
   );
 }

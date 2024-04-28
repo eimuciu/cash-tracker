@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import IconSelector from './iconSelector';
 import { colorPalette } from '@/utils/themeUnits';
+import { useThemeContext } from '@/app/store/themeStore';
 
 {
   /* AWAITING DATA */
@@ -18,6 +19,7 @@ const settingData = [
 export default function IconsSetting() {
   const [iconsList, setIconsList] = useState(settingData);
   const [activeIcon, setActiveIcon] = useState<any>(null);
+  const { themeColorsList }: any = useThemeContext();
 
   const handleIconSelection = (path: string) => {
     if (activeIcon) {
@@ -36,12 +38,11 @@ export default function IconsSetting() {
         {iconsList.map((x) => (
           <div
             key={x.category}
-            className={
-              'text-center rounded-[5px] flex justify-between px-[10px] py-[2.5px] cursor-pointer' +
-              ' ' +
-              ` bg-[${
-                activeIcon?.category == x.category && colorPalette.gingered
-              }]`
+            className="text-center rounded-[5px] flex justify-between px-[10px] py-[2.5px] cursor-pointer"
+            style={
+              activeIcon?.category == x.category
+                ? { backgroundColor: themeColorsList.secondColor }
+                : {}
             }
             onClick={() => setActiveIcon(x)}
           >

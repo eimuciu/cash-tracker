@@ -51,44 +51,50 @@ export default function LayoutWrapper({ children }: Props) {
 
   return (
     <ThemeContextProvider>
-      <div className="flex">
-        <div
-          id="shockwave"
-          onClick={toggleNavbar}
-          className="w-[15px] h-[15px] bg-[#D1AC00] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-[#D1AC00] outline-2 outline outline-offset-2 "
-        ></div>
-        <div
-          ref={elRef}
-          style={{ zIndex: 2 }}
-          className={
-            'py-[50px] px-[10px] bg-[#D1AC00] min-h-screen fixed ' +
-            ' ' +
-            `${navbarStatus ? 'md:block' : 'md:hidden'}`
-          }
-        >
-          <NavBar
-            toggleNavbar={toggleNavbar}
-            setNavbarStatus={setNavbarStatus}
-          />
+      {(themeColorsList: any) => (
+        <div className="flex">
+          <div
+            id="shockwave"
+            onClick={toggleNavbar}
+            className="w-[15px] h-[15px] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-2 outline outline-offset-2 "
+            style={{
+              backgroundColor: themeColorsList.secondColor,
+              outlineColor: themeColorsList.secondColor,
+            }}
+          ></div>
+          <div
+            ref={elRef}
+            style={{ zIndex: 2, backgroundColor: themeColorsList.secondColor }}
+            className={
+              'py-[50px] px-[10px] min-h-screen fixed ' +
+              ' ' +
+              `${navbarStatus ? 'md:block' : 'md:hidden'}`
+            }
+          >
+            <NavBar
+              toggleNavbar={toggleNavbar}
+              setNavbarStatus={setNavbarStatus}
+            />
+          </div>
+          <div
+            className="w-[100%] pl-[91.125px] pr-[25px] py-[25px] md:pl-[25px] min-h-screen flex flex-col"
+            // style={{
+            //   paddingLeft: `${elementWidth}px`,
+            // }}
+          >
+            {!restrictedPaths.includes(pathname) && (
+              <>
+                <Header />{' '}
+                <DateSeperator
+                  activeSlide={activeDateFilterSlide}
+                  setActiveSlide={setActiveDateFilterSlide}
+                />
+              </>
+            )}
+            {children}
+          </div>
         </div>
-        <div
-          className="w-[100%] pl-[91.125px] pr-[25px] py-[25px] md:pl-[25px] min-h-screen flex flex-col"
-          // style={{
-          //   paddingLeft: `${elementWidth}px`,
-          // }}
-        >
-          {!restrictedPaths.includes(pathname) && (
-            <>
-              <Header />{' '}
-              <DateSeperator
-                activeSlide={activeDateFilterSlide}
-                setActiveSlide={setActiveDateFilterSlide}
-              />
-            </>
-          )}
-          {children}
-        </div>
-      </div>
+      )}
     </ThemeContextProvider>
   );
 }
