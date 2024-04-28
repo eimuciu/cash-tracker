@@ -4,11 +4,24 @@ const { greened, gingered, reded, violeted, greyed, blueued } = colorPalette;
 
 export default function ThemeSetting() {
   const [activeColor, setActiveColor] = React.useState<string>(reded);
+  const [firstColor, setFirstColor] = React.useState<string>(violeted);
+  const [secondColor, setSecondColor] = React.useState<string>(gingered);
+  const [thirdColor, setThirdColor] = React.useState<string>(blueued);
+  const [fourthColor, setFourthColor] = React.useState<string>(greened);
 
-  const refEl = React.useRef<HTMLInputElement>(null);
+  const activeRefEl = React.useRef<HTMLInputElement>(null);
+  const firstRefEl = React.useRef<HTMLInputElement>(null);
+  const secondRefEl = React.useRef<HTMLInputElement>(null);
+  const thirdRefEl = React.useRef<HTMLInputElement>(null);
+  const fourthRefEl = React.useRef<HTMLInputElement>(null);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setActiveColor(e.target.value);
+    if (e.target.name === 'activeInput') {
+      setActiveColor(e.target.value);
+    }
+    if (e.target.name === 'firstInput') {
+      setFirstColor(e.target.value);
+    }
   };
 
   return (
@@ -16,23 +29,45 @@ export default function ThemeSetting() {
       <div className="w-[100%] gap-[10px]  px-[25px] py-[25px] md:pl-[25px] flex flex-col">
         <div
           onClick={() => {
-            if (refEl.current) {
-              refEl.current.showPicker();
+            if (activeRefEl.current) {
+              activeRefEl.current.showPicker();
             }
           }}
-          className={`font-bold flex cursor-pointer relative`}
-          style={{color: activeColor}}
+          className={`relative`}
         >
-          Active
-          <div className="absolute top-0 w-[0px] h-[0px] invisible">
+          <span
+            className="font-bold flex cursor-pointer"
+            style={{ color: activeColor }}
+          >
+            Active
+          </span>
+          <div className="absolute top-0 left-0 w-[0px] h-[0px] invisible">
             <input
-              ref={refEl}
+              name="activeInput"
+              ref={activeRefEl}
               type="color"
               onChange={changeHandler}
             />
           </div>
         </div>
-        <div className="flex w-[100%] h-[50px] flex-col items-center bg-[#D8D4F2] rounded-[10px] p-[10px] md:w-[100%] cursor-pointer"></div>
+        <div
+          onClick={() => {
+            if (firstRefEl.current) {
+              firstRefEl.current.showPicker();
+            }
+          }}
+          className="relative flex w-[100%] h-[50px] flex-col items-center rounded-[10px] p-[10px] md:w-[100%] cursor-pointer"
+          style={{ backgroundColor: firstColor }}
+        >
+          <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
+            <input
+              name="firstInput"
+              ref={firstRefEl}
+              type="color"
+              onChange={changeHandler}
+            />
+          </div>
+        </div>
         <div className="h-[25px] w-[100%] rounded-[10px] bg-[#d1ac00] md:w-[100%] cursor-pointer"></div>
         <div className="flex gap-[10px] flex-col">
           <div className="flex flex-col w-[100%] rounded-[10px] md:w-[100%] ">
