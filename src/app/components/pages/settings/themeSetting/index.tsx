@@ -1,15 +1,25 @@
 import React, { ChangeEvent } from 'react';
-import { colorPalette } from '@/utils/themeUnits';
-const { greened, gingered, reded, violeted, blueued } = colorPalette;
 import { GiConfirmed } from 'react-icons/gi';
-import { CiCircleRemove } from 'react-icons/ci';
+import { useThemeContext } from '@/app/store/themeStore';
 
 export default function ThemeSetting() {
-  const [activeColor, setActiveColor] = React.useState<string>(reded);
-  const [firstColor, setFirstColor] = React.useState<string>(violeted);
-  const [secondColor, setSecondColor] = React.useState<string>(gingered);
-  const [thirdColor, setThirdColor] = React.useState<string>(blueued);
-  const [fourthColor, setFourthColor] = React.useState<string>(greened);
+  const { themeColorsList, changeThemeColor }: any = useThemeContext();
+
+  const [activeColor, setActiveColor] = React.useState<string>(
+    themeColorsList.activeColor,
+  );
+  const [firstColor, setFirstColor] = React.useState<string>(
+    themeColorsList.firstColor,
+  );
+  const [secondColor, setSecondColor] = React.useState<string>(
+    themeColorsList.secondColor,
+  );
+  const [thirdColor, setThirdColor] = React.useState<string>(
+    themeColorsList.thirdColor,
+  );
+  const [fourthColor, setFourthColor] = React.useState<string>(
+    themeColorsList.fourthColor,
+  );
   const [isAnyChanges, setIsAnyChanges] = React.useState<boolean>(false);
 
   const activeRefEl = React.useRef<HTMLInputElement>(null);
@@ -37,13 +47,24 @@ export default function ThemeSetting() {
     }
   };
 
+  const onColorChangeConfirmation = () => {
+    changeThemeColor({
+      activeColor,
+      firstColor,
+      secondColor,
+      thirdColor,
+      fourthColor,
+    });
+    setIsAnyChanges(false);
+  };
+
   return (
     <div className="flex bg-[white] rounded-[10px] relative">
       <div
         className="absolute top-1 right-3 flex cursor-pointer"
         style={{ display: isAnyChanges ? 'block' : 'none' }}
       >
-        <GiConfirmed />
+        <GiConfirmed onClick={onColorChangeConfirmation} color="green" />
       </div>
       <div className="w-[100%] gap-[10px]  px-[25px] py-[25px] md:pl-[25px] flex flex-col">
         <div
