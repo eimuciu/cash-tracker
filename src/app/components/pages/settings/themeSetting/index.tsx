@@ -22,6 +22,15 @@ export default function ThemeSetting() {
     if (e.target.name === 'firstInput') {
       setFirstColor(e.target.value);
     }
+    if (e.target.name === 'secondInput') {
+      setSecondColor(e.target.value);
+    }
+    if (e.target.name === 'thirdInput') {
+      setThirdColor(e.target.value);
+    }
+    if (e.target.name === 'fourthInput') {
+      setFourthColor(e.target.value);
+    }
   };
 
   return (
@@ -68,12 +77,63 @@ export default function ThemeSetting() {
             />
           </div>
         </div>
-        <div className="h-[25px] w-[100%] rounded-[10px] bg-[#d1ac00] md:w-[100%] cursor-pointer"></div>
+        <div
+          onClick={() => {
+            if (secondRefEl.current) {
+              secondRefEl.current.showPicker();
+            }
+          }}
+          className="relative h-[25px] w-[100%] rounded-[10px] bg-[#d1ac00] md:w-[100%] cursor-pointer"
+          style={{ backgroundColor: secondColor }}
+        >
+          <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
+            <input
+              name="secondInput"
+              ref={secondRefEl}
+              type="color"
+              onChange={changeHandler}
+            />
+          </div>
+        </div>
         <div className="flex gap-[10px] flex-col">
           <div className="flex flex-col w-[100%] rounded-[10px] md:w-[100%] ">
-            <div className="flex h-[75px] flex-col p-[10px] h-[100%] bg-[#C6E0FF] rounded-[10px] cursor-pointer"></div>
+            <div
+              onClick={() => {
+                if (thirdRefEl.current) {
+                  thirdRefEl.current.showPicker();
+                }
+              }}
+              className="relative flex h-[75px] flex-col p-[10px] h-[100%] rounded-[10px] cursor-pointer"
+              style={{ backgroundColor: thirdColor }}
+            >
+              <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
+                <input
+                  name="thirdInput"
+                  ref={thirdRefEl}
+                  type="color"
+                  onChange={changeHandler}
+                />
+              </div>
+            </div>
           </div>
-          <div className="w-[100%] h-[100px] bg-[#91F5AD] rounded-[10px] md:w-[100%] cursor-pointer"></div>
+          <div
+            onClick={() => {
+              if (fourthRefEl.current) {
+                fourthRefEl.current.showPicker();
+              }
+            }}
+            className="relative w-[100%] h-[100px] rounded-[10px] md:w-[100%] cursor-pointer"
+            style={{ backgroundColor: fourthColor }}
+          >
+            <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
+              <input
+                name="fourthInput"
+                ref={fourthRefEl}
+                type="color"
+                onChange={changeHandler}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
