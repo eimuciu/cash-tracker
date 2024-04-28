@@ -7,11 +7,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import AccountNavBar from './accountNavBar';
 import { iconClassNames } from '@/app/styles/classNames';
+import { useThemeContext } from '@/app/store/themeStore';
 
 const navItemClassNames =
   'flex flex-col justify-center items-center gap-y-[5px]';
-
-const activeNavLinkClassName = 'text-[#880D1E]';
 
 interface Props {
   toggleNavbar: () => void;
@@ -23,6 +22,8 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
     React.useState<boolean>(false);
 
   const childRefEl = React.useRef<HTMLDivElement>(null);
+
+  const { themeColorsList }: any = useThemeContext();
 
   React.useEffect(() => {
     const handleOutsideClick = (e: any) => {
@@ -59,13 +60,11 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
       <div className="flex flex-col gap-y-[25px]">
         <div
           onClick={handleShowAccountNavBar}
-          className={
-            'flex flex-col justify-center items-center mb-[50px] cursor-pointer' +
-            ' ' +
-            `${
-              (pathname === '/account' || pathname === '/settings') &&
-              activeNavLinkClassName
-            }`
+          className="flex flex-col justify-center items-center mb-[50px] cursor-pointer"
+          style={
+            pathname === '/account' || pathname === '/settings'
+              ? { color: themeColorsList.activeColor }
+              : {}
           }
         >
           <MdOutlineMenuBook className={iconClassNames} />
@@ -73,10 +72,9 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
         <div onClick={toggleNavbar} className="flex flex-col gap-y-[25px]">
           <Link href="/">
             <div
-              className={
-                navItemClassNames +
-                ' ' +
-                `${pathname === '/' && activeNavLinkClassName}`
+              className={navItemClassNames}
+              style={
+                pathname === '/' ? { color: themeColorsList.activeColor } : {}
               }
             >
               <MdAccountBalanceWallet className={iconClassNames} />
@@ -85,10 +83,11 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
           </Link>
           <Link href="/list">
             <div
-              className={
-                navItemClassNames +
-                ' ' +
-                `${pathname === '/list' && activeNavLinkClassName}`
+              className={navItemClassNames}
+              style={
+                pathname === '/list'
+                  ? { color: themeColorsList.activeColor }
+                  : {}
               }
             >
               <FaList className={iconClassNames} />
@@ -97,10 +96,11 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
           </Link>
           <Link href="/stats">
             <div
-              className={
-                navItemClassNames +
-                ' ' +
-                `${pathname === '/stats' && activeNavLinkClassName}`
+              className={navItemClassNames}
+              style={
+                pathname === '/stats'
+                  ? { color: themeColorsList.activeColor }
+                  : {}
               }
             >
               <ImStatsBars className={iconClassNames} />

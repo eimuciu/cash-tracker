@@ -4,6 +4,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
+import { useThemeContext } from '@/app/store/themeStore';
 
 interface Props {
   activeSlide: string;
@@ -14,6 +15,8 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
   const [slideUnits, setSlideUnits] = React.useState<number>(1);
   const [loading, setLoading] = React.useState<boolean>(true);
   const swiperRef = React.useRef<any>(null);
+
+  const { themeColorsList }: any = useThemeContext();
 
   React.useEffect(() => {
     const resizeHandler = (e: any) => {
@@ -78,10 +81,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
               onClick={() => {
                 setActiveSlide('This year');
               }}
-              className={
-                (activeSlide === 'This year'
-                  ? 'text-[#880D1E] font-bold'
-                  : 'text-[black] font-normal') + ' cursor-pointer'
+              className="cursor-pointer"
+              style={
+                activeSlide === 'This year'
+                  ? { color: themeColorsList.activeColor, fontWeight: 'bold' }
+                  : { color: 'black', fontWeight: 'normal' }
               }
             >
               {/* AWAITING DATA */}
@@ -91,10 +95,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
               onClick={() => {
                 setActiveSlide('Previous month');
               }}
-              className={
-                (activeSlide === 'Previous month'
-                  ? 'text-[#880D1E] font-bold'
-                  : 'text-[black] font-normal') + ' cursor-pointer'
+              className="cursor-pointer"
+              style={
+                activeSlide === 'Previous month'
+                  ? { color: themeColorsList.activeColor, fontWeight: 'bold' }
+                  : { color: 'black', fontWeight: 'normal' }
               }
             >
               {/* AWAITING DATA */}
@@ -104,10 +109,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
               onClick={() => {
                 setActiveSlide('Current month');
               }}
-              className={
-                (activeSlide === 'Current month'
-                  ? 'text-[#880D1E] font-bold'
-                  : 'text-[black] font-normal') + ' cursor-pointer'
+              className="cursor-pointer"
+              style={
+                activeSlide === 'Current month'
+                  ? { color: themeColorsList.activeColor, fontWeight: 'bold' }
+                  : { color: 'black', fontWeight: 'normal' }
               }
             >
               {/* AWAITING DATA */}
@@ -117,10 +123,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
               onClick={() => {
                 setActiveSlide('Custom date');
               }}
-              className={
-                (activeSlide === 'Custom date'
-                  ? 'text-[#880D1E] font-bold'
-                  : 'text-[black] font-normal') + ' cursor-pointer'
+              className="cursor-pointer"
+              style={
+                activeSlide === 'Custom date'
+                  ? { color: themeColorsList.activeColor, fontWeight: 'bold' }
+                  : { color: 'black', fontWeight: 'normal' }
               }
             >
               {/* AWAITING DATA */}
