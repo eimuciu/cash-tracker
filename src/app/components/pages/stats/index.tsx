@@ -6,6 +6,7 @@ import BarChartElement from './barChart';
 import PieChartElement from './pieChart';
 import RadarChartElement from './radarChart';
 import Image from 'next/image';
+import { useThemeContext } from '@/app/store/themeStore';
 
 const icons = [
   { name: 'Cellphone', icon: '/icons/cellphone.png' },
@@ -32,13 +33,11 @@ const icons = [
 
 export default function StatsPage() {
   const [chartElement, setChartElement] = React.useState<string>('bar');
+  const { themeColorsList }: any = useThemeContext();
   return (
     <div
-      className={
-        'flex flex-col rounded-[10px] h-[100%] p-[10px]' +
-        ' ' +
-        `bg-[${colorPalette.greened}]`
-      }
+      className="flex flex-col rounded-[10px] h-[100%] p-[10px]"
+      style={{ backgroundColor: themeColorsList.fourthColor }}
     >
       {chartElement === 'bar' && <BarChartElement />}
       {chartElement === 'pie' && <PieChartElement />}

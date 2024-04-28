@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import LayoutWrapper from '../../layoutWrapper';
 import { colorPalette } from '@/utils/themeUnits';
 import ListElement from './listElement';
+import { useThemeContext } from '@/app/store/themeStore';
 
 // AWAITING DATA START
 
@@ -48,6 +49,7 @@ const incomeData = [
 export default function ListPage() {
   const [tabSelectionClicked, setTabSelectionClicked] =
     useState<boolean>(false);
+  const { themeColorsList }: any = useThemeContext();
 
   const handleSelection = () => {
     setTabSelectionClicked(!tabSelectionClicked);
@@ -55,11 +57,8 @@ export default function ListPage() {
 
   return (
     <section
-      className={
-        'rounded-[10px] h-[100%] p-[10px]' +
-        ' ' +
-        `bg-[${colorPalette.greened}]`
-      }
+      className="rounded-[10px] h-[100%] p-[10px]"
+      style={{ backgroundColor: themeColorsList.fourthColor }}
     >
       <div className="flex justify-between">
         <p className="font-bold">
