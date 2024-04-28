@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useThemeContext } from '@/app/store/themeStore';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded bg-[white]';
 
@@ -11,6 +12,7 @@ export default function SelectPicker({
 }: any) {
   const [showPicker, setShowPicker] = React.useState<boolean>(false);
   const refEl = React.useRef<HTMLDivElement>(null);
+  const { themeColorsList }: any = useThemeContext();
 
   React.useEffect(() => {
     const docClickHandler = (e: any) => {
@@ -50,7 +52,7 @@ export default function SelectPicker({
               <div
                 onMouseEnter={(e) => {
                   (e.target as HTMLDivElement).style.backgroundColor =
-                    '#C6E0FF';
+                    themeColorsList.thirdColor;
                 }}
                 onMouseLeave={(e) => {
                   (e.target as HTMLDivElement).style.backgroundColor =

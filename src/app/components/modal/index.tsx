@@ -1,5 +1,6 @@
 import { IoMdClose } from 'react-icons/io';
 import { colorPalette } from '@/utils/themeUnits';
+import { useThemeContext } from '@/app/store/themeStore';
 
 interface Props {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ export default function Modal({
   showModal,
   closeModal,
 }: Props) {
+  const { themeColorsList }: any = useThemeContext();
   return (
     <section
       className={
@@ -27,11 +29,8 @@ export default function Modal({
       <div className="absolute opacity-50 bg-[white] left-0 top-0 h-[100%] w-[100%]"></div>
 
       <div
-        className={
-          'max-h-[85%] overflow-y-auto relative z-1 w-[50%] flex flex-col mx-auto top-[50%] translate-y-[-50%] md:w-[90%] rounded-[5px] p-[10px]' +
-          ' ' +
-          `bg-[${colorPalette.blueued}]`
-        }
+        className="max-h-[85%] overflow-y-auto relative z-1 w-[50%] flex flex-col mx-auto top-[50%] translate-y-[-50%] md:w-[90%] rounded-[5px] p-[10px]"
+        style={{ backgroundColor: themeColorsList.thirdColor }}
       >
         <div className="self-end cursor-pointer">
           <IoMdClose onClick={closeModal} />
