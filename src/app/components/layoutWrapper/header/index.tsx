@@ -1,7 +1,14 @@
+import { useThemeContext } from '@/app/store/themeStore';
+
 export default function Header() {
+  const { themeColorsList }: any = useThemeContext();
+
   return (
     <>
-      <section className="flex flex-col items-center bg-[#D8D4F2] rounded-[10px] p-[10px]">
+      <section
+        className="flex flex-col items-center rounded-[10px] p-[10px]"
+        style={{ backgroundColor: themeColorsList.firstColor }}
+      >
         <div className="font-bold mb-[5px]">
           <p className="text-[20px]">
             {/* AWAITING DATA */}
