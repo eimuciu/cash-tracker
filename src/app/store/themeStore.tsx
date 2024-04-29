@@ -1,5 +1,8 @@
 import { createContext, useState, useContext } from 'react';
 
+// secondColor: '#E5DCE1',
+// activeColor: '#3B413C',
+
 const colorPalette = {
   activeColor: '#880D1E',
   firstColor: '#D8D4F2',

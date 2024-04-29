@@ -13,8 +13,8 @@ import {
   ResponsiveContainer,
   LabelList,
 } from 'recharts';
-import { data } from '../manifestData';
-import './style.css'
+import { data as dataList } from '../manifestData';
+import './style.css';
 
 const renderCustomizedLabel = (props: any) => {
   const { x, y, width, height, value } = props;
@@ -32,6 +32,12 @@ const renderCustomizedLabel = (props: any) => {
     </g>
   );
 };
+
+function sortArray(chartData: any) {
+  return chartData.sort((a: any, b: any) => b.amount - a.amount);
+}
+
+const data = sortArray(dataList);
 
 const CustomizedAxisTick = (props: any) => {
   const { x, y, stroke, payload } = props;
@@ -94,7 +100,7 @@ export default function BarChartElement() {
                 content={<CustomTooltip />}
               />
               <Bar dataKey="amount" fill="#8884d8">
-                {data.map((x, i) => (
+                {data.map((x: any, i: any) => (
                   <Cell key={i} fill={x.color} />
                 ))}
 

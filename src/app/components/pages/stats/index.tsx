@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { colorPalette } from '@/utils/themeUnits';
 import BarChartElement from './barChart';
 import PieChartElement from './pieChart';
 import RadarChartElement from './radarChart';
@@ -20,7 +19,6 @@ const icons = [
   { name: 'Healthcare', icon: '/icons/healthcare.png' },
   { name: 'Home owning', icon: '/icons/homeowning.png' },
   { name: 'House', icon: '/icons/house.png' },
-  { name: 'Insurace', icon: '/icons/insurace.png' },
   { name: 'Internet', icon: '/icons/internet.png' },
   { name: 'Mortgage', icon: '/icons/mortgage.png' },
   { name: 'Pets', icon: '/icons/pets.png' },
