@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import BarChartElement from './barChart';
 import PieChartElement from './pieChart';
 import RadarChartElement from './radarChart';
@@ -33,20 +33,26 @@ const icons = [
 export default function StatsPage() {
   const [chartElement, setChartElement] = React.useState<string>('bar');
   const { themeColorsList }: any = useThemeContext();
+  const scrollElRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (scrollElRef && scrollElRef.current) {
+      console.log(scrollElRef);
+      scrollElRef.current.scrollTo(0, scrollElRef.current.scrollHeight);
+    }
+  }, []);
+
   return (
     <div
       className="flex flex-col rounded-[5px] h-[100%] p-[10px]"
       style={{ backgroundColor: themeColorsList.fourthColor }}
     >
-      {/* here start */}
       <div className="w-[100%] parentScroll">
-        <div className="childScroll">
+        <div ref={scrollElRef} className="childScroll">
           {chartElement === 'bar' && <BarChartElement />}
           {chartElement === 'pie' && <PieChartElement />}
           {chartElement === 'radar' && <RadarChartElement />}
         </div>
       </div>
-      {/* here end */}
       <div className="mt-[25px] flex gap-[25px] justify-center flex-wrap">
         {icons.map((x) => (
           <div key={x.name} className="flex flex-col items-center">
