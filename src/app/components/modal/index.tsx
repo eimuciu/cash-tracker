@@ -4,7 +4,7 @@ import { useThemeContext } from '@/app/store/themeStore';
 
 interface Props {
   children: React.ReactNode;
-  header: string;
+  header: string | React.JSX.Element | null;
   postHeader?: string;
   showModal: boolean;
   closeModal: () => void;
