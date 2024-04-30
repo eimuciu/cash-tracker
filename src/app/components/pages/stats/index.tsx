@@ -7,6 +7,7 @@ import RadarChartElement from './radarChart';
 import Image from 'next/image';
 import { useThemeContext } from '@/app/store/themeStore';
 import './style.css';
+import { data as dataList } from './manifestData';
 
 const icons = [
   { name: 'Cellphone', icon: '/icons/cellphone.png' },
@@ -30,6 +31,12 @@ const icons = [
   { name: 'Utility', icon: '/icons/utility.png' },
 ];
 
+function sortArray(chartData: any) {
+  return chartData.sort((a: any, b: any) => b.amount - a.amount);
+}
+
+const data = sortArray(dataList);
+
 export default function StatsPage() {
   const [chartElement, setChartElement] = React.useState<string>('bar');
   const { themeColorsList }: any = useThemeContext();
@@ -48,14 +55,14 @@ export default function StatsPage() {
     >
       <div className="w-[100%] parentScroll">
         <div ref={scrollElRef} className="childScroll">
-          {chartElement === 'bar' && <BarChartElement />}
+          {chartElement === 'bar' && <BarChartElement data={data} />}
           {chartElement === 'pie' && <PieChartElement />}
           {chartElement === 'radar' && <RadarChartElement />}
         </div>
       </div>
       <div className="mt-[25px] flex gap-[25px] justify-center flex-wrap">
         {icons.map((x) => (
-          <div key={x.name} className="flex flex-col items-center">
+          <div key={x.name} className="flex flex-col items-center cursor-pointer">
             <div className="w-[25px] h-[25px] relative">
               <Image src={x.icon} fill alt="icon" />
             </div>

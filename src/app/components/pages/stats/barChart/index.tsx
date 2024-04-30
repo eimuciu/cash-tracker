@@ -13,7 +13,6 @@ import {
   ResponsiveContainer,
   LabelList,
 } from 'recharts';
-import { data as dataList } from '../manifestData';
 import './style.css';
 
 const renderCustomizedLabel = (props: any) => {
@@ -32,12 +31,6 @@ const renderCustomizedLabel = (props: any) => {
     </g>
   );
 };
-
-function sortArray(chartData: any) {
-  return chartData.sort((a: any, b: any) => b.amount - a.amount);
-}
-
-const data = sortArray(dataList);
 
 const CustomizedAxisTick = (props: any) => {
   const { x, y, stroke, payload } = props;
@@ -68,38 +61,36 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-export default function BarChartElement() {
+export default function BarChartElement({ data }: any) {
   return (
-    
-        <div id="scrollContainer">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data}>
-              {/* <YAxis dataKey="amount" /> */}
-              <Tooltip
-                cursor={{ fill: '#6AF190' }}
-                wrapperStyle={{
-                  backgroundColor: 'black',
-                  color: 'white',
-                  padding: '5px',
-                }}
-                content={<CustomTooltip />}
-              />
-              <Bar dataKey="amount" fill="#8884d8">
-                {data.map((x: any, i: any) => (
-                  <Cell key={i} fill={x.color} />
-                ))}
+    <div id="scrollContainer">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data}>
+          {/* <YAxis dataKey="amount" /> */}
+          <Tooltip
+            cursor={{ fill: '#6AF190' }}
+            wrapperStyle={{
+              backgroundColor: 'black',
+              color: 'white',
+              padding: '5px',
+            }}
+            content={<CustomTooltip />}
+          />
+          <Bar dataKey="amount" fill="#8884d8">
+            {data.map((x: any, i: any) => (
+              <Cell key={i} fill={x.color} />
+            ))}
 
-                <LabelList dataKey="amount" content={renderCustomizedLabel} />
-              </Bar>
-              <XAxis
-                dataKey="name"
-                tickLine={false}
-                interval={0}
-                tick={<CustomizedAxisTick />}
-              />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
+            <LabelList dataKey="amount" content={renderCustomizedLabel} />
+          </Bar>
+          <XAxis
+            dataKey="name"
+            tickLine={false}
+            interval={0}
+            tick={<CustomizedAxisTick />}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
