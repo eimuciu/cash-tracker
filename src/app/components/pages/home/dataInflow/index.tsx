@@ -58,7 +58,9 @@ export default function DataInflow({
 
   return (
     <div className="flex flex-col h-[100%]">
-      <div className="text-[#880D1E] text-[12px]">{dateError && dateError}</div>
+      <div className="text-[#880D1E] text-[12px]">
+        {dateError && dateError}{' '}
+      </div>
       <DatePicker dateValue={dateValue} setDateValue={setDateValue} />
       <SelectPicker
         selectValue={selectValue}
