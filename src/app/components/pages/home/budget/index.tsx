@@ -10,7 +10,7 @@ export default function Budget() {
     <div className="relative h-[100%]">
       <div className="flex justify-between">
         <p className="font-bold">Budget</p>
-        <button className="text-center rounded bg-[#F5F5F5] border border-black border-solid px-[5px]">
+        <button className="text-center rounded bg-[#F5F5F5] px-[5px]">
           Set budget
         </button>
       </div>

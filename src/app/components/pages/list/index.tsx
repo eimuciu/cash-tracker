@@ -66,7 +66,7 @@ export default function ListPage() {
         </p>
         <button
           onClick={handleSelection}
-          className="text-center rounded bg-[#F5F5F5] border border-black border-solid px-[5px]"
+          className="text-center rounded bg-[#F5F5F5] px-[5px]"
         >
           {tabSelectionClicked ? 'Spendings' : 'Earnings'}
         </button>
