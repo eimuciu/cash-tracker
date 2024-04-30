@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import LayoutWrapper from '../../layoutWrapper';
-import { colorPalette } from '@/utils/themeUnits';
 import ListElement from './listElement';
 import { useThemeContext } from '@/app/store/themeStore';
+import { useDataContext } from '@/app/store/dataStore';
 
 // AWAITING DATA START
 
@@ -50,6 +49,7 @@ export default function ListPage() {
   const [tabSelectionClicked, setTabSelectionClicked] =
     useState<boolean>(false);
   const { themeColorsList }: any = useThemeContext();
+  const { dataList }: any = useDataContext();
 
   const handleSelection = () => {
     setTabSelectionClicked(!tabSelectionClicked);

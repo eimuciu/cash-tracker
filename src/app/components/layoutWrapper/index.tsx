@@ -7,6 +7,7 @@ import DateSeperator from './dateSeperator';
 import { usePathname } from 'next/navigation';
 import './style.css';
 import { ThemeContextProvider } from '@/app/store/themeStore';
+import { DataContextProvider } from '@/app/store/dataStore';
 
 interface Props {
   children: React.ReactNode;
@@ -50,51 +51,56 @@ export default function LayoutWrapper({ children }: Props) {
   };
 
   return (
-    <ThemeContextProvider>
-      {(themeColorsList: any) => (
-        <div className="flex">
-          <div
-            id="shockwave"
-            onClick={toggleNavbar}
-            className="w-[15px] h-[15px] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-2 outline outline-offset-2 z-10"
-            style={{
-              backgroundColor: themeColorsList.secondColor,
-              outlineColor: themeColorsList.secondColor,
-            }}
-          ></div>
-          <div
-            ref={elRef}
-            style={{ zIndex: 2, backgroundColor: themeColorsList.secondColor }}
-            className={
-              'py-[50px] px-[10px] min-h-screen fixed ' +
-              ' ' +
-              `${navbarStatus ? 'md:block' : 'md:hidden'}`
-            }
-          >
-            <NavBar
-              toggleNavbar={toggleNavbar}
-              setNavbarStatus={setNavbarStatus}
-            />
+    <DataContextProvider>
+      <ThemeContextProvider>
+        {(themeColorsList: any) => (
+          <div className="flex">
+            <div
+              id="shockwave"
+              onClick={toggleNavbar}
+              className="w-[15px] h-[15px] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-2 outline outline-offset-2 z-10"
+              style={{
+                backgroundColor: themeColorsList.secondColor,
+                outlineColor: themeColorsList.secondColor,
+              }}
+            ></div>
+            <div
+              ref={elRef}
+              style={{
+                zIndex: 2,
+                backgroundColor: themeColorsList.secondColor,
+              }}
+              className={
+                'py-[50px] px-[10px] min-h-screen fixed ' +
+                ' ' +
+                `${navbarStatus ? 'md:block' : 'md:hidden'}`
+              }
+            >
+              <NavBar
+                toggleNavbar={toggleNavbar}
+                setNavbarStatus={setNavbarStatus}
+              />
+            </div>
+            <div
+              className="w-[100%] pl-[71.125px] pr-[5px] py-[5px] md:pl-[5px] min-h-screen flex flex-col"
+              // style={{
+              //   paddingLeft: `${elementWidth}px`,
+              // }}
+            >
+              {!restrictedPaths.includes(pathname) && (
+                <>
+                  <Header />{' '}
+                  <DateSeperator
+                    activeSlide={activeDateFilterSlide}
+                    setActiveSlide={setActiveDateFilterSlide}
+                  />
+                </>
+              )}
+              {children}
+            </div>
           </div>
-          <div
-            className="w-[100%] pl-[71.125px] pr-[5px] py-[5px] md:pl-[5px] min-h-screen flex flex-col"
-            // style={{
-            //   paddingLeft: `${elementWidth}px`,
-            // }}
-          >
-            {!restrictedPaths.includes(pathname) && (
-              <>
-                <Header />{' '}
-                <DateSeperator
-                  activeSlide={activeDateFilterSlide}
-                  setActiveSlide={setActiveDateFilterSlide}
-                />
-              </>
-            )}
-            {children}
-          </div>
-        </div>
-      )}
-    </ThemeContextProvider>
+        )}
+      </ThemeContextProvider>
+    </DataContextProvider>
   );
 }
