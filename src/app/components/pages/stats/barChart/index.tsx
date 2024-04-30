@@ -70,22 +70,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function BarChartElement() {
   return (
-    <div
-      className="w-[100%]"
-      style={{
-        height: '400px',
-        display: 'block',
-        position: 'relative',
-      }}
-    >
-      <div
-        style={{
-          overflow: 'scroll',
-          position: 'absolute',
-          height: '100%',
-          width: '100%',
-        }}
-      >
+    
         <div id="scrollContainer">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>
@@ -115,7 +100,6 @@ export default function BarChartElement() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
-    </div>
+
   );
 }

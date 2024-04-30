@@ -1,0 +1,12 @@
+.parentScroll {
+  height: 400px;
+  display: block;
+  position: relative;
+}
+
+.childScroll {
+  overflow: scroll;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}

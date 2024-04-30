@@ -6,6 +6,7 @@ import PieChartElement from './pieChart';
 import RadarChartElement from './radarChart';
 import Image from 'next/image';
 import { useThemeContext } from '@/app/store/themeStore';
+import './style.css';
 
 const icons = [
   { name: 'Cellphone', icon: '/icons/cellphone.png' },
@@ -37,9 +38,15 @@ export default function StatsPage() {
       className="flex flex-col rounded-[5px] h-[100%] p-[10px]"
       style={{ backgroundColor: themeColorsList.fourthColor }}
     >
-      {chartElement === 'bar' && <BarChartElement />}
-      {chartElement === 'pie' && <PieChartElement />}
-      {chartElement === 'radar' && <RadarChartElement />}
+      {/* here start */}
+      <div className="w-[100%] parentScroll">
+        <div className="childScroll">
+          {chartElement === 'bar' && <BarChartElement />}
+          {chartElement === 'pie' && <PieChartElement />}
+          {chartElement === 'radar' && <RadarChartElement />}
+        </div>
+      </div>
+      {/* here end */}
       <div className="mt-[25px] flex gap-[25px] justify-center flex-wrap">
         {icons.map((x) => (
           <div key={x.name} className="flex flex-col items-center">
