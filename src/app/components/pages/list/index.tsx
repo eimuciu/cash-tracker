@@ -57,7 +57,7 @@ export default function ListPage() {
 
   return (
     <section
-      className="rounded-[10px] h-[100%] p-[10px]"
+      className="rounded-[5px] h-[100%] p-[10px]"
       style={{ backgroundColor: themeColorsList.fourthColor }}
     >
       <div className="flex justify-between">

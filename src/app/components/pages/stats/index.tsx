@@ -34,7 +34,7 @@ export default function StatsPage() {
   const { themeColorsList }: any = useThemeContext();
   return (
     <div
-      className="flex flex-col rounded-[10px] h-[100%] p-[10px]"
+      className="flex flex-col rounded-[5px] h-[100%] p-[10px]"
       style={{ backgroundColor: themeColorsList.fourthColor }}
     >
       {chartElement === 'bar' && <BarChartElement />}

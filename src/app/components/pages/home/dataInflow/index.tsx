@@ -90,7 +90,7 @@ export default function DataInflow({
         />
         <button
           type="submit"
-          className="text-center w-[100%] rounded bg-[#F5F5F5] py-[5px] mt-[5px]"
+          className="text-center w-[100%] rounded  bg-[#F5F5F5] py-[5px] mt-[5px]"
         >
           Confirm
         </button>

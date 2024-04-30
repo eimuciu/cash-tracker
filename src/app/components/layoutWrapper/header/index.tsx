@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <>
       <section
-        className="flex flex-col items-center rounded-[10px] p-[10px]"
+        className="flex flex-col items-center rounded-[5px] p-[10px]"
         style={{ backgroundColor: themeColorsList.firstColor }}
       >
         <div className="font-bold mb-[5px]">

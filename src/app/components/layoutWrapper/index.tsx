@@ -56,7 +56,7 @@ export default function LayoutWrapper({ children }: Props) {
           <div
             id="shockwave"
             onClick={toggleNavbar}
-            className="w-[15px] h-[15px] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-2 outline outline-offset-2 "
+            className="w-[15px] h-[15px] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-2 outline outline-offset-2 z-10"
             style={{
               backgroundColor: themeColorsList.secondColor,
               outlineColor: themeColorsList.secondColor,
@@ -77,7 +77,7 @@ export default function LayoutWrapper({ children }: Props) {
             />
           </div>
           <div
-            className="w-[100%] pl-[71.125px] pr-[5px] py-[5px] md:pl-[25px] min-h-screen flex flex-col"
+            className="w-[100%] pl-[71.125px] pr-[5px] py-[5px] md:pl-[5px] min-h-screen flex flex-col"
             // style={{
             //   paddingLeft: `${elementWidth}px`,
             // }}

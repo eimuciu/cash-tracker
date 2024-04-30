@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Image from 'next/image';
 import { useThemeContext } from '@/app/store/themeStore';
 
@@ -8,7 +8,7 @@ export default function AccountPage() {
   const { themeColorsList }: any = useThemeContext();
   return (
     <section
-      className="rounded-[10px] h-[100%] p-[10px]"
+      className="rounded-[5px] h-[100%] p-[10px]"
       style={{ backgroundColor: themeColorsList.firstColor }}
     >
       <p className="font-bold">Account</p>

@@ -59,7 +59,7 @@ export default function ThemeSetting() {
   };
 
   return (
-    <div className="flex bg-[white] rounded-[10px] relative">
+    <div className="flex bg-[white] rounded-[5px] relative">
       <div
         className="absolute top-1 right-3 flex cursor-pointer"
         style={{ display: isAnyChanges ? 'block' : 'none' }}
@@ -96,7 +96,7 @@ export default function ThemeSetting() {
               firstRefEl.current.showPicker();
             }
           }}
-          className="relative flex w-[100%] h-[50px] flex-col items-center rounded-[10px] p-[10px] md:w-[100%] cursor-pointer"
+          className="relative flex w-[100%] h-[50px] flex-col items-center rounded-[5px] p-[10px] md:w-[100%] cursor-pointer"
           style={{ backgroundColor: firstColor }}
         >
           <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
@@ -114,7 +114,7 @@ export default function ThemeSetting() {
               secondRefEl.current.showPicker();
             }
           }}
-          className="relative h-[25px] w-[100%] rounded-[10px] md:w-[100%] cursor-pointer"
+          className="relative h-[25px] w-[100%] rounded-[5px] md:w-[100%] cursor-pointer"
           style={{ backgroundColor: secondColor }}
         >
           <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
@@ -127,14 +127,14 @@ export default function ThemeSetting() {
           </div>
         </div>
         <div className="flex gap-[10px] flex-col">
-          <div className="flex flex-col w-[100%] rounded-[10px] md:w-[100%] ">
+          <div className="flex flex-col w-[100%] rounded-[5px] md:w-[100%] ">
             <div
               onClick={() => {
                 if (thirdRefEl.current) {
                   thirdRefEl.current.showPicker();
                 }
               }}
-              className="relative flex h-[75px] flex-col p-[10px] h-[100%] rounded-[10px] cursor-pointer"
+              className="relative flex h-[75px] flex-col p-[10px] h-[100%] rounded-[5px] cursor-pointer"
               style={{ backgroundColor: thirdColor }}
             >
               <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
@@ -153,7 +153,7 @@ export default function ThemeSetting() {
                 fourthRefEl.current.showPicker();
               }
             }}
-            className="relative w-[100%] h-[100px] rounded-[10px] md:w-[100%] cursor-pointer"
+            className="relative w-[100%] h-[100px] rounded-[5px] md:w-[100%] cursor-pointer"
             style={{ backgroundColor: fourthColor }}
           >
             <div className="absolute top-0 left-[0] w-[0px] h-[0px] invisible">
