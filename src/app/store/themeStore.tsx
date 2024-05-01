@@ -18,11 +18,11 @@ const ThemeContext = createContext({});
 export function ThemeContextProvider({ children }: { children: any }) {
   const [themeColorsList, setThemeColorsList] = useState(null);
 
-  const { colorPalette }: any = useDataContext();
+  const { themeColorPalette }: any = useDataContext();
 
   useEffect(() => {
-    setThemeColorsList(colorPalette);
-  }, [colorPalette]);
+    setThemeColorsList(themeColorPalette);
+  }, [themeColorPalette]);
 
   return (
     <ThemeContext.Provider

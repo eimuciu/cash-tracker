@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import IconSelector from './iconSelector';
-import { colorPalette } from '@/utils/themeUnits';
 import { useThemeContext } from '@/app/store/themeStore';
 
 {

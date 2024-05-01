@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import { colorPalette } from '@/utils/themeUnits';
 import { MdLibraryAdd } from 'react-icons/md';
 import { useThemeContext } from '@/app/store/themeStore';
 

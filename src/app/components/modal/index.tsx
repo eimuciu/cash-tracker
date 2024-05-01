@@ -1,5 +1,4 @@
 import { IoMdClose } from 'react-icons/io';
-import { colorPalette } from '@/utils/themeUnits';
 import { useThemeContext } from '@/app/store/themeStore';
 
 interface Props {

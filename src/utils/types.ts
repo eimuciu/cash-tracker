@@ -1,4 +1,4 @@
-export const settings = {
+export const settingsData = {
   budget: {
     '2024-01': [],
     '2024-02': [],
