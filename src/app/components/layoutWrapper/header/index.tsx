@@ -1,7 +1,9 @@
 import { useThemeContext } from '@/app/store/themeStore';
+import { useDataContext } from '@/app/store/dataStore';
 
 export default function Header() {
   const { themeColorsList }: any = useThemeContext();
+  const { settings }: any = useDataContext();
 
   return (
     <>
@@ -20,21 +22,21 @@ export default function Header() {
             <p>Income</p>
             <p className="font-bold">
               {/* AWAITING DATA */}
-              $0.00
+              {settings.currency}0.00
             </p>
           </div>
           <div className="text-center">
             <p>Expense</p>
             <p className="font-bold">
               {/* AWAITING DATA */}
-              $0.00
+              {settings.currency}0.00
             </p>
           </div>
           <div className="text-center">
             <p>Profit</p>
             <p className="font-bold">
               {/* AWAITING DATA */}
-              $0.00
+              {settings.currency}0.00
             </p>
           </div>
         </div>
