@@ -26,6 +26,14 @@ export const settingsData = {
     greyedColor: '#F5F5F5',
   },
   currenciesList: [],
+  expenseIcons: {
+    food: '/icons/burger.png',
+    car: '/icons/car.png',
+  },
+  incomeIcons: {
+    job: '/icons/salary.png',
+    selling: '/icons/investment.png',
+  },
 };
 
 export const expenseData = [
@@ -46,13 +54,13 @@ export const expenseData = [
 export const incomeData = [
   {
     amount: 1000,
-    soure: 'job',
+    source: 'job',
     date: '2024-05-01',
     note: 'alga',
   },
   {
     amount: 500,
-    soure: 'selling',
+    source: 'selling',
     date: '2024-05-01',
     note: 'pardaviau kompa',
   },

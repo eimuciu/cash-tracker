@@ -49,7 +49,9 @@ export default function ListPage() {
   const [tabSelectionClicked, setTabSelectionClicked] =
     useState<boolean>(false);
   const { themeColorsList }: any = useThemeContext();
-  const { dataList }: any = useDataContext();
+  const { expenseList, settings, incomeList }: any = useDataContext();
+  console.log(incomeList);
+  console.log(settings);
 
   const handleSelection = () => {
     setTabSelectionClicked(!tabSelectionClicked);
@@ -73,13 +75,13 @@ export default function ListPage() {
       </div>
       <div>
         {!tabSelectionClicked
-          ? expenseData.map((x) => (
+          ? expenseList.map((x: any) => (
               <div key={x.note}>
                 <ListElement
                   iconUrl={
-                    (settingsData.expenseIcons as any)[x.category.toLowerCase()]
+                    (settings.expenseIcons as any)[x.category.toLowerCase()]
                   }
-                  currency={settingsData.currency}
+                  currency={settings.currency}
                   category={x.category}
                   date={x.date}
                   note={x.note}
@@ -87,36 +89,18 @@ export default function ListPage() {
                 />
               </div>
             ))
-          : incomeData.map((x) => (
+          : incomeList.map((x: any) => (
               <div key={x.note}>
                 <ListElement
-                  iconUrl={
-                    (settingsData.incomeIcons as any)[x.category.toLowerCase()]
-                  }
-                  currency={settingsData.currency}
-                  category={x.category}
+                  iconUrl={settings.incomeIcons[x.source.toLowerCase()]}
+                  currency={settings.currency}
+                  category={x.source}
                   date={x.date}
                   note={x.note}
                   amount={x.amount}
                 />
               </div>
             ))}
-        {/* <ListElement
-            iconUrl="/burger.png"
-            currency="$"
-            category="Food"
-            date="02.02.2024"
-            note="Bought food etc etc etc etc"
-            amount={26.58}
-          />
-          <ListElement
-            iconUrl="/car.png"
-            currency="$"
-            category="Car"
-            date="02.02.2024"
-            note="Petrol"
-            amount={25.0}
-          /> */}
       </div>
     </section>
   );

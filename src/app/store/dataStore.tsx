@@ -17,14 +17,18 @@ interface Props {
 // };
 
 export function DataContextProvider({ children }: Props) {
+  const [settings, setSettings] = useState(settingsData);
+  const [expenseList, setExpenseList] = useState(expenseData);
+  const [incomeList, setIncomeList] = useState(incomeData);
+  const [periodSelection, setPeriodSelection] = useState('Current month');
 
   return (
     <DataContext.Provider
       value={{
-        themeColorPalette: settingsData.theme,
-        settingsData,
-        expenseData,
-        incomeData,
+        themeColorPalette: settings.theme,
+        settings,
+        expenseList,
+        incomeList,
       }}
     >
       {children}
