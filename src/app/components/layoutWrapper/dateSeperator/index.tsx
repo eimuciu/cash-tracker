@@ -5,6 +5,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
 import { useThemeContext } from '@/app/store/themeStore';
+import Modal from '../../modal';
+import useModal from '../../modal/useModal';
+import DatePicker from '../../pages/home/dataInflow/datepicker';
 
 export default function DateSeperator() {
   const [slideUnits, setSlideUnits] = React.useState<number>(1);
@@ -14,6 +17,8 @@ export default function DateSeperator() {
   const [activeSlide, setActiveSlide] = React.useState<string>('Current month');
 
   const { themeColorsList }: any = useThemeContext();
+  const { showModal, settingName, handleSettingClick, handleCloseModal } =
+    useModal();
 
   React.useEffect(() => {
     const resizeHandler = (e: any) => {
@@ -66,10 +71,32 @@ export default function DateSeperator() {
 
   const handleFilterSelection = (filter: string) => {
     setActiveSlide(filter);
+    if (filter === 'Custom date') {
+      handleSettingClick('Custom date');
+    }
   };
 
   return (
     <>
+      <Modal
+        header={settingName}
+        showModal={true}
+        closeModal={handleCloseModal}
+      >
+        <div className="flex gap-[5px]">
+          <div>
+            From:
+            <DatePicker dateValue={'2024-05-01'} setDateValue={() => {}} />
+          </div>
+          <div>
+            To:
+            <DatePicker dateValue={'2024-05-01'} setDateValue={() => {}} />
+          </div>
+        </div>
+        <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
+          <button className="w-[100%] h-[100%]">Confirm</button>
+        </div>
+      </Modal>
       <Swiper
         ref={swiperRef}
         slidesPerView={slideUnits}
