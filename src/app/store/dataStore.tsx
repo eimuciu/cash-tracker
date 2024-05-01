@@ -1,5 +1,10 @@
 import { createContext, useState, useContext } from 'react';
-import { settingsData, expenseData, incomeData } from '@/utils/types';
+import {
+  settingsData,
+  expenseData,
+  incomeData,
+  budgetData,
+} from '@/utils/types';
 
 const DataContext = createContext({});
 
@@ -20,7 +25,8 @@ export function DataContextProvider({ children }: Props) {
   const [settings, setSettings] = useState(settingsData);
   const [expenseList, setExpenseList] = useState(expenseData);
   const [incomeList, setIncomeList] = useState(incomeData);
-  const [periodSelection, setPeriodSelection] = useState('Current month');
+  const [budget, setBudget] = useState(budgetData);
+  // const [activePeriodFilter, setPeriodSelection] = useState('Current month');
 
   return (
     <DataContext.Provider

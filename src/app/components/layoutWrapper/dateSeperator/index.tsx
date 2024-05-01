@@ -6,15 +6,12 @@ import 'swiper/css/navigation';
 import './style.css';
 import { useThemeContext } from '@/app/store/themeStore';
 
-interface Props {
-  activeSlide: string;
-  setActiveSlide: any;
-}
-
-export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
+export default function DateSeperator() {
   const [slideUnits, setSlideUnits] = React.useState<number>(1);
   const [loading, setLoading] = React.useState<boolean>(true);
   const swiperRef = React.useRef<any>(null);
+
+  const [activeSlide, setActiveSlide] = React.useState<string>('Current month');
 
   const { themeColorsList }: any = useThemeContext();
 
@@ -67,6 +64,10 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
     };
   }, [activeSlide]);
 
+  const handleFilterSelection = (filter: string) => {
+    setActiveSlide(filter);
+  };
+
   return (
     <>
       <Swiper
@@ -80,7 +81,7 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
           <>
             <SwiperSlide
               onClick={() => {
-                setActiveSlide('This year');
+                handleFilterSelection('This year');
               }}
               className="cursor-pointer"
               style={
@@ -89,12 +90,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
                   : { color: 'black', fontWeight: 'normal' }
               }
             >
-              {/* AWAITING DATA */}
               This year
             </SwiperSlide>
             <SwiperSlide
               onClick={() => {
-                setActiveSlide('Previous month');
+                handleFilterSelection('Previous month');
               }}
               className="cursor-pointer"
               style={
@@ -103,12 +103,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
                   : { color: 'black', fontWeight: 'normal' }
               }
             >
-              {/* AWAITING DATA */}
               Previous month
             </SwiperSlide>
             <SwiperSlide
               onClick={() => {
-                setActiveSlide('Current month');
+                handleFilterSelection('Current month');
               }}
               className="cursor-pointer"
               style={
@@ -117,12 +116,11 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
                   : { color: 'black', fontWeight: 'normal' }
               }
             >
-              {/* AWAITING DATA */}
               Current month
             </SwiperSlide>
             <SwiperSlide
               onClick={() => {
-                setActiveSlide('Custom date');
+                handleFilterSelection('Custom date');
               }}
               className="cursor-pointer"
               style={
@@ -131,7 +129,6 @@ export default function DateSeperator({ activeSlide, setActiveSlide }: Props) {
                   : { color: 'black', fontWeight: 'normal' }
               }
             >
-              {/* AWAITING DATA */}
               Custom date
             </SwiperSlide>
           </>

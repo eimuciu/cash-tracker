@@ -1,9 +1,5 @@
-import Image from 'next/image';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import BudgetListItem from './budgetListItem';
-
-const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded';
 
 export default function Budget() {
   return (

@@ -1,14 +1,4 @@
 export const settingsData = {
-  budget: {
-    '2024-01': [],
-    '2024-02': [],
-    '2024-03': [],
-    '2024-04': [],
-    '2024-05': [
-      { budget: 200, category: 'car' },
-      { budget: 200, category: 'food' },
-    ],
-  },
   colors: {
     alcohol: 'red',
     books: 'green',
@@ -34,6 +24,17 @@ export const settingsData = {
     job: '/icons/salary.png',
     selling: '/icons/investment.png',
   },
+};
+
+export const budgetData = {
+  '2024-01': [],
+  '2024-02': [],
+  '2024-03': [],
+  '2024-04': [],
+  '2024-05': [
+    { budget: 200, category: 'car' },
+    { budget: 200, category: 'food' },
+  ],
 };
 
 export const expenseData = [
