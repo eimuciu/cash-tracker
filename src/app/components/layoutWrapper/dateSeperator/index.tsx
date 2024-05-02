@@ -84,6 +84,7 @@ export default function DateSeperator() {
   }, [activeSlide]);
 
   const handleFilterSelection = (filter: string) => {
+    // Jeigu activus filtras paspaudziamas vel tuomet atitinkamai sureaguoti ypac su custom date clicku
     setActiveSlide(filter);
     if (filter === 'Custom date') {
       handleSettingClick('Custom date');
