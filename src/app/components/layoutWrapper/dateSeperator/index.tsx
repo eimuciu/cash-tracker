@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -24,6 +24,11 @@ export default function DateSeperator() {
   const [toDateValue, setToDateValue] = React.useState('');
   const [fromDateError, setFromDateError] = React.useState('');
   const [toDateError, setToDateError] = React.useState('');
+
+  const previousDate = useRef<{ from: string; to: string }>({
+    from: '',
+    to: '',
+  });
 
   React.useEffect(() => {
     const resizeHandler = (e: any) => {
@@ -69,9 +74,13 @@ export default function DateSeperator() {
 
     window.addEventListener('resize', resizeHandler);
     setLoading(false);
+
+    previousDate.current = { from: fromDateValue, to: toDateValue };
+
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSlide]);
 
   const handleFilterSelection = (filter: string) => {
@@ -92,16 +101,21 @@ export default function DateSeperator() {
     }
     setFromDateError('');
     setToDateError('');
+    previousDate.current = { from: fromDateValue, to: toDateValue };
     handleCloseModal();
   };
 
+  const closeModal = () => {
+    setFromDateValue(previousDate.current.from);
+    setToDateValue(previousDate.current.to);
+    handleCloseModal();
+  };
+
+  // cannot from > to
+
   return (
     <>
-      <Modal
-        header={settingName}
-        showModal={true}
-        closeModal={handleCloseModal}
-      >
+      <Modal header={settingName} showModal={true} closeModal={closeModal}>
         <div className="flex gap-[10px]">
           <div>
             From:
