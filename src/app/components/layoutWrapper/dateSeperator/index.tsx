@@ -114,6 +114,8 @@ export default function DateSeperator() {
     setToDateError('');
     previousDate.current = { from: fromDateValue, to: toDateValue };
     handleCloseModal();
+    // AWAITING DATA
+    // Cia reikes pasikreipti i apie del custom date patvirtinimo
   };
 
   const closeModal = () => {
