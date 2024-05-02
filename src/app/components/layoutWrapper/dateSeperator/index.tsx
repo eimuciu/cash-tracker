@@ -84,7 +84,13 @@ export default function DateSeperator() {
   }, [activeSlide]);
 
   const handleFilterSelection = (filter: string) => {
-    // Jeigu activus filtras paspaudziamas vel tuomet atitinkamai sureaguoti ypac su custom date clicku
+    if (filter === activeSlide && filter !== 'Custom date') return;
+    if (filter === 'Custom date' && activeSlide === 'Custom date ') {
+      handleSettingClick('Custom date');
+      return;
+    }
+    // AWAITING DATA
+    // Reikes ideti pasikreipima i api
     setActiveSlide(filter);
     if (filter === 'Custom date') {
       handleSettingClick('Custom date');
@@ -115,8 +121,6 @@ export default function DateSeperator() {
     setToDateValue(previousDate.current.to);
     handleCloseModal();
   };
-
-  // cannot from > to
 
   return (
     <>
