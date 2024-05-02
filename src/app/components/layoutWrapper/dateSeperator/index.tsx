@@ -99,6 +99,10 @@ export default function DateSeperator() {
       setToDateError('Invalid Date');
       return;
     }
+    if (!(toDateValue >= fromDateValue)) {
+      alert('From date cannot be greater than To date');
+      return;
+    }
     setFromDateError('');
     setToDateError('');
     previousDate.current = { from: fromDateValue, to: toDateValue };
