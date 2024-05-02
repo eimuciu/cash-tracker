@@ -20,6 +20,11 @@ export default function DateSeperator() {
   const { showModal, settingName, handleSettingClick, handleCloseModal } =
     useModal();
 
+  const [fromDateValue, setFromDateValue] = React.useState('');
+  const [toDateValue, setToDateValue] = React.useState('');
+  const [fromDateError, setFromDateError] = React.useState('');
+  const [toDateError, setToDateError] = React.useState('');
+
   React.useEffect(() => {
     const resizeHandler = (e: any) => {
       if (e.target.innerWidth <= 640) {
@@ -76,6 +81,20 @@ export default function DateSeperator() {
     }
   };
 
+  const handleCustomDateConfirmation = () => {
+    if (fromDateValue === 'Invalid Date') {
+      setFromDateError('Invalid Date');
+      return;
+    }
+    if (toDateValue === 'Invalid Date') {
+      setToDateError('Invalid Date');
+      return;
+    }
+    setFromDateError('');
+    setToDateError('');
+    handleCloseModal();
+  };
+
   return (
     <>
       <Modal
@@ -83,18 +102,32 @@ export default function DateSeperator() {
         showModal={true}
         closeModal={handleCloseModal}
       >
-        <div className="flex gap-[5px]">
+        <div className="flex gap-[10px]">
           <div>
             From:
-            <DatePicker dateValue={'2024-05-01'} setDateValue={() => {}} />
+            <DatePicker
+              dateValue={fromDateValue}
+              setDateValue={setFromDateValue}
+            />
+            {/* <div className="text-[#880D1E] text-[10px]">
+              {fromDateError && fromDateError}{' '}
+            </div> */}
           </div>
           <div>
             To:
-            <DatePicker dateValue={'2024-05-01'} setDateValue={() => {}} />
+            <DatePicker dateValue={toDateValue} setDateValue={setToDateValue} />
+            {/* <div className="text-[#880D1E] text-[10px]">
+              {toDateError && toDateError}{' '}
+            </div> */}
           </div>
         </div>
         <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-          <button className="w-[100%] h-[100%]">Confirm</button>
+          <button
+            onClick={handleCustomDateConfirmation}
+            className="w-[100%] h-[100%]"
+          >
+            Confirm
+          </button>
         </div>
       </Modal>
       <Swiper
