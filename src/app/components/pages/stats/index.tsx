@@ -60,7 +60,7 @@ export default function StatsPage() {
 
   return (
     <div
-      className="flex flex-col rounded-[5px] h-[100%] p-[10px]"
+      className="flex flex-col rounded-[5px] h-[100%] p-[10px] border-[1px]"
       style={{ backgroundColor: themeColorsList.fourthColor }}
     >
       <Modal

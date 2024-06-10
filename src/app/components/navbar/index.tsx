@@ -10,7 +10,7 @@ import { iconClassNames } from '@/app/styles/classNames';
 import { useThemeContext } from '@/app/store/themeStore';
 
 const navItemClassNames =
-  'flex flex-col justify-center items-center gap-y-[5px]';
+  'flex flex-col justify-center items-center gap-y-[5px] text-[#001229]';
 
 interface Props {
   toggleNavbar: () => void;
@@ -60,7 +60,7 @@ export default function NavBar({ toggleNavbar, setNavbarStatus }: Props) {
       <div className="flex flex-col gap-y-[25px]">
         <div
           onClick={handleShowAccountNavBar}
-          className="flex flex-col justify-center items-center mb-[50px] cursor-pointer"
+          className="flex flex-col justify-center items-center mb-[50px] cursor-pointer text-[#001229]"
           style={
             pathname === '/account' || pathname === '/settings'
               ? { color: themeColorsList.activeColor }

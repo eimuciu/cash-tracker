@@ -68,7 +68,7 @@ export default function HomePage() {
         </div>
       </div>
       <div
-        className="w-[80%] rounded-[5px] p-[10px] md:w-[100%]"
+        className="w-[80%] rounded-[5px] p-[10px] md:w-[100%] border-[1px]"
         style={{ backgroundColor: themeColorsList.fourthColor }}
       >
         <Budget />

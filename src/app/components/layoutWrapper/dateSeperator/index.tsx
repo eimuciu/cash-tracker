@@ -126,7 +126,7 @@ export default function DateSeperator() {
 
   return (
     <>
-      <Modal header={settingName} showModal={true} closeModal={closeModal}>
+      <Modal header={settingName} showModal={showModal} closeModal={closeModal}>
         <div className="flex gap-[10px]">
           <div>
             From:
@@ -160,7 +160,8 @@ export default function DateSeperator() {
         slidesPerView={slideUnits}
         modules={[Pagination, Navigation]}
         navigation={true}
-        style={{ backgroundColor: themeColorsList.secondColor }}
+        style={{ backgroundColor: themeColorsList.thirdColor }}
+        className="border-[1px]"
       >
         {!loading && (
           <>

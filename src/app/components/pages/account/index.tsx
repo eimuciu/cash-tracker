@@ -8,7 +8,7 @@ export default function AccountPage() {
   const { themeColorsList }: any = useThemeContext();
   return (
     <section
-      className="rounded-[5px] h-[100%] p-[10px]"
+      className="rounded-[5px] h-[100%] p-[10px] border-[1px]"
       style={{ backgroundColor: themeColorsList.firstColor }}
     >
       <p className="font-bold">Account</p>

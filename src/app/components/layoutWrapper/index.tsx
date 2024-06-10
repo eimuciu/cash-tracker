@@ -57,10 +57,10 @@ export default function LayoutWrapper({ children }: Props) {
               <div
                 id="shockwave"
                 onClick={toggleNavbar}
-                className="w-[15px] h-[15px] fixed rounded-[50%] right-[6px] bottom-[25%] hidden md:block outline-2 outline outline-offset-2 z-10"
+                className="w-[15px] h-[15px] fixed rounded-[50%] left-[15px] top-[15px] hidden md:block outline-2 outline outline-offset-2 z-10"
                 style={{
-                  backgroundColor: themeColorsList.secondColor,
-                  outlineColor: themeColorsList.secondColor,
+                  backgroundColor: themeColorsList.activeColor,
+                  outlineColor: themeColorsList.activeColor,
                 }}
               ></div>
               <div
@@ -70,7 +70,7 @@ export default function LayoutWrapper({ children }: Props) {
                   backgroundColor: themeColorsList.secondColor,
                 }}
                 className={
-                  'py-[50px] px-[10px] min-h-screen fixed ' +
+                  'py-[50px] px-[10px] min-h-screen fixed border-r-[1px]' +
                   ' ' +
                   `${navbarStatus ? 'md:block' : 'md:hidden'}`
                 }
