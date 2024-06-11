@@ -76,6 +76,7 @@ export default function DataInflow({
             id="amountInput"
             name="amount"
             className={commonClasses + ' outline-none mb-0'}
+            style={{ marginBottom: 0 }}
             placeholder="0.00"
             type="number"
             onChange={formik.handleChange}
