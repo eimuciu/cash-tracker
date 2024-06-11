@@ -90,7 +90,7 @@ export default function StatsPage() {
           {chartElement === 'radar' && <RadarChartElement />}
         </div>
       </div>
-      <div className="mt-[25px] flex gap-[25px] justify-center flex-wrap">
+      <div className="mt-[25px] flex gap-[30px] justify-center flex-wrap">
         {icons.map((x) => (
           <div
             key={x.name}
