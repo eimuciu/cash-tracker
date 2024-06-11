@@ -3,13 +3,23 @@ import { MdLibraryAdd } from 'react-icons/md';
 import { useThemeContext } from '@/app/store/themeStore';
 import { useDataContext } from '@/app/store/dataStore';
 
-export default function CurrencySetting() {
+interface Props {
+  closeModal: () => void;
+}
+
+export default function CurrencySetting({ closeModal }: Props) {
   const [activeCurrency, setActiveCurrency] = useState<string>('');
   const [currenciesList, setCurrenciesList] = useState<string[] | []>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { themeColorsList }: any = useThemeContext();
+  const { settings, addCurrencySettings }: any = useDataContext();
+
+  useEffect(() => {
+    setActiveCurrency(settings.currency);
+    setCurrenciesList(settings.currenciesList);
+  }, [settings.currency, settings.currenciesList]);
 
   const addNewCurrency = () => {
     if (inputRef.current && inputRef.current.value) {
@@ -19,12 +29,10 @@ export default function CurrencySetting() {
     }
   };
 
-  const { settings }: any = useDataContext();
-
-  useEffect(() => {
-    setActiveCurrency(settings.currency);
-    setCurrenciesList(settings.currenciesList);
-  }, [settings.currency, settings.currenciesList]);
+  const onCurrencySettingsConfirm = () => {
+    addCurrencySettings(activeCurrency, currenciesList);
+    closeModal();
+  };
 
   return (
     <div className="flex flex-col items-center w-[100%] gap-[10px]">
@@ -58,7 +66,12 @@ export default function CurrencySetting() {
         />
       </div>
       <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-        <button className="w-[100%] h-[100%]">Confirm</button>
+        <button
+          onClick={onCurrencySettingsConfirm}
+          className="w-[100%] h-[100%]"
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );

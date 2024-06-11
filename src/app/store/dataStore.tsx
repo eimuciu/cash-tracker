@@ -28,7 +28,19 @@ export function DataContextProvider({ children }: Props) {
   const [budget, setBudget] = useState(budgetData);
   // const [activePeriodFilter, setPeriodSelection] = useState('Current month');
 
-  
+  const addCurrencySettings = (
+    activeCurrency: string,
+    currenciesList: string[],
+  ) => {
+    console.log('activeCurrency: ', activeCurrency);
+    console.log('currenciesList: ', currenciesList);
+    setSettings((prev) => ({
+      ...prev,
+      currency: activeCurrency,
+      currenciesList,
+    }));
+    // AWAITING FOR AN API CALL
+  };
 
   return (
     <DataContext.Provider
@@ -37,6 +49,7 @@ export function DataContextProvider({ children }: Props) {
         settings,
         expenseList,
         incomeList,
+        addCurrencySettings,
       }}
     >
       {children}
