@@ -5,6 +5,7 @@ import {
   incomeData,
   budgetData,
 } from '@/utils/types';
+import { colorGenerator } from '@/utils/colorGenerator';
 
 const DataContext = createContext({});
 
@@ -32,9 +33,26 @@ export function DataContextProvider({ children }: Props) {
   };
 
   const addCategoriesSettings = (catArr: string[]) => {
-    setSettings((prev) => ({ ...prev, expenseCategories: catArr }));
-    // NEED TO CREATE A *COLOR FOR A NEWLY ADDED CATEGORY
-    // NEED AN *ICON FOR A NEWLY ADDED CATEGORY
+    const newCategories = catArr.filter(
+      (x) => !settings.expenseCategories.includes(x),
+    );
+    if (newCategories.length) {
+      const newColors: any = {};
+      const newIcons: any = {};
+
+      newCategories.forEach((x: string) => {
+        newColors[x] = colorGenerator();
+        newIcons[x] = '/icons/default.png';
+      });
+
+      setSettings((prev) => ({
+        ...prev,
+        expenseCategories: catArr,
+        colors: { ...prev.colors, ...newColors },
+        expenseIcons: { ...prev.expenseIcons, ...newIcons },
+      }));
+    }
+
     // AWAITING FOR AN API CALL
   };
 
