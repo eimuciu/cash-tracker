@@ -1,11 +1,12 @@
 export const settingsData = {
   colors: {
-    alcohol: 'red',
-    books: 'green',
-    sport: 'blue',
+    food: '#C75000',
+    holiday: '#92B4F4',
+    sport: '#B96AC9',
+    car: '#9EBC9E',
   },
   currency: '€',
-  expenseCategories: ['alcohol', 'books', 'sport'],
+  expenseCategories: ['food', 'holiday', 'sport', 'car'],
   incomeSource: ['job', 'selling', 'interests', 'investment'],
   // theme: {
   //   activeColor: '#880D1E',
@@ -26,6 +27,8 @@ export const settingsData = {
   currenciesList: [],
   expenseIcons: {
     food: '/icons/burger.png',
+    holiday: '/icons/holiday.png',
+    sport: '/icons/sport.png',
     car: '/icons/car.png',
   },
   incomeIcons: {
@@ -53,10 +56,52 @@ export const expenseData = [
     note: 'traskuciai, energetinis gerimas',
   },
   {
+    amount: 5,
+    category: 'food',
+    date: '2024-05-01',
+    note: 'traskuciai, energetinis gerimas',
+  },
+  {
     amount: 10,
     category: 'car',
     date: '2024-05-01',
     note: 'degalai degalineje',
+  },
+  {
+    amount: 10,
+    category: 'car',
+    date: '2024-05-01',
+    note: 'degalai degalineje',
+  },
+  {
+    amount: 10,
+    category: 'holiday',
+    date: '2024-05-01',
+    note: 'atostogos',
+  },
+  {
+    amount: 30,
+    category: 'holiday',
+    date: '2024-05-01',
+    note: 'atostogos',
+  },
+  {
+    amount: 10,
+    category: 'sport',
+    date: '2024-05-01',
+    note: 'sportas',
+  },
+  {
+    amount: 10,
+    category: 'sport',
+    date: '2024-05-01',
+    note: 'sportas',
+  },
+  {
+    amount: 10,
+    category: 'sport',
+    date: '2024-05-01',
+    note: 'sportas',
   },
 ];
 
@@ -74,3 +119,25 @@ export const incomeData = [
     note: 'pardaviau kompa',
   },
 ];
+
+export function sumDataByCategory(arr: any) {
+  return arr.reduce((acc: any, curr: any) => {
+    if (acc[curr.category]) {
+      acc[curr.category] = acc[curr.category] + curr.amount;
+    } else {
+      acc[curr.category] = curr.amount;
+    }
+    return acc;
+  }, {});
+}
+
+export function createStatsList(obj: any, settings: any) {
+  return Object.keys(obj).map((x: any) => ({
+    name: x,
+    amount: obj[x],
+    color: settings.colors[x],
+  }));
+}
+
+console.log(sumDataByCategory(expenseData));
+console.log(createStatsList(sumDataByCategory(expenseData), settingsData));

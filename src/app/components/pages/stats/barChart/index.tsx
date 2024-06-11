@@ -68,7 +68,7 @@ export default function BarChartElement({ data }: any) {
         <BarChart data={data}>
           {/* <YAxis dataKey="amount" /> */}
           <Tooltip
-            cursor={{ fill: '#6AF190' }}
+            cursor={{ fill: 'white' }}
             wrapperStyle={{
               backgroundColor: 'black',
               color: 'white',
