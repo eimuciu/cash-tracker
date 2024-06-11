@@ -15,6 +15,8 @@ export default function ListPage() {
     setTabSelectionClicked(!tabSelectionClicked);
   };
 
+  console.log(incomeList);
+
   return (
     <section
       className="rounded-[5px] h-[100%] p-[10px] border-[1px]"
@@ -32,33 +34,34 @@ export default function ListPage() {
         </button>
       </div>
       <div>
-        {!tabSelectionClicked
-          ? expenseList.map((x: any) => (
-              <div key={x.note}>
-                <ListElement
-                  iconUrl={
-                    (settings.expenseIcons as any)[x.category.toLowerCase()]
-                  }
-                  currency={settings.currency}
-                  category={x.category}
-                  date={x.date}
-                  note={x.note}
-                  amount={x.amount}
-                />
-              </div>
-            ))
-          : incomeList.map((x: any) => (
-              <div key={x.note}>
-                <ListElement
-                  iconUrl={settings.incomeIcons[x.source.toLowerCase()]}
-                  currency={settings.currency}
-                  category={x.source}
-                  date={x.date}
-                  note={x.note}
-                  amount={x.amount}
-                />
-              </div>
-            ))}
+        {!tabSelectionClicked &&
+          expenseList.map((x: any) => (
+            <div key={x.note}>
+              <ListElement
+                iconUrl={
+                  (settings.expenseIcons as any)[x.category.toLowerCase()]
+                }
+                currency={settings.currency}
+                category={x.category}
+                date={x.date}
+                note={x.note}
+                amount={x.amount}
+              />
+            </div>
+          ))}
+        {tabSelectionClicked &&
+          incomeList.map((x: any) => (
+            <div key={x.note}>
+              <ListElement
+                iconUrl={settings.incomeIcons[x.source.toLowerCase()]}
+                currency={settings.currency}
+                category={x.source}
+                date={x.date}
+                note={x.note}
+                amount={x.amount}
+              />
+            </div>
+          ))}
       </div>
     </section>
   );
