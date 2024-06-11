@@ -4,6 +4,7 @@ import React from 'react';
 import DataInflow from './dataInflow';
 import Budget from './budget';
 import { useThemeContext } from '@/app/store/themeStore';
+import { useDataContext } from '@/app/store/dataStore';
 
 // AWAITING DATA START
 const expenseCategory = ['Exone', 'Extwo', 'Exthree', 'Exfour'];
@@ -13,6 +14,7 @@ const incomeCategory = ['Inone', 'Intwo', 'Inthree', 'Infour'];
 export default function HomePage() {
   const [tab, setTab] = React.useState<string>('expense');
   const { themeColorsList }: any = useThemeContext();
+  const { settings }: any = useDataContext();
 
   const handlePickTab = (tabName: string) => {
     setTab(tabName);
@@ -62,7 +64,9 @@ export default function HomePage() {
           </p>
           <DataInflow
             selectCategory={
-              tab === 'expense' ? expenseCategory : incomeCategory
+              tab === 'expense'
+                ? settings.expenseCategories
+                : settings.incomeSource
             }
           />
         </div>
