@@ -68,7 +68,10 @@ export default function DataInflow({
         selectData={selectCategory}
       />
       <form onSubmit={formik.handleSubmit} className="flex flex-col h-[100%]">
-        <div className={commonClasses + ' ' + 'p-[0px] flex flex-col'}>
+        <div
+          className={commonClasses + ' ' + 'flex flex-col'}
+          style={{ padding: 0 }}
+        >
           <input
             id="amountInput"
             name="amount"
@@ -84,9 +87,8 @@ export default function DataInflow({
         </div>
 
         <div
-          className={
-            commonClasses + ' ' + 'grow outline-none p-[0px] flex flex-col'
-          }
+          className={commonClasses + ' ' + 'grow outline-none flex flex-col'}
+          style={{ padding: 0 }}
         >
           <textarea
             name="note"
