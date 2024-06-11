@@ -12,15 +12,6 @@ interface Props {
   children: any;
 }
 
-// const colorPalette = {
-//   activeColor: '#880D1E',
-//   firstColor: '#D8D4F2',
-//   secondColor: '#D1AC00',
-//   thirdColor: '#C6E0FF',
-//   fourthColor: '#91F5AD',
-//   greyedColor: '#F5F5F5',
-// };
-
 export function DataContextProvider({ children }: Props) {
   const [settings, setSettings] = useState(settingsData);
   const [expenseList, setExpenseList] = useState(expenseData);
@@ -32,13 +23,18 @@ export function DataContextProvider({ children }: Props) {
     activeCurrency: string,
     currenciesList: string[],
   ) => {
-    console.log('activeCurrency: ', activeCurrency);
-    console.log('currenciesList: ', currenciesList);
     setSettings((prev) => ({
       ...prev,
       currency: activeCurrency,
       currenciesList,
     }));
+    // AWAITING FOR AN API CALL
+  };
+
+  const addCategoriesSettings = (catArr: string[]) => {
+    setSettings((prev) => ({ ...prev, expenseCategories: catArr }));
+    // NEED TO CREATE A *COLOR FOR A NEWLY ADDED CATEGORY
+    // NEED AN *ICON FOR A NEWLY ADDED CATEGORY
     // AWAITING FOR AN API CALL
   };
 
@@ -50,6 +46,7 @@ export function DataContextProvider({ children }: Props) {
         expenseList,
         incomeList,
         addCurrencySettings,
+        addCategoriesSettings,
       }}
     >
       {children}

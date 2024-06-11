@@ -1,26 +1,34 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { MdLibraryAdd } from 'react-icons/md';
 import { FaTrashAlt } from 'react-icons/fa';
-
-{
-  /* AWAITING DATA */
-}
-const settingData = ['Food', 'Car', 'Sport', 'Clothes', 'Rent', 'Holiday'];
+import { useDataContext } from '@/app/store/dataStore';
 
 export default function CategoriesSetting() {
-  const [categoriesList, setCategoriesList] = useState(settingData);
+  const [categoriesList, setCategoriesList] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { settings, addCategoriesSettings }: any = useDataContext();
+
+  useEffect(() => {
+    setCategoriesList(settings.expenseCategories);
+  }, [settings.expenseCategories]);
 
   const addNewCategory = () => {
     if (inputRef.current && inputRef.current.value) {
       const inputValue = inputRef.current.value;
-      setCategoriesList((prev) => [...prev, inputValue]);
-      inputRef.current.value = '';
+      if (!categoriesList.includes(inputValue)) {
+        setCategoriesList((prev) => [...prev, inputValue]);
+        inputRef.current.value = '';
+      }
     }
   };
 
   const removeCategoryFromList = (catName: string) => {
     setCategoriesList((prev) => prev.filter((x) => x !== catName));
+  };
+
+  const onCategoriesSettingsConfirm = () => {
+    addCategoriesSettings(categoriesList);
   };
 
   return (
@@ -51,7 +59,12 @@ export default function CategoriesSetting() {
         />
       </div>
       <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-        <button className="w-[100%] h-[100%]">Confirm</button>
+        <button
+          onClick={onCategoriesSettingsConfirm}
+          className="w-[100%] h-[100%]"
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );
