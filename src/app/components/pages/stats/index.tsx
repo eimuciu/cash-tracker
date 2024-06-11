@@ -10,6 +10,8 @@ import './style.css';
 import { data as dataList } from './manifestData';
 import Modal from '../../modal';
 import useModal from '../../modal/useModal';
+import ListElement from '../list/listElement';
+import { useDataContext } from '@/app/store/dataStore';
 
 const icons = [
   { name: 'Cellphone', icon: '/icons/cellphone.png' },
@@ -48,6 +50,7 @@ export default function StatsPage() {
     name: string;
     icon: string;
   } | null>(null);
+  const { expenseList, settings }: any = useDataContext();
   // Scroll behaviour start
   const scrollElRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -79,12 +82,75 @@ export default function StatsPage() {
         showModal={showModal}
         closeModal={handleCloseModal}
       >
-        <div>one</div>
-        <div>two</div>
-        <div>three</div>
+        {expenseList.map((x: any, i: number) => (
+          <ListElement
+            key={x.note + i}
+            iconUrl={settings.expenseIcons[x.category]}
+            category={x.category}
+            date={x.date}
+            amount={x.amount}
+            note={x.note}
+            currency={settings.currency}
+          />
+        ))}
+        {expenseList.map((x: any, i: number) => (
+          <ListElement
+            key={x.note + i}
+            iconUrl={settings.expenseIcons[x.category]}
+            category={x.category}
+            date={x.date}
+            amount={x.amount}
+            note={x.note}
+            currency={settings.currency}
+          />
+        ))}
+        {expenseList.map((x: any, i: number) => (
+          <ListElement
+            key={x.note + i}
+            iconUrl={settings.expenseIcons[x.category]}
+            category={x.category}
+            date={x.date}
+            amount={x.amount}
+            note={x.note}
+            currency={settings.currency}
+          />
+        ))}
+        {expenseList.map((x: any, i: number) => (
+          <ListElement
+            key={x.note + i}
+            iconUrl={settings.expenseIcons[x.category]}
+            category={x.category}
+            date={x.date}
+            amount={x.amount}
+            note={x.note}
+            currency={settings.currency}
+          />
+        ))}
+        {expenseList.map((x: any, i: number) => (
+          <ListElement
+            key={x.note + i}
+            iconUrl={settings.expenseIcons[x.category]}
+            category={x.category}
+            date={x.date}
+            amount={x.amount}
+            note={x.note}
+            currency={settings.currency}
+          />
+        ))}
+        {expenseList.map((x: any, i: number) => (
+          <ListElement
+            key={x.note + i}
+            iconUrl={settings.expenseIcons[x.category]}
+            category={x.category}
+            date={x.date}
+            amount={x.amount}
+            note={x.note}
+            currency={settings.currency}
+          />
+        ))}
       </Modal>
       <div className="w-[100%] parentScroll">
-        <div ref={scrollElRef} className="childScroll" id='style-4'>
+        <div ref={scrollElRef} className="childScroll" id="style-4">
           {chartElement === 'bar' && <BarChartElement data={data} />}
           {chartElement === 'pie' && <PieChartElement />}
           {chartElement === 'radar' && <RadarChartElement />}
@@ -95,6 +161,7 @@ export default function StatsPage() {
           <div
             key={x.name}
             onClick={() => {
+              console.log(x);
               handleSettingClick(x.name);
               setCurrentExpense(x);
             }}
