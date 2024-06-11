@@ -1,48 +1,48 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { MdLibraryAdd } from 'react-icons/md';
 import { useThemeContext } from '@/app/store/themeStore';
-
-{
-  /* AWAITING DATA */
-}
-const settingData = [
-  { currency: 'Euro €' },
-  { currency: 'Dollars $' },
-  { currency: 'Pounds £' },
-];
+import { useDataContext } from '@/app/store/dataStore';
 
 export default function CurrencySetting() {
-  const [activeCurrency, setActiveCurrency] = useState<string>(
-    settingData[0].currency,
-  );
-  const [currenciesList, setCurrenciesList] = useState(settingData);
+  const [activeCurrency, setActiveCurrency] = useState<string>('');
+  const [currenciesList, setCurrenciesList] = useState<string[] | []>([]);
+
   const inputRef = useRef<HTMLInputElement>(null);
+
   const { themeColorsList }: any = useThemeContext();
+
   const addNewCurrency = () => {
     if (inputRef.current && inputRef.current.value) {
       const inputValue = inputRef.current.value;
-      setCurrenciesList((prev) => [...prev, { currency: inputValue }]);
+      setCurrenciesList((prev: any) => [...prev, inputValue]);
       inputRef.current.value = '';
     }
   };
 
+  const { settings }: any = useDataContext();
+
+  useEffect(() => {
+    setActiveCurrency(settings.currency);
+    setCurrenciesList(settings.currenciesList);
+  }, [settings.currency, settings.currenciesList]);
+
   return (
     <div className="flex flex-col items-center w-[100%] gap-[10px]">
       <div className="w-[50%] flex flex-col gap-[5px]">
-        {currenciesList.map((x) => (
+        {currenciesList.map((x: any) => (
           <div
-            key={x.currency}
+            key={x}
             className="text-center rounded-[5px] cursor-pointer"
             style={
-              x.currency == activeCurrency
+              x[x.length - 1] == activeCurrency
                 ? { backgroundColor: themeColorsList.secondColor }
                 : {}
             }
             onClick={() => {
-              setActiveCurrency(x.currency);
+              setActiveCurrency(x[x.length - 1]);
             }}
           >
-            {x.currency}
+            {x}
           </div>
         ))}
       </div>

@@ -28,6 +28,8 @@ export function DataContextProvider({ children }: Props) {
   const [budget, setBudget] = useState(budgetData);
   // const [activePeriodFilter, setPeriodSelection] = useState('Current month');
 
+  
+
   return (
     <DataContext.Provider
       value={{

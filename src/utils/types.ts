@@ -24,7 +24,7 @@ export const settingsData = {
     fourthColor: '#F5F5F5',
     greyedColor: 'white',
   },
-  currenciesList: [],
+  currenciesList: ['Euro €', 'Dollars $', 'Pounds £'],
   expenseIcons: {
     food: '/icons/burger.png',
     holiday: '/icons/holiday.png',
