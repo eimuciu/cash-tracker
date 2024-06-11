@@ -84,7 +84,7 @@ export default function StatsPage() {
         <div>three</div>
       </Modal>
       <div className="w-[100%] parentScroll">
-        <div ref={scrollElRef} className="childScroll">
+        <div ref={scrollElRef} className="childScroll" id='style-4'>
           {chartElement === 'bar' && <BarChartElement data={data} />}
           {chartElement === 'pie' && <PieChartElement />}
           {chartElement === 'radar' && <RadarChartElement />}
