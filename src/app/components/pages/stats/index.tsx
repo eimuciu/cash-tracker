@@ -66,7 +66,7 @@ export default function StatsPage() {
       <Modal
         header={
           currentExpense ? (
-            <div className="flex gap-[5px]">
+            <div className="flex gap-[10px]">
               <div className="w-[25px] h-[25px] relative">
                 <Image src={currentExpense.icon} fill alt="icon" />
               </div>

@@ -57,7 +57,7 @@ export default function LayoutWrapper({ children }: Props) {
               <div
                 id="shockwave"
                 onClick={toggleNavbar}
-                className="w-[15px] h-[15px] fixed rounded-[50%] left-[15px] top-[15px] hidden md:block outline-2 outline outline-offset-2 z-10"
+                className="w-[15px] h-[15px] fixed rounded-[50%] left-[5px] top-[5px] hidden md:block outline-2 outline outline-offset-2 z-10"
                 style={{
                   backgroundColor: themeColorsList.activeColor,
                   outlineColor: themeColorsList.activeColor,

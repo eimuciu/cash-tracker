@@ -68,28 +68,37 @@ export default function DataInflow({
         selectData={selectCategory}
       />
       <form onSubmit={formik.handleSubmit} className="flex flex-col h-[100%]">
-        <div className="text-[#880D1E] text-[12px]">
-          {formik.errors.amount && formik.errors.amount}
+        <div className={commonClasses + ' ' + 'p-[0px] flex flex-col'}>
+          <input
+            id="amountInput"
+            name="amount"
+            className={commonClasses + ' outline-none mb-0'}
+            placeholder="0.00"
+            type="number"
+            onChange={formik.handleChange}
+            value={formik.values.amount}
+          />
+          <div className="text-[#880D1E] text-[10px] px-[5px]">
+            {formik.errors.amount && formik.errors.amount}
+          </div>
         </div>
-        <input
-          id="amountInput"
-          name="amount"
-          className={commonClasses + ' outline-none'}
-          placeholder="0.00"
-          type="number"
-          onChange={formik.handleChange}
-          value={formik.values.amount}
-        />
-        <div className="text-[#880D1E] text-[12px]">
-          {formik.errors.note && formik.errors.note}
+
+        <div
+          className={
+            commonClasses + ' ' + 'grow outline-none p-[0px] flex flex-col'
+          }
+        >
+          <textarea
+            name="note"
+            className={commonClasses + ' ' + 'h-[100%] mb-0'}
+            placeholder="note"
+            onChange={formik.handleChange}
+            value={formik.values.note}
+          />
+          <div className="text-[#880D1E] text-[10px] px-[5px]">
+            {formik.errors.note && formik.errors.note}
+          </div>
         </div>
-        <textarea
-          name="note"
-          className={commonClasses + ' ' + 'grow outline-none'}
-          placeholder="note"
-          onChange={formik.handleChange}
-          value={formik.values.note}
-        />
         <button
           type="submit"
           className="text-center w-[100%] rounded  bg-[#F5F5F5] py-[5px] mt-[5px]"
