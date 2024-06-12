@@ -2,22 +2,14 @@ import { ChangeEvent, ChangeEventHandler, useState, useEffect } from 'react';
 import './style.css';
 import { useDataContext } from '@/app/store/dataStore';
 
-// {
-//   /* AWAITING DATA */
-// }
-// const settingData = [
-//   { category: 'Food', color: '#8F8B66' },
-//   { category: 'Car', color: '#F8F32B' },
-//   { category: 'Sport', color: '#256D7B' },
-//   { category: 'Clothes', color: '#C6A664' },
-//   { category: 'Rent', color: '#3D642D' },
-//   { category: 'Holiday', color: '#721422' },
-// ];
+interface Props {
+  closeModal: () => void;
+}
 
-export default function ColorsSetting() {
+export default function ColorsSetting({ closeModal }: Props) {
   const [colorsList, setColorsList] = useState<{ [key: string]: string }>({});
 
-  const { settings }: any = useDataContext();
+  const { settings, addColorSettings }: any = useDataContext();
 
   useEffect(() => {
     setColorsList(settings.colors);
@@ -28,6 +20,11 @@ export default function ColorsSetting() {
     item: string,
   ) => {
     setColorsList((prev) => ({ ...prev, [item]: event.target.value }));
+  };
+
+  const onColorSettingsConfirm = () => {
+    addColorSettings(colorsList);
+    closeModal();
   };
 
   return (
@@ -51,7 +48,9 @@ export default function ColorsSetting() {
         ))}
       </div>
       <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-        <button className="w-[100%] h-[100%]">Confirm</button>
+        <button onClick={onColorSettingsConfirm} className="w-[100%] h-[100%]">
+          Confirm
+        </button>
       </div>
     </div>
   );

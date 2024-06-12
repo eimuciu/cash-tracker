@@ -42,7 +42,9 @@ export default function SettingsPage() {
         {settingName == 'Categories' && (
           <CategoriesSetting closeModal={handleCloseModal} />
         )}
-        {settingName == 'Colors' && <ColorsSetting />}
+        {settingName == 'Colors' && (
+          <ColorsSetting closeModal={handleCloseModal} />
+        )}
         {settingName == 'Source' && (
           <SourceSetting closeModal={handleCloseModal} />
         )}

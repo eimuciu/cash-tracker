@@ -121,6 +121,11 @@ export function DataContextProvider({ children }: Props) {
     // AWAITING FOR AN API CALL
   };
 
+  const addColorSettings = (colObj: { [key: string]: string }) => {
+    // DO I NEED TO CHECK IF THERE ARE ANY CHANGES AT ALL BEFORE AMENDING AN OBJECT OF COLORS ???
+    setSettings((prev) => ({ ...prev, colors: colObj as any }));
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -131,6 +136,7 @@ export function DataContextProvider({ children }: Props) {
         addCurrencySettings,
         addCategoriesSettings,
         addSourceSettings,
+        addColorSettings,
       }}
     >
       {children}
