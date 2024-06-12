@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import BarChartElement from './barChart';
 import PieChartElement from './pieChart';
 import RadarChartElement from './radarChart';
+import VerticalChartElement from './verticalChart';
 import Image from 'next/image';
 import { useThemeContext } from '@/app/store/themeStore';
 import './style.css';
@@ -14,36 +15,12 @@ import ListElement from '../list/listElement';
 import { useDataContext } from '@/app/store/dataStore';
 import { sumDataByCategory, createStatsList } from '@/utils/types';
 
-// const icons = [
-//   { name: 'Cellphone', icon: '/icons/cellphone.png' },
-//   { name: 'Child', icon: '/icons/child.png' },
-//   { name: 'Cleaning', icon: '/icons/cleaning.png' },
-//   { name: 'Clothing', icon: '/icons/clothing.png' },
-//   { name: 'Debt', icon: '/icons/debt.png' },
-//   { name: 'Food', icon: '/icons/food.png' },
-//   { name: 'Gas', icon: '/icons/gas.png' },
-//   { name: 'Gift', icon: '/icons/gift.png' },
-//   { name: 'Healthcare', icon: '/icons/healthcare.png' },
-//   { name: 'Home owning', icon: '/icons/homeowning.png' },
-//   { name: 'House', icon: '/icons/house.png' },
-//   { name: 'Internet', icon: '/icons/internet.png' },
-//   { name: 'Mortgage', icon: '/icons/mortgage.png' },
-//   { name: 'Pets', icon: '/icons/pets.png' },
-//   { name: 'Repairs', icon: '/icons/repairs.png' },
-//   { name: 'Subscription', icon: '/icons/subscription.png' },
-//   { name: 'Taxes', icon: '/icons/taxes.png' },
-//   { name: 'Transportation', icon: '/icons/transportation.png' },
-//   { name: 'Utility', icon: '/icons/utility.png' },
-// ];
-
 function sortArray(chartData: any) {
   return chartData.sort((a: any, b: any) => b.amount - a.amount);
 }
 
-// const data = sortArray(dataList);
-
 export default function StatsPage() {
-  const [chartElement, setChartElement] = React.useState<string>('bar');
+  const [chartElement, setChartElement] = React.useState<string>('vertical');
   const { themeColorsList }: any = useThemeContext();
   const { showModal, settingName, handleSettingClick, handleCloseModal } =
     useModal();
@@ -58,8 +35,6 @@ export default function StatsPage() {
     }
   }, []);
   // Scroll behaviour end
-
-  console.log(currentExpense);
 
   return (
     <div
@@ -112,6 +87,13 @@ export default function StatsPage() {
           )}
           {chartElement === 'pie' && <PieChartElement />}
           {chartElement === 'radar' && <RadarChartElement />}
+          {chartElement === 'vertical' && (
+            <VerticalChartElement
+              data={sortArray(
+                createStatsList(sumDataByCategory(expenseList), settings),
+              )}
+            />
+          )}
         </div>
       </div>
       <div className="mt-[25px] flex gap-[30px] justify-center flex-wrap">
