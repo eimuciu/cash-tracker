@@ -126,6 +126,11 @@ export function DataContextProvider({ children }: Props) {
     setSettings((prev) => ({ ...prev, colors: colObj as any }));
   };
 
+  const addIconSettings = (icnObj: { [key: string]: string }) => {
+    setSettings((prev) => ({ ...prev, expenseIcons: icnObj as any }));
+    console.log(icnObj);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -137,6 +142,7 @@ export function DataContextProvider({ children }: Props) {
         addCategoriesSettings,
         addSourceSettings,
         addColorSettings,
+        addIconSettings,
       }}
     >
       {children}

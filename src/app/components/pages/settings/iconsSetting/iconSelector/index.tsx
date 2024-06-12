@@ -22,7 +22,7 @@ export default function IconSelector({ showSelector, onIconSelection }: Props) {
             onIconSelection(x);
           }}
         >
-          <div className="w-[50px] h-[50px] relative cursor-pointer">
+          <div className="w-[25px] h-[25px] relative cursor-pointer">
             <Image src={x} fill alt="icon" />
           </div>
         </div>

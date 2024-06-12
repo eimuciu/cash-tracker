@@ -48,7 +48,9 @@ export default function SettingsPage() {
         {settingName == 'Source' && (
           <SourceSetting closeModal={handleCloseModal} />
         )}
-        {settingName == 'Icons' && <IconsSetting />}
+        {settingName == 'Icons' && (
+          <IconsSetting closeModal={handleCloseModal} />
+        )}
       </Modal>
       <section
         className="rounded-[5px] h-[100%] p-[10px] border-[1px]"

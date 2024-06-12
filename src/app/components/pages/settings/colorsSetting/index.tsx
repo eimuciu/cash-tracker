@@ -36,7 +36,7 @@ export default function ColorsSetting({ closeModal }: Props) {
             className={'text-center rounded-[5px] flex justify-between'}
           >
             {x}
-            <div className="w-[25px] h-[25px]">
+            <div className="w-[20px] h-[20px]">
               <input
                 onChange={(e) => colorChangeHandler(e, x)}
                 type="color"
