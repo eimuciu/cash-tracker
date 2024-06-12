@@ -34,6 +34,8 @@ export const settingsData = {
   incomeIcons: {
     job: '/icons/salary.png',
     selling: '/icons/investment.png',
+    interests: '/icons/default.png',
+    investment: '/icons/default.png',
   },
 };
 

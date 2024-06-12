@@ -81,6 +81,47 @@ export function DataContextProvider({ children }: Props) {
     // AWAITING FOR AN API CALL
   };
 
+  const addSourceSettings = (srcArr: string[]) => {
+    // CHECK IF THERE ARE NO CHANGES IN ARRAY DIFFERENCE THEN DO NOTHING IN THIS FUNCTION
+    const newSources = srcArr.filter((x) => !settings.incomeSource.includes(x));
+
+    const removedSources = settings.incomeSource.filter(
+      (x) => !srcArr.includes(x),
+    );
+
+    let newState = { ...settings, incomeSource: srcArr };
+
+    if (newSources.length) {
+      const newIcons: any = {};
+
+      newSources.forEach((x: string) => {
+        newIcons[x] = '/icons/default.png';
+      });
+
+      newState = {
+        ...newState,
+        incomeIcons: { ...newState.incomeIcons, ...newIcons },
+      };
+    }
+
+    if (removedSources.length) {
+      const removedIcons: any = { ...newState.incomeIcons };
+
+      removedSources.forEach((x) => {
+        delete removedIcons[x];
+      });
+
+      newState = {
+        ...newState,
+        incomeIcons: removedIcons,
+      };
+    }
+
+    setSettings(newState);
+    console.log(newState);
+    // AWAITING FOR AN API CALL
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -90,6 +131,7 @@ export function DataContextProvider({ children }: Props) {
         incomeList,
         addCurrencySettings,
         addCategoriesSettings,
+        addSourceSettings,
       }}
     >
       {children}
