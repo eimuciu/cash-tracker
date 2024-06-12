@@ -22,7 +22,6 @@ export default function Header() {
           <div className="text-center">
             <p>Income</p>
             <p className="font-bold">
-              {/* AWAITING DATA */}
               {settings.currency}
               {sumData(incomeList).toFixed(2)}
             </p>
@@ -30,7 +29,6 @@ export default function Header() {
           <div className="text-center">
             <p>Expense</p>
             <p className="font-bold">
-              {/* AWAITING DATA */}
               {settings.currency}
               {sumData(expenseList).toFixed(2)}
             </p>
@@ -38,7 +36,6 @@ export default function Header() {
           <div className="text-center">
             <p>Profit</p>
             <p className="font-bold">
-              {/* AWAITING DATA */}
               {settings.currency}
               {(sumData(incomeList) - sumData(expenseList)).toFixed(2)}
             </p>

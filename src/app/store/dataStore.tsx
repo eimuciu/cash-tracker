@@ -131,6 +131,11 @@ export function DataContextProvider({ children }: Props) {
     setSettings((prev) => ({ ...prev, expenseIcons: icnObj as any }));
   };
 
+  const addIncomeIconSettings = (icnObj: { [key: string]: string }) => {
+    // DO I NEED TO CHECK IF THERE ARE ANY CHANGES AT ALL BEFORE AMENDING AN OBJECT OF ICONS ???
+    setSettings((prev) => ({ ...prev, incomeIcons: icnObj as any }));
+  };
+
   const addExpenseItem = (expObj: any) => {
     setExpenseList((prev) => [...prev, expObj]);
   };
@@ -154,6 +159,7 @@ export function DataContextProvider({ children }: Props) {
         addIconSettings,
         addExpenseItem,
         addIncomeItem,
+        addIncomeIconSettings,
       }}
     >
       {children}

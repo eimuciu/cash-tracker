@@ -7,6 +7,7 @@ import ColorsSetting from './colorsSetting';
 import SourceSetting from './sourceSetting';
 import IconsSetting from './iconsSetting';
 import ThemeSetting from './themeSetting';
+import IncomeIconsSetting from './incomeIconsSetting';
 import { useThemeContext } from '@/app/store/themeStore';
 
 const commonStyles = 'cursor-pointer';
@@ -48,8 +49,11 @@ export default function SettingsPage() {
         {settingName == 'Source' && (
           <SourceSetting closeModal={handleCloseModal} />
         )}
-        {settingName == 'Icons' && (
+        {settingName == 'Expense icons' && (
           <IconsSetting closeModal={handleCloseModal} />
+        )}
+        {settingName == 'Income icons' && (
+          <IncomeIconsSetting closeModal={handleCloseModal} />
         )}
       </Modal>
       <section
@@ -66,24 +70,18 @@ export default function SettingsPage() {
           >
             Currency
           </p>
+          <p className="font-bold italic">Expense</p>
           <p
-            className={commonStyles}
+            className={commonStyles + ' ' + 'ml-[15px]'}
             onClick={() => {
               handleSettingClick('Categories');
             }}
           >
             Categories
           </p>
+
           <p
-            className={commonStyles}
-            onClick={() => {
-              handleSettingClick('Source');
-            }}
-          >
-            Source
-          </p>
-          <p
-            className={commonStyles}
+            className={commonStyles + ' ' + 'ml-[15px]'}
             onClick={() => {
               handleSettingClick('Colors');
             }}
@@ -91,9 +89,26 @@ export default function SettingsPage() {
             Colors
           </p>
           <p
-            className={commonStyles}
+            className={commonStyles + ' ' + 'ml-[15px]'}
             onClick={() => {
-              handleSettingClick('Icons');
+              handleSettingClick('Expense icons');
+            }}
+          >
+            Icons
+          </p>
+          <p className="font-bold italic">Income</p>
+          <p
+            className={commonStyles + ' ' + 'ml-[15px]'}
+            onClick={() => {
+              handleSettingClick('Source');
+            }}
+          >
+            Source
+          </p>
+          <p
+            className={commonStyles + ' ' + 'ml-[15px]'}
+            onClick={() => {
+              handleSettingClick('Income icons');
             }}
           >
             Icons
