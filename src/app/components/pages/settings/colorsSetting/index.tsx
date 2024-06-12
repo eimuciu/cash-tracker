@@ -1,51 +1,50 @@
-import { ChangeEvent, ChangeEventHandler, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, useState, useEffect } from 'react';
 import './style.css';
-{
-  /* AWAITING DATA */
-}
-const settingData = [
-  { category: 'Food', color: '#8F8B66' },
-  { category: 'Car', color: '#F8F32B' },
-  { category: 'Sport', color: '#256D7B' },
-  { category: 'Clothes', color: '#C6A664' },
-  { category: 'Rent', color: '#3D642D' },
-  { category: 'Holiday', color: '#721422' },
-];
+import { useDataContext } from '@/app/store/dataStore';
+
+// {
+//   /* AWAITING DATA */
+// }
+// const settingData = [
+//   { category: 'Food', color: '#8F8B66' },
+//   { category: 'Car', color: '#F8F32B' },
+//   { category: 'Sport', color: '#256D7B' },
+//   { category: 'Clothes', color: '#C6A664' },
+//   { category: 'Rent', color: '#3D642D' },
+//   { category: 'Holiday', color: '#721422' },
+// ];
 
 export default function ColorsSetting() {
-  const [colorsList, setColorsList] = useState<
-    {
-      category: string;
-      color: string;
-    }[]
-  >(settingData);
+  const [colorsList, setColorsList] = useState<{ [key: string]: string }>({});
+
+  const { settings }: any = useDataContext();
+
+  useEffect(() => {
+    setColorsList(settings.colors);
+  }, [settings.colors]);
 
   const colorChangeHandler = (
     event: ChangeEvent<HTMLInputElement>,
-    item: { category: string; color: string },
+    item: string,
   ) => {
-    setColorsList((prev) =>
-      prev.map((x) =>
-        x.category === item.category ? { ...x, color: event.target.value } : x,
-      ),
-    );
+    setColorsList((prev) => ({ ...prev, [item]: event.target.value }));
   };
 
   return (
     <div className="flex flex-col items-center w-[100%] gap-[10px]">
       <div className="w-[50%] flex flex-col gap-[5px]">
-        {colorsList.map((x) => (
+        {Object.keys(colorsList).map((x) => (
           <div
-            key={x.category}
+            key={x}
             className={'text-center rounded-[5px] flex justify-between'}
           >
-            {x.category}
+            {x}
             <div className="w-[25px] h-[25px]">
               <input
                 onChange={(e) => colorChangeHandler(e, x)}
                 type="color"
                 className="w-[100%] h-[100%] colorInput cursor-pointer"
-                value={x.color}
+                value={colorsList[x]}
               />
             </div>
           </div>

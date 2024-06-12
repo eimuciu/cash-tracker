@@ -118,7 +118,6 @@ export function DataContextProvider({ children }: Props) {
     }
 
     setSettings(newState);
-    console.log(newState);
     // AWAITING FOR AN API CALL
   };
 
