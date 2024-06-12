@@ -1,9 +1,10 @@
 import { useThemeContext } from '@/app/store/themeStore';
 import { useDataContext } from '@/app/store/dataStore';
+import { sumData } from '@/utils/sumData';
 
 export default function Header() {
   const { themeColorsList }: any = useThemeContext();
-  const { settings }: any = useDataContext();
+  const { settings, incomeList, expenseList }: any = useDataContext();
 
   return (
     <>
@@ -14,7 +15,7 @@ export default function Header() {
         <div className="font-bold mb-[5px]">
           <p className="text-[20px]">
             {/* AWAITING DATA */}
-            January
+            AWAITING
           </p>
         </div>
         <div className="flex w-[50%] justify-around sm:w-[75%] xs:w-[100%]">
@@ -22,21 +23,24 @@ export default function Header() {
             <p>Income</p>
             <p className="font-bold">
               {/* AWAITING DATA */}
-              {settings.currency}0.00
+              {settings.currency}
+              {sumData(incomeList).toFixed(2)}
             </p>
           </div>
           <div className="text-center">
             <p>Expense</p>
             <p className="font-bold">
               {/* AWAITING DATA */}
-              {settings.currency}0.00
+              {settings.currency}
+              {sumData(expenseList).toFixed(2)}
             </p>
           </div>
           <div className="text-center">
             <p>Profit</p>
             <p className="font-bold">
               {/* AWAITING DATA */}
-              {settings.currency}0.00
+              {settings.currency}
+              {(sumData(incomeList) - sumData(expenseList)).toFixed(2)}
             </p>
           </div>
         </div>
