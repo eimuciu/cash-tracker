@@ -37,7 +37,7 @@ export default function SettingsPage() {
         closeModal={handleCloseModal}
       >
         {settingName == 'Currency' && <CurrencySetting closeModal={handleCloseModal} />}
-        {settingName == 'Categories' && <CategoriesSetting />}
+        {settingName == 'Categories' && <CategoriesSetting closeModal={handleCloseModal} />}
         {settingName == 'Colors' && <ColorsSetting />}
         {settingName == 'Source' && <SourceSetting />}
         {settingName == 'Icons' && <IconsSetting />}

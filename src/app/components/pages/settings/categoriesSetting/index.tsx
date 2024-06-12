@@ -3,7 +3,11 @@ import { MdLibraryAdd } from 'react-icons/md';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useDataContext } from '@/app/store/dataStore';
 
-export default function CategoriesSetting() {
+interface Props {
+  closeModal: () => void;
+}
+
+export default function CategoriesSetting({ closeModal }: Props) {
   const [categoriesList, setCategoriesList] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -29,6 +33,7 @@ export default function CategoriesSetting() {
 
   const onCategoriesSettingsConfirm = () => {
     addCategoriesSettings(categoriesList);
+    closeModal();
   };
 
   return (

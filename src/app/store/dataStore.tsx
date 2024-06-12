@@ -33,9 +33,17 @@ export function DataContextProvider({ children }: Props) {
   };
 
   const addCategoriesSettings = (catArr: string[]) => {
+    // CHECK IF THERE ARE NO CHANGES IN ARRAY DIFFERENCE THEN DO NOTHING IN THIS FUNCTION
     const newCategories = catArr.filter(
       (x) => !settings.expenseCategories.includes(x),
     );
+
+    const removedCategories = settings.expenseCategories.filter(
+      (x) => !catArr.includes(x),
+    );
+
+    let newState = { ...settings, expenseCategories: catArr };
+
     if (newCategories.length) {
       const newColors: any = {};
       const newIcons: any = {};
@@ -45,13 +53,30 @@ export function DataContextProvider({ children }: Props) {
         newIcons[x] = '/icons/default.png';
       });
 
-      setSettings((prev) => ({
-        ...prev,
-        expenseCategories: catArr,
-        colors: { ...prev.colors, ...newColors },
-        expenseIcons: { ...prev.expenseIcons, ...newIcons },
-      }));
+      newState = {
+        ...newState,
+        colors: { ...newState.colors, ...newColors },
+        expenseIcons: { ...newState.expenseIcons, ...newIcons },
+      };
     }
+
+    if (removedCategories.length) {
+      const removedColors: any = { ...newState.colors };
+      const removedIcons: any = { ...newState.expenseIcons };
+
+      removedCategories.forEach((x) => {
+        delete removedColors[x];
+        delete removedIcons[x];
+      });
+
+      newState = {
+        ...newState,
+        colors: removedColors,
+        expenseIcons: removedIcons,
+      };
+    }
+
+    setSettings(newState);
 
     // AWAITING FOR AN API CALL
   };
