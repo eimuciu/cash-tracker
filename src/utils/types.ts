@@ -44,7 +44,7 @@ export const budgetData = {
   '2024-02': [],
   '2024-03': [],
   '2024-04': [],
-  '2024-05': [
+  '2024-06': [
     { budget: 200, category: 'car' },
     { budget: 200, category: 'food' },
   ],
@@ -54,55 +54,61 @@ export const expenseData = [
   {
     amount: 5,
     category: 'food',
-    date: '2024-05-01',
+    date: '2024-06-01',
     note: 'traskuciai, energetinis gerimas',
   },
   {
     amount: 5,
     category: 'food',
-    date: '2024-05-01',
+    date: '2024-06-02',
     note: 'traskuciai, energetinis gerimas',
   },
   {
     amount: 10,
     category: 'car',
-    date: '2024-05-01',
+    date: '2024-06-03',
     note: 'degalai degalineje',
   },
   {
     amount: 10,
     category: 'car',
-    date: '2024-05-01',
+    date: '2024-06-04',
     note: 'degalai degalineje',
   },
   {
     amount: 10,
     category: 'holiday',
-    date: '2024-05-01',
+    date: '2024-06-05',
     note: 'atostogos',
   },
   {
     amount: 30,
     category: 'holiday',
-    date: '2024-05-01',
+    date: '2024-06-06',
     note: 'atostogos',
   },
   {
     amount: 10,
     category: 'sport',
-    date: '2024-05-01',
+    date: '2024-06-07',
     note: 'sportas',
   },
   {
     amount: 10,
     category: 'sport',
-    date: '2024-05-01',
+    date: '2024-06-08',
     note: 'sportas',
   },
   {
     amount: 10,
     category: 'sport',
-    date: '2024-05-01',
+    date: '2024-06-09',
+    note: 'sportas',
+  },
+  {
+    amount: 10,
+    category: 'sport',
+    date: '2024-05-09',
     note: 'sportas',
   },
 ];
@@ -111,13 +117,13 @@ export const incomeData = [
   {
     amount: 1000,
     category: 'job',
-    date: '2024-05-01',
+    date: '2024-06-01',
     note: 'alga',
   },
   {
     amount: 500,
     category: 'selling',
-    date: '2024-05-01',
+    date: '2024-06-01',
     note: 'pardaviau kompa',
   },
 ];

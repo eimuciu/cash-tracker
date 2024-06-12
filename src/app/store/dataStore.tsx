@@ -6,6 +6,7 @@ import {
   budgetData,
 } from '@/utils/types';
 import { colorGenerator } from '@/utils/colorGenerator';
+import { filterData } from '@/utils/filterData';
 
 const DataContext = createContext({});
 
@@ -18,7 +19,7 @@ export function DataContextProvider({ children }: Props) {
   const [expenseList, setExpenseList] = useState(expenseData);
   const [incomeList, setIncomeList] = useState(incomeData);
   const [budget, setBudget] = useState(budgetData);
-  // const [activePeriodFilter, setPeriodSelection] = useState('Current month');
+  const [filter, setFilter] = useState({ case: 'THIS_MONTH', options: {} });
 
   const addCurrencySettings = (
     activeCurrency: string,
@@ -142,7 +143,6 @@ export function DataContextProvider({ children }: Props) {
 
   const addIncomeItem = (incObj: any) => {
     setIncomeList((prev) => [...prev, incObj]);
-    console.log(incObj);
   };
 
   return (
@@ -150,8 +150,9 @@ export function DataContextProvider({ children }: Props) {
       value={{
         themeColorPalette: settings.theme,
         settings,
-        expenseList,
+        expenseList: filterData(expenseList, filter.case, filter.options),
         incomeList,
+        setFilter,
         addCurrencySettings,
         addCategoriesSettings,
         addSourceSettings,

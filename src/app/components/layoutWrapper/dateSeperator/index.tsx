@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css';
 import { useThemeContext } from '@/app/store/themeStore';
+import { useDataContext } from '@/app/store/dataStore';
 import Modal from '../../modal';
 import useModal from '../../modal/useModal';
 import DatePicker from '../../pages/home/dataInflow/datepicker';
@@ -17,6 +18,7 @@ export default function DateSeperator() {
   const [activeSlide, setActiveSlide] = React.useState<string>('Current month');
 
   const { themeColorsList }: any = useThemeContext();
+  const { setFilter }: any = useDataContext();
   const { showModal, settingName, handleSettingClick, handleCloseModal } =
     useModal();
 
@@ -106,6 +108,13 @@ export default function DateSeperator() {
       setToDateError('Invalid Date');
       return;
     }
+    if (
+      new Date(toDateValue) > new Date() ||
+      new Date(fromDateValue) > new Date()
+    ) {
+      alert('Dates cannot be greater than today');
+      return;
+    }
     if (!(toDateValue >= fromDateValue)) {
       alert('From date cannot be greater than To date');
       return;
@@ -114,8 +123,11 @@ export default function DateSeperator() {
     setToDateError('');
     previousDate.current = { from: fromDateValue, to: toDateValue };
     handleCloseModal();
-    // AWAITING DATA
-    // Cia reikes pasikreipti i apie del custom date patvirtinimo
+
+    setFilter({
+      case: 'CUSTOM_DATE',
+      options: { startDate: fromDateValue, finishDate: toDateValue },
+    });
   };
 
   const closeModal = () => {
@@ -168,6 +180,11 @@ export default function DateSeperator() {
             <SwiperSlide
               onClick={() => {
                 handleFilterSelection('This year');
+                setFilter((prev: any) => ({
+                  ...prev,
+                  case: 'THIS_YEAR',
+                  options: {},
+                }));
               }}
               className="cursor-pointer"
               style={
@@ -181,6 +198,11 @@ export default function DateSeperator() {
             <SwiperSlide
               onClick={() => {
                 handleFilterSelection('Previous month');
+                setFilter((prev: any) => ({
+                  ...prev,
+                  case: 'LAST_MONTH',
+                  options: {},
+                }));
               }}
               className="cursor-pointer"
               style={
@@ -194,6 +216,11 @@ export default function DateSeperator() {
             <SwiperSlide
               onClick={() => {
                 handleFilterSelection('Current month');
+                setFilter((prev: any) => ({
+                  ...prev,
+                  case: 'THIS_MONTH',
+                  options: {},
+                }));
               }}
               className="cursor-pointer"
               style={
