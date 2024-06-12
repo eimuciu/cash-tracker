@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import {
   settingsData,
   expenseData,
@@ -151,7 +151,7 @@ export function DataContextProvider({ children }: Props) {
         themeColorPalette: settings.theme,
         settings,
         expenseList: filterData(expenseList, filter.case, filter.options),
-        incomeList,
+        incomeList: filterData(incomeList, filter.case, filter.options),
         setFilter,
         addCurrencySettings,
         addCategoriesSettings,

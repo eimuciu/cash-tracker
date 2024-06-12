@@ -15,7 +15,7 @@ export default function ListPage() {
     setTabSelectionClicked(!tabSelectionClicked);
   };
 
-  console.log(incomeList);
+  console.log('Expense List: ', expenseList);
 
   return (
     <section
@@ -35,8 +35,8 @@ export default function ListPage() {
       </div>
       <div>
         {!tabSelectionClicked &&
-          expenseList.map((x: any) => (
-            <div key={x.note}>
+          expenseList.map((x: any, idx: number) => (
+            <div key={idx}>
               <ListElement
                 iconUrl={
                   (settings.expenseIcons as any)[x.category.toLowerCase()]
