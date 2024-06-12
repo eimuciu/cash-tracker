@@ -6,11 +6,6 @@ import Budget from './budget';
 import { useThemeContext } from '@/app/store/themeStore';
 import { useDataContext } from '@/app/store/dataStore';
 
-// AWAITING DATA START
-const expenseCategory = ['Exone', 'Extwo', 'Exthree', 'Exfour'];
-const incomeCategory = ['Inone', 'Intwo', 'Inthree', 'Infour'];
-// AWAITING DATA FINISH
-
 export default function HomePage() {
   const [tab, setTab] = React.useState<string>('expense');
   const { themeColorsList }: any = useThemeContext();
@@ -18,6 +13,14 @@ export default function HomePage() {
 
   const handlePickTab = (tabName: string) => {
     setTab(tabName);
+  };
+
+  const onExpenseConfirm = (expObj: any) => {
+    console.log(expObj);
+  };
+
+  const onIncomeConfirm = (incObj: any) => {
+    console.log(incObj);
   };
 
   return (
@@ -67,6 +70,13 @@ export default function HomePage() {
               tab === 'expense'
                 ? settings.expenseCategories
                 : settings.incomeSource
+            }
+            onDataConfirm={
+              tab === 'expense'
+                ? onExpenseConfirm
+                : tab === 'income'
+                ? onIncomeConfirm
+                : () => {}
             }
           />
         </div>

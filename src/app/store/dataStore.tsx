@@ -127,8 +127,8 @@ export function DataContextProvider({ children }: Props) {
   };
 
   const addIconSettings = (icnObj: { [key: string]: string }) => {
+    // DO I NEED TO CHECK IF THERE ARE ANY CHANGES AT ALL BEFORE AMENDING AN OBJECT OF ICONS ???
     setSettings((prev) => ({ ...prev, expenseIcons: icnObj as any }));
-    console.log(icnObj);
   };
 
   return (

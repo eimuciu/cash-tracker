@@ -18,8 +18,10 @@ const validationChema = Yup.object().shape({
 
 export default function DataInflow({
   selectCategory,
+  onDataConfirm,
 }: {
   selectCategory: string[];
+  onDataConfirm: (a: any) => void;
 }) {
   const [dateValue, setDateValue] = React.useState<string>('');
   const [dateError, setDateError] = React.useState<string>('');
@@ -43,15 +45,7 @@ export default function DataInflow({
         return;
       }
       setDateError('');
-      // AWAITING DATA START
-      alert(
-        JSON.stringify(
-          { ...values, date: dateValue, category: selectValue },
-          null,
-          2,
-        ),
-      );
-      // AWAITING DATA FINISH
+      onDataConfirm({ ...values, date: dateValue, category: selectValue });
       bag.resetForm();
     },
   });
