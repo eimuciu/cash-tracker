@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { MdLibraryAdd } from 'react-icons/md';
 import { useThemeContext } from '@/app/store/themeStore';
 import { useDataContext } from '@/app/store/dataStore';
+import { FaTrashAlt } from 'react-icons/fa';
 
 interface Props {
   closeModal: () => void;
@@ -34,23 +35,34 @@ export default function CurrencySetting({ closeModal }: Props) {
     closeModal();
   };
 
+  const onRemoveCurrency = (curr: string) => {
+    setCurrenciesList((prev) => prev.filter((x) => x !== curr));
+  };
+
   return (
     <div className="flex flex-col items-center w-[100%] gap-[10px]">
       <div className="w-[50%] flex flex-col gap-[5px]">
         {currenciesList.map((x: any) => (
-          <div
-            key={x}
-            className="text-center rounded-[5px] cursor-pointer"
-            style={
-              x[x.length - 1] == activeCurrency
-                ? { backgroundColor: themeColorsList.secondColor }
-                : {}
-            }
-            onClick={() => {
-              setActiveCurrency(x[x.length - 1]);
-            }}
-          >
-            {x}
+          <div key={x} className="flex gap-[10px] items-center">
+            <div
+              className="text-center rounded-[5px] cursor-pointer w-[100%]"
+              style={
+                x[x.length - 1] == activeCurrency
+                  ? { backgroundColor: themeColorsList.secondColor }
+                  : {}
+              }
+              onClick={() => {
+                setActiveCurrency(x[x.length - 1]);
+              }}
+            >
+              {x}
+            </div>
+            <FaTrashAlt
+              onClick={() => {
+                onRemoveCurrency(x);
+              }}
+              className="cursor-pointer"
+            />
           </div>
         ))}
       </div>
