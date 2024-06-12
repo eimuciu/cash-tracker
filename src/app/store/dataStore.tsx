@@ -131,6 +131,15 @@ export function DataContextProvider({ children }: Props) {
     setSettings((prev) => ({ ...prev, expenseIcons: icnObj as any }));
   };
 
+  const addExpenseItem = (expObj: any) => {
+    setExpenseList((prev) => [...prev, expObj]);
+  };
+
+  const addIncomeItem = (incObj: any) => {
+    setIncomeList((prev) => [...prev, incObj]);
+    console.log(incObj);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -143,6 +152,8 @@ export function DataContextProvider({ children }: Props) {
         addSourceSettings,
         addColorSettings,
         addIconSettings,
+        addExpenseItem,
+        addIncomeItem,
       }}
     >
       {children}

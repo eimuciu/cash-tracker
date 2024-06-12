@@ -110,13 +110,13 @@ export const expenseData = [
 export const incomeData = [
   {
     amount: 1000,
-    source: 'job',
+    category: 'job',
     date: '2024-05-01',
     note: 'alga',
   },
   {
     amount: 500,
-    source: 'selling',
+    category: 'selling',
     date: '2024-05-01',
     note: 'pardaviau kompa',
   },

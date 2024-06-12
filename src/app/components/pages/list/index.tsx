@@ -53,9 +53,9 @@ export default function ListPage() {
           incomeList.map((x: any) => (
             <div key={x.note}>
               <ListElement
-                iconUrl={settings.incomeIcons[x.source.toLowerCase()]}
+                iconUrl={settings.incomeIcons[x.category.toLowerCase()]}
                 currency={settings.currency}
-                category={x.source}
+                category={x.category}
                 date={x.date}
                 note={x.note}
                 amount={x.amount}

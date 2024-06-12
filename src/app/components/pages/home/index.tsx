@@ -9,18 +9,18 @@ import { useDataContext } from '@/app/store/dataStore';
 export default function HomePage() {
   const [tab, setTab] = React.useState<string>('expense');
   const { themeColorsList }: any = useThemeContext();
-  const { settings }: any = useDataContext();
+  const { settings, addExpenseItem, addIncomeItem }: any = useDataContext();
 
   const handlePickTab = (tabName: string) => {
     setTab(tabName);
   };
 
   const onExpenseConfirm = (expObj: any) => {
-    console.log(expObj);
+    addExpenseItem(expObj);
   };
 
   const onIncomeConfirm = (incObj: any) => {
-    console.log(incObj);
+    addIncomeItem(incObj);
   };
 
   return (
