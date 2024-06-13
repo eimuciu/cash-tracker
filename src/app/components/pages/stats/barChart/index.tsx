@@ -80,7 +80,6 @@ export default function BarChartElement({ data }: any) {
             {data.map((x: any, i: any) => (
               <Cell key={i} fill={x.color} />
             ))}
-
             <LabelList dataKey="amount" content={renderCustomizedLabel} />
           </Bar>
           <XAxis

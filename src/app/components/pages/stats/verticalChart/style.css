@@ -1,0 +1,20 @@
+.exampleScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.exampleScroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#scrollContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  #scrollContainer {
+    height: 400px;
+  }
+}
