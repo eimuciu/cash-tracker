@@ -27,8 +27,8 @@ export default function ListPage() {
   const [exlist, setExList] = useState([]);
 
   useEffect(() => {
-    // setExList(filterData(expenseList, filter.case, filter.options));
-    setExList(returnData(expenseList));
+    setExList(filterData(expenseList, filter.case, filter.options));
+    // setExList(returnData(expenseList));
   }, [expenseList, filter]);
 
   return (
