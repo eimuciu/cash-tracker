@@ -32,7 +32,11 @@ const filterDataByThisYear = (data: any) => {
 };
 
 function filterData(array: any, theCase: string, options?: any) {
+  if (theCase === 'THIS_MONTH') {
+    return filterDataByThisMonth(array);
+  }
   return array;
+
   // if (options.startDate?.length !== 0 && options.finishDate?.length !== 0) {
   //   switch (theCase) {
   //     case 'CUSTOM_DATE': {
