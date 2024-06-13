@@ -10,6 +10,10 @@ const generateKey = () => {
   return Math.floor(Math.random() * 1001 + 1) + new Date().getTime();
 };
 
+function returnData(data: any) {
+  return data;
+}
+
 export default function ListPage() {
   const [tabSelectionClicked, setTabSelectionClicked] =
     useState<boolean>(false);
@@ -23,7 +27,8 @@ export default function ListPage() {
   const [exlist, setExList] = useState([]);
 
   useEffect(() => {
-    setExList(filterData(expenseList, filter.case, filter.options));
+    // setExList(filterData(expenseList, filter.case, filter.options));
+    setExList(returnData(expenseList));
   }, [expenseList, filter]);
 
   return (
