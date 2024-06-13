@@ -115,7 +115,7 @@ export default function DateSeperator() {
       alert('Dates cannot be greater than today');
       return;
     }
-    if (!(toDateValue >= fromDateValue)) {
+    if (!(new Date(toDateValue) >= new Date(fromDateValue))) {
       alert('From date cannot be greater than To date');
       return;
     }

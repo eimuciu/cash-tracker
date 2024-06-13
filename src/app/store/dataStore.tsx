@@ -150,8 +150,8 @@ export function DataContextProvider({ children }: Props) {
       value={{
         themeColorPalette: settings.theme,
         settings,
-        // expenseList: filterData(expenseList, filter.case, filter.options),
-        expenseList: expenseList,
+        expenseList: filterData(expenseList, filter.case, filter.options),
+        // expenseList: expenseList,
         incomeList: filterData(incomeList, filter.case, filter.options),
         setFilter,
         filter,

@@ -1,17 +1,12 @@
 const filterByCustomDate = (data: any, options: any) => {
-  console.log(data);
-  console.log(options);
   return data.filter(
     (item: any) =>
-      new Date(new Date(item.date).toDateString()) >=
-        new Date(new Date(options.startDate).toDateString()) &&
-      new Date(new Date(item.date).toDateString()) <=
-        new Date(new Date(options.finishDate).toDateString()),
+      new Date(item.date) >= new Date(options.startDate) &&
+      new Date(item.date) <= new Date(options.finishDate),
   );
 };
 
 const filterDataByThisMonth = (data: any) => {
-  return data;
   const currentMonth = new Date().getMonth();
   const filteredData = data.filter(
     (item: any) => currentMonth === new Date(item.date).getMonth(),
@@ -19,10 +14,10 @@ const filterDataByThisMonth = (data: any) => {
   return filteredData;
 };
 
-const filterDataByLastMonth = (data: any) => {
-  const currentMonth = new Date().getMonth() - 1;
+const filterDataByPrevMonth = (data: any) => {
+  const prevMonth = new Date().getMonth() - 1;
   return data.filter(
-    (item: any) => currentMonth === new Date(item.date).getMonth(),
+    (item: any) => prevMonth === new Date(item.date).getMonth(),
   );
 };
 
@@ -34,34 +29,28 @@ const filterDataByThisYear = (data: any) => {
 };
 
 function filterData(array: any, theCase: string, options?: any) {
-  console.log('this is me: ', array);
-  if (theCase === 'THIS_MONTH') {
-    return filterDataByThisMonth(array);
+  if (options.startDate?.length !== 0 && options.finishDate?.length !== 0) {
+    switch (theCase) {
+      case 'CUSTOM_DATE': {
+        return filterByCustomDate(array, options);
+      }
+      default:
+        break;
+    }
   }
-  return array;
-
-  // if (options.startDate?.length !== 0 && options.finishDate?.length !== 0) {
-  //   switch (theCase) {
-  //     case 'CUSTOM_DATE': {
-  //       return filterByCustomDate(array, options);
-  //     }
-  //     default:
-  //       break;
-  //   }
-  // }
-  // switch (theCase) {
-  //   case 'THIS_MONTH': {
-  //     return filterDataByThisMonth(array);
-  //   }
-  //   case 'LAST_MONTH': {
-  //     return filterDataByLastMonth(array);
-  //   }
-  //   case 'THIS_YEAR': {
-  //     return filterDataByThisYear(array);
-  //   }
-  //   default:
-  //     break;
-  // }
+  switch (theCase) {
+    case 'THIS_MONTH': {
+      return filterDataByThisMonth(array);
+    }
+    case 'LAST_MONTH': {
+      return filterDataByPrevMonth(array);
+    }
+    case 'THIS_YEAR': {
+      return filterDataByThisYear(array);
+    }
+    default:
+      break;
+  }
 }
 
 export { filterData };

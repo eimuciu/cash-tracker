@@ -42,7 +42,7 @@ export default function ListElement({
       </div>
       <div className="w-[35%]">
         <p className="font-bold">{category}</p>
-        <p>{date}</p>
+        <p>{new Date(date).toLocaleString()}</p>
       </div>
       <div
         className="w-[45%]"

@@ -24,12 +24,12 @@ export default function ListPage() {
     setTabSelectionClicked(!tabSelectionClicked);
   };
 
-  const [exlist, setExList] = useState([]);
+  // const [exlist, setExList] = useState([]);
 
-  useEffect(() => {
-    setExList(filterData(expenseList, filter.case, filter.options));
-    // setExList(returnData(expenseList));
-  }, [expenseList, filter]);
+  // useEffect(() => {
+  //   setExList(filterData(expenseList, filter.case, filter.options));
+  //   // setExList(returnData(expenseList));
+  // }, [expenseList, filter]);
 
   return (
     <section
@@ -49,7 +49,7 @@ export default function ListPage() {
       </div>
       <div>
         {!tabSelectionClicked &&
-          exlist.map((x: any) => (
+          expenseList.map((x: any) => (
             <div key={generateKey()}>
               <ListElement
                 iconUrl={

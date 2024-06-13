@@ -8,11 +8,11 @@ export default function DatePicker({ dateValue, setDateValue }: any) {
   const refEl = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    setDateValue(new Date().toLocaleDateString());
+    setDateValue(new Date().toUTCString());
   }, [setDateValue]);
 
   const changeHandler = (e: any) => {
-    setDateValue(new Date(e.target.value).toLocaleDateString());
+    setDateValue(new Date(e.target.value).toUTCString());
   };
 
   return (
@@ -25,7 +25,9 @@ export default function DatePicker({ dateValue, setDateValue }: any) {
         }}
         className={commonClasses + ' cursor-pointer'}
       >
-        {dateValue ? dateValue : new Date().toLocaleDateString()}
+        {dateValue
+          ? new Date(dateValue).toLocaleDateString()
+          : new Date().toLocaleDateString()}
       </div>
       <div className="absolute top-0 w-[0px] h-[0px] invisible">
         <input ref={refEl} type="date" onChange={changeHandler} />
