@@ -11,10 +11,12 @@ const filterByCustomDate = (data: any, options: any) => {
 };
 
 const filterDataByThisMonth = (data: any) => {
+  return data;
   const currentMonth = new Date().getMonth();
-  return data.filter(
+  const filteredData = data.filter(
     (item: any) => currentMonth === new Date(item.date).getMonth(),
   );
+  return filteredData;
 };
 
 const filterDataByLastMonth = (data: any) => {
@@ -32,6 +34,7 @@ const filterDataByThisYear = (data: any) => {
 };
 
 function filterData(array: any, theCase: string, options?: any) {
+  console.log('this is me: ', array);
   if (theCase === 'THIS_MONTH') {
     return filterDataByThisMonth(array);
   }
