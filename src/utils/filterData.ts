@@ -32,28 +32,29 @@ const filterDataByThisYear = (data: any) => {
 };
 
 function filterData(array: any, theCase: string, options?: any) {
-  if (options.startDate?.length !== 0 && options.finishDate?.length !== 0) {
-    switch (theCase) {
-      case 'CUSTOM_DATE': {
-        return filterByCustomDate(array, options);
-      }
-      default:
-        break;
-    }
-  }
-  switch (theCase) {
-    case 'THIS_MONTH': {
-      return filterDataByThisMonth(array);
-    }
-    case 'LAST_MONTH': {
-      return filterDataByLastMonth(array);
-    }
-    case 'THIS_YEAR': {
-      return filterDataByThisYear(array);
-    }
-    default:
-      break;
-  }
+  return array;
+  // if (options.startDate?.length !== 0 && options.finishDate?.length !== 0) {
+  //   switch (theCase) {
+  //     case 'CUSTOM_DATE': {
+  //       return filterByCustomDate(array, options);
+  //     }
+  //     default:
+  //       break;
+  //   }
+  // }
+  // switch (theCase) {
+  //   case 'THIS_MONTH': {
+  //     return filterDataByThisMonth(array);
+  //   }
+  //   case 'LAST_MONTH': {
+  //     return filterDataByLastMonth(array);
+  //   }
+  //   case 'THIS_YEAR': {
+  //     return filterDataByThisYear(array);
+  //   }
+  //   default:
+  //     break;
+  // }
 }
 
 export { filterData };
