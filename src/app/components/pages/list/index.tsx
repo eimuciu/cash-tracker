@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ListElement from './listElement';
 import { useThemeContext } from '@/app/store/themeStore';
 import { useDataContext } from '@/app/store/dataStore';
+import { filterData } from '@/utils/filterData';
 
 const generateKey = () => {
   return Math.floor(Math.random() * 1001 + 1) + new Date().getTime();
@@ -13,13 +14,17 @@ export default function ListPage() {
   const [tabSelectionClicked, setTabSelectionClicked] =
     useState<boolean>(false);
   const { themeColorsList }: any = useThemeContext();
-  const { expenseList, settings, incomeList }: any = useDataContext();
+  const { expenseList, settings, incomeList, filter }: any = useDataContext();
 
   const handleSelection = () => {
     setTabSelectionClicked(!tabSelectionClicked);
   };
 
-  console.log('Expense List: ', expenseList);
+  const [exlist, setExList] = useState([]);
+
+  useEffect(() => {
+    setExList(filterData(expenseList, filter.case, filter.options));
+  }, [expenseList, filter]);
 
   return (
     <section
@@ -39,7 +44,7 @@ export default function ListPage() {
       </div>
       <div>
         {!tabSelectionClicked &&
-          expenseList.map((x: any, idx: number) => (
+          exlist.map((x: any) => (
             <div key={generateKey()}>
               <ListElement
                 iconUrl={
