@@ -5,8 +5,8 @@ import ListElement from './listElement';
 import { useThemeContext } from '@/app/store/themeStore';
 import { useDataContext } from '@/app/store/dataStore';
 
-const generateKey = (pre: any) => {
-  return `${pre}_${new Date().getTime()}`;
+const generateKey = () => {
+  return Math.floor(Math.random() * 1001 + 1) + new Date().getTime();
 };
 
 export default function ListPage() {
@@ -40,7 +40,7 @@ export default function ListPage() {
       <div>
         {!tabSelectionClicked &&
           expenseList.map((x: any, idx: number) => (
-            <div key={generateKey(x.note + x.amount)}>
+            <div key={generateKey()}>
               <ListElement
                 iconUrl={
                   (settings.expenseIcons as any)[x.category.toLowerCase()]
