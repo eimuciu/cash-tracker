@@ -24,9 +24,6 @@ export default function ListElement({
 
   return (
     <div
-      onDoubleClick={() => {
-        alert('double clicked');
-      }}
       onClick={() => {
         setHasMouseEntered(true);
       }}
