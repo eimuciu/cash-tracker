@@ -107,7 +107,7 @@ export default function Budget() {
         closeModal={onModalClose}
       >
         <div className="flex flex-col items-center w-[100%] gap-[10px]">
-          <div className="w-[50%] flex flex-col gap-[5px]">
+          <div className="w-[50%] flex flex-col gap-[5px] md:w-[75%]">
             {budgetList.map((x: any) => (
               <div
                 key={generateKey()}
