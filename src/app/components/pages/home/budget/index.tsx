@@ -185,10 +185,13 @@ export default function Budget() {
         {budget.map((x: any) => (
           <div key={generateKey()}>
             <BudgetListItem
-              value={
-                (sumData(filterByCatName(expenseList, x.category)) / x.budget) *
-                100
-              }
+              value={Number(
+                (
+                  (sumData(filterByCatName(expenseList, x.category)) /
+                    x.budget) *
+                  100
+                ).toFixed(0),
+              )}
               color={settings.colors[x.category]}
               icon={settings.expenseIcons[x.category]}
               category={x.category}
