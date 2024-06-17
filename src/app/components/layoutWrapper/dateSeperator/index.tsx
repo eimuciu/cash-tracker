@@ -138,7 +138,16 @@ export default function DateSeperator() {
 
   return (
     <>
-      <Modal header={settingName} showModal={showModal} closeModal={closeModal}>
+      <Modal
+        postHeader={
+          (activeSlide === 'Custom date' &&
+            'To get an accurate budget data select the date from the first day of a month to the last') ||
+          ''
+        }
+        header={settingName}
+        showModal={showModal}
+        closeModal={closeModal}
+      >
         <div className="flex gap-[10px]">
           <div>
             From:
