@@ -7,6 +7,7 @@ import {
 } from '@/utils/types';
 import { colorGenerator } from '@/utils/colorGenerator';
 import { filterData } from '@/utils/filterData';
+import { useAuthContext } from './authStore';
 
 const DataContext = createContext({});
 
@@ -25,6 +26,8 @@ function filterBudgetData(data: IBudget): TBudget[] {
 }
 
 export function DataContextProvider({ children }: Props) {
+  const { isAuthorized }: any = useAuthContext();
+
   const [settings, setSettings] = useState(settingsData);
   const [expenseList, setExpenseList] = useState(expenseData);
   const [incomeList, setIncomeList] = useState(incomeData);
@@ -159,6 +162,8 @@ export function DataContextProvider({ children }: Props) {
     // NEED TO MAKE A DYNAMIC DATE KEY
     setBudget((prev: any) => ({ ...prev, '2024-06': budArr }));
   };
+
+  if (!isAuthorized) return <div>hello there</div>;
 
   return (
     <DataContext.Provider

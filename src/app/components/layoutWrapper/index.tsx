@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import './style.css';
 import { ThemeContextProvider } from '@/app/store/themeStore';
 import { DataContextProvider } from '@/app/store/dataStore';
+import { AuthContextProvider } from '@/app/store/authStore';
 
 interface Props {
   children: React.ReactNode;
@@ -49,54 +50,56 @@ export default function LayoutWrapper({ children }: Props) {
   };
 
   return (
-    <DataContextProvider>
-      <ThemeContextProvider>
-        {(themeColorsList: any) =>
-          themeColorsList && (
-            <div className="flex">
-              <div
-                id="shockwave"
-                onClick={toggleNavbar}
-                className="w-[15px] h-[15px] fixed rounded-[50%] left-[5px] top-[5px] hidden md:block outline-2 outline outline-offset-2 z-10"
-                style={{
-                  backgroundColor: themeColorsList.activeColor,
-                  outlineColor: themeColorsList.activeColor,
-                }}
-              ></div>
-              <div
-                ref={elRef}
-                style={{
-                  zIndex: 2,
-                  backgroundColor: themeColorsList.secondColor,
-                }}
-                className={
-                  'py-[50px] px-[10px] min-h-screen fixed border-r-[1px]' +
-                  ' ' +
-                  `${navbarStatus ? 'md:block' : 'md:hidden'}`
-                }
-              >
-                <NavBar
-                  toggleNavbar={toggleNavbar}
-                  setNavbarStatus={setNavbarStatus}
-                />
+    <AuthContextProvider>
+      <DataContextProvider>
+        <ThemeContextProvider>
+          {(themeColorsList: any) =>
+            themeColorsList && (
+              <div className="flex">
+                <div
+                  id="shockwave"
+                  onClick={toggleNavbar}
+                  className="w-[15px] h-[15px] fixed rounded-[50%] left-[5px] top-[5px] hidden md:block outline-2 outline outline-offset-2 z-10"
+                  style={{
+                    backgroundColor: themeColorsList.activeColor,
+                    outlineColor: themeColorsList.activeColor,
+                  }}
+                ></div>
+                <div
+                  ref={elRef}
+                  style={{
+                    zIndex: 2,
+                    backgroundColor: themeColorsList.secondColor,
+                  }}
+                  className={
+                    'py-[50px] px-[10px] min-h-screen fixed border-r-[1px]' +
+                    ' ' +
+                    `${navbarStatus ? 'md:block' : 'md:hidden'}`
+                  }
+                >
+                  <NavBar
+                    toggleNavbar={toggleNavbar}
+                    setNavbarStatus={setNavbarStatus}
+                  />
+                </div>
+                <div
+                  className="w-[100%] pl-[71.125px] pr-[5px] py-[5px] md:pl-[5px] min-h-screen flex flex-col"
+                  // style={{
+                  //   paddingLeft: `${elementWidth}px`,
+                  // }}
+                >
+                  {!restrictedPaths.includes(pathname) && (
+                    <>
+                      <Header /> <DateSeperator />
+                    </>
+                  )}
+                  {children}
+                </div>
               </div>
-              <div
-                className="w-[100%] pl-[71.125px] pr-[5px] py-[5px] md:pl-[5px] min-h-screen flex flex-col"
-                // style={{
-                //   paddingLeft: `${elementWidth}px`,
-                // }}
-              >
-                {!restrictedPaths.includes(pathname) && (
-                  <>
-                    <Header /> <DateSeperator />
-                  </>
-                )}
-                {children}
-              </div>
-            </div>
-          )
-        }
-      </ThemeContextProvider>
-    </DataContextProvider>
+            )
+          }
+        </ThemeContextProvider>
+      </DataContextProvider>
+    </AuthContextProvider>
   );
 }
