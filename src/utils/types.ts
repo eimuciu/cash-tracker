@@ -40,10 +40,11 @@ export const settingsData = {
 };
 
 export const budgetData = {
-  '2024-01': [],
-  '2024-02': [],
-  '2024-03': [],
-  '2024-04': [],
+  '2024-01': [{ budget: 200, category: 'holiday' }],
+  '2024-02': [{ budget: 200, category: 'holiday' }],
+  '2024-03': [{ budget: 200, category: 'holiday' }],
+  '2024-04': [{ budget: 200, category: 'holiday' }],
+  '2024-05': [{ budget: 200, category: 'holiday' }],
   '2024-06': [
     { budget: 200, category: 'car' },
     { budget: 200, category: 'food' },

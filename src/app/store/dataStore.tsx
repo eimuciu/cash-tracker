@@ -8,21 +8,12 @@ import {
 import { colorGenerator } from '@/utils/colorGenerator';
 import { filterData } from '@/utils/filterData';
 import { useAuthContext } from './authStore';
+import { filterBudgetData } from '@/utils/filterData';
 
 const DataContext = createContext({});
 
 interface Props {
   children: any;
-}
-
-// BUDGET FILTER CONSTRUCTION
-type TBudget = { budget: number; category: string };
-interface IBudget {
-  [key: string]: TBudget[];
-}
-
-function filterBudgetData(data: IBudget): TBudget[] {
-  return data['2024-06'];
 }
 
 export function DataContextProvider({ children }: Props) {
@@ -170,7 +161,7 @@ export function DataContextProvider({ children }: Props) {
       value={{
         themeColorPalette: settings.theme,
         settings,
-        budget: filterBudgetData(budget),
+        budget: filterBudgetData(budget, filter.case),
         expenseList: filterData(expenseList, filter.case, filter.options),
         incomeList: filterData(incomeList, filter.case, filter.options),
         setFilter,

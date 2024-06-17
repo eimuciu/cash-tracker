@@ -56,4 +56,41 @@ function filterData(array: any, theCase: string, options?: any) {
   }
 }
 
-export { filterData };
+// BUDGET FILTER
+type TBudget = { budget: number; category: string };
+interface IBudget {
+  [key: string]: TBudget[];
+}
+
+function filterBudgetData(data: IBudget, dateFilter: string): TBudget[] {
+  const year = new Date().getFullYear();
+
+  if (dateFilter === 'THIS_MONTH') {
+    const currentMonth = new Date().getMonth() + 1;
+    const constructedDate = `${year}-${('0' + currentMonth).slice(-2)}`;
+    return data[constructedDate];
+  }
+
+  if (dateFilter === 'LAST_MONTH') {
+    const lastMonth = new Date().getMonth();
+    const constructedDate = `${year}-${('0' + lastMonth).slice(-2)}`;
+    return data[constructedDate];
+  }
+  // NEED TO CREATE THIS YEAR BUDGET AND CUSTOM DATE BUDGET
+  if (dateFilter === 'THIS_YEAR') {
+    // const lastMonth = new Date().getMonth();
+    // const constructedDate = `${year}-${('0' + lastMonth).slice(-2)}`;
+    // return data[constructedDate];
+    return [];
+  }
+  if (dateFilter === 'CUSTOM_DATE') {
+    // const lastMonth = new Date().getMonth();
+    // const constructedDate = `${year}-${('0' + lastMonth).slice(-2)}`;
+    // return data[constructedDate];
+    return [];
+  }
+
+  return [];
+}
+
+export { filterData, filterBudgetData };
