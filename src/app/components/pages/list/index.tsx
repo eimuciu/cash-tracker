@@ -8,7 +8,7 @@ import Modal from '@/app/components/modal';
 import useModal from '../../modal/useModal';
 import DataInflow from './dataInflow';
 
-const generateKey = () => {
+export const generateKey = () => {
   return Math.floor(Math.random() * 1001 + 1) + new Date().getTime();
 };
 

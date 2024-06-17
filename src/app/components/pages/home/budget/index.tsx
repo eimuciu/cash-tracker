@@ -8,6 +8,10 @@ import useModal from '@/app/components/modal/useModal';
 import { FaTrashAlt } from 'react-icons/fa';
 import { MdLibraryAdd } from 'react-icons/md';
 import SelectPicker from '../dataInflow/selectPicker';
+import './style.css';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { generateKey } from '../../list';
 
 function filterSelectValues(expenseCategories: any, budget: any) {
   return expenseCategories.filter((x: any) => {
@@ -21,6 +25,10 @@ function filterSelectValues(expenseCategories: any, budget: any) {
     return isMatch;
   });
 }
+
+const validationChema = Yup.object().shape({
+  amount: Yup.number().positive('error').required('error'),
+});
 
 export default function Budget() {
   const { showModal, settingName, handleSettingClick, handleCloseModal } =
@@ -42,6 +50,19 @@ export default function Budget() {
     });
   }, [budget, settings.expenseCategories]);
 
+  const formik = useFormik({
+    initialValues: {
+      amount: '',
+    },
+    validationSchema: validationChema,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: (values, bag) => {
+      console.log({ budget: values.amount, category: selectValue });
+      bag.resetForm();
+    },
+  });
+
   const onAddNewBudget = () => {
     // if (inputRef.current && inputRef.current.value) {
     //   const inputValue = inputRef.current.value;
@@ -58,12 +79,17 @@ export default function Budget() {
 
   const onBudgetConfirm = () => {
     // addCategoriesSettings(categoriesList);
+    formik.handleSubmit();
     // handleCloseModal();
-    console.log(selectValue);
   };
 
   const onSetBudgetClick = () => {
     handleSettingClick('Budget');
+  };
+
+  const onModalClose = () => {
+    formik.resetForm();
+    handleCloseModal();
   };
 
   return (
@@ -72,13 +98,13 @@ export default function Budget() {
         header={settingName}
         postHeader="Set your budget for this month"
         showModal={showModal}
-        closeModal={handleCloseModal}
+        closeModal={onModalClose}
       >
         <div className="flex flex-col items-center w-[100%] gap-[10px]">
           <div className="w-[50%] flex flex-col gap-[5px]">
             {budgetList.map((x: any) => (
               <div
-                key={x.budget}
+                key={generateKey()}
                 className={
                   'text-center rounded-[5px] flex justify-between mb-[10px] flex justify-between'
                 }
@@ -103,7 +129,7 @@ export default function Budget() {
             ))}
           </div>
           <div className="w-[100%] flex gap-[5px] items-center flex items-center">
-            <div className="w-[25%] self-stretch">
+            <div className="w-[30%] self-stretch">
               <SelectPicker
                 propStyles={{ marginBottom: 0 }}
                 selectValue={selectValue}
@@ -111,18 +137,32 @@ export default function Budget() {
                 selectData={selectValuesList}
               />
             </div>
-            <input
-              ref={inputRef}
-              className="w-[100%] rounded-[5px] py-[2.5px] px-[10px] outline-none self-stretch"
-              placeholder="Type..."
-            />
+            <div className="w-[70%] self-stretch relative">
+              <input
+                id="amountInput"
+                type="number"
+                name="amount"
+                ref={inputRef}
+                className="w-[100%] rounded-[5px] py-[2.5px] px-[10px] outline-none h-[100%]"
+                placeholder="0.00"
+                onChange={formik.handleChange}
+                value={formik.values.amount}
+              />
+              <div className="text-[#880D1E] text-[10px] px-[5px] absolute end-[0px]">
+                {formik.errors.amount && formik.errors.amount}
+              </div>
+            </div>
             <MdLibraryAdd
               onClick={onAddNewBudget}
               className="h-[30px] w-[30px] color-[red] cursor-pointer"
             />
           </div>
           <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-            <button onClick={onBudgetConfirm} className="w-[100%] h-[100%]">
+            <button
+              type="submit"
+              onClick={onBudgetConfirm}
+              className="w-[100%] h-[100%]"
+            >
               Confirm
             </button>
           </div>
@@ -139,7 +179,7 @@ export default function Budget() {
           </button>
         </div>
         {budgetList.map((x: any) => (
-          <div key={x.budget}>
+          <div key={generateKey()}>
             <BudgetListItem
               value={75}
               color={settings.colors[x.category]}
