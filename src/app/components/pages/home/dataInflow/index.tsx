@@ -87,7 +87,7 @@ export default function DataInflow({
         >
           <textarea
             name="note"
-            className={commonClasses + ' ' + 'h-[100%] mb-0'}
+            className={commonClasses + ' ' + 'h-[100%] mb-0 outline-0'}
             placeholder="note"
             onChange={formik.handleChange}
             value={formik.values.note}
