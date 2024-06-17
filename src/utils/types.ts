@@ -147,6 +147,3 @@ export function createStatsList(obj: any, settings: any) {
     color: settings.colors[x],
   }));
 }
-
-console.log(sumDataByCategory(expenseData));
-console.log(createStatsList(sumDataByCategory(expenseData), settingsData));
