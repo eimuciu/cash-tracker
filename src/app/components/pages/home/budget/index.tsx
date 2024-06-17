@@ -12,6 +12,8 @@ import './style.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { generateKey } from '../../list';
+import { sumData } from '@/utils/sumData';
+import filterByCatName from '@/utils/filterByCatName';
 
 function filterSelectValues(expenseCategories: any, budget: any) {
   return expenseCategories.filter((x: any) => {
@@ -38,7 +40,8 @@ export default function Budget() {
   const [selectValue, setSelectValue] = useState<string>('');
   const [selectValuesList, setSelectValuesList] = useState<string[]>([]);
 
-  const { budget, settings, addBudgetItem }: any = useDataContext();
+  const { budget, settings, addBudgetItem, expenseList }: any =
+    useDataContext();
 
   useEffect(() => {
     setBudgetList(budget);
@@ -182,7 +185,10 @@ export default function Budget() {
         {budget.map((x: any) => (
           <div key={generateKey()}>
             <BudgetListItem
-              value={75}
+              value={
+                (sumData(filterByCatName(expenseList, x.category)) / x.budget) *
+                100
+              }
               color={settings.colors[x.category]}
               icon={settings.expenseIcons[x.category]}
               category={x.category}
