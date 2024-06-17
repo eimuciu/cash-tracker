@@ -1,8 +1,11 @@
 const filterByCustomDate = (data: any, options: any) => {
+  console.log(options);
   return data.filter(
     (item: any) =>
-      new Date(item.date) >= new Date(options.startDate) &&
-      new Date(item.date) <= new Date(options.finishDate),
+      new Date(item.date).toLocaleDateString() >=
+        new Date(options.startDate).toLocaleDateString() &&
+      new Date(item.date).toLocaleDateString() <=
+        new Date(options.finishDate).toLocaleDateString(),
   );
 };
 
