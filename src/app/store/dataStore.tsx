@@ -155,6 +155,11 @@ export function DataContextProvider({ children }: Props) {
     setIncomeList((prev) => [...prev, incObj]);
   };
 
+  const addBudgetItem = (budArr: any) => {
+    // NEED TO MAKE A DYNAMIC DATE KEY
+    setBudget((prev: any) => ({ ...prev, '2024-06': budArr }));
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -172,6 +177,7 @@ export function DataContextProvider({ children }: Props) {
         addIconSettings,
         addExpenseItem,
         addIncomeItem,
+        addBudgetItem,
         addIncomeIconSettings,
       }}
     >

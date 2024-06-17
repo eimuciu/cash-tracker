@@ -37,15 +37,14 @@ export default function Budget() {
   const [budgetList, setBudgetList] = useState<string[]>([]);
   const [selectValue, setSelectValue] = useState<string>('');
   const [selectValuesList, setSelectValuesList] = useState<string[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const { budget, settings }: any = useDataContext();
+  const { budget, settings, addBudgetItem }: any = useDataContext();
 
   useEffect(() => {
     setBudgetList(budget);
     setSelectValuesList(() => {
       const x = filterSelectValues(settings.expenseCategories, budget);
-      setSelectValue(x[0]);
+      setSelectValue(x[0] || '_');
       return x;
     });
   }, [budget, settings.expenseCategories]);
@@ -58,29 +57,36 @@ export default function Budget() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values, bag) => {
-      console.log({ budget: values.amount, category: selectValue });
+      if (selectValue === '_') return;
+      setBudgetList((prev: any) => [
+        ...prev,
+        { budget: values.amount, category: selectValue },
+      ]);
+      const filteredSelectValues = selectValuesList.filter(
+        (x: any) => x !== selectValue,
+      );
+      setSelectValuesList(filteredSelectValues);
+      setSelectValue(filteredSelectValues[0] || '_');
       bag.resetForm();
     },
   });
 
-  const onAddNewBudget = () => {
-    // if (inputRef.current && inputRef.current.value) {
-    //   const inputValue = inputRef.current.value;
-    //   if (!categoriesList.includes(inputValue)) {
-    //     setCategoriesList((prev) => [...prev, inputValue]);
-    //     inputRef.current.value = '';
-    //   }
-    // }
+  const onAddNewBudgetToTheList = () => {
+    formik.handleSubmit();
   };
 
   const onRemoveBudgetFromList = (catName: string) => {
-    // setCategoriesList((prev) => prev.filter((x) => x !== catName));
+    setBudgetList((prev: any) =>
+      prev.filter((x: any) => x.category !== catName),
+    );
+    const newSelectValuesList = [...selectValuesList, catName];
+    setSelectValuesList(newSelectValuesList);
+    if (selectValue === '_') setSelectValue(newSelectValuesList[0]);
   };
 
   const onBudgetConfirm = () => {
-    // addCategoriesSettings(categoriesList);
-    formik.handleSubmit();
-    // handleCloseModal();
+    addBudgetItem(budgetList);
+    handleCloseModal();
   };
 
   const onSetBudgetClick = () => {
@@ -122,7 +128,7 @@ export default function Budget() {
                   {x.budget.toFixed(2)}
                 </div>
                 <FaTrashAlt
-                  onClick={() => onRemoveBudgetFromList(x)}
+                  onClick={() => onRemoveBudgetFromList(x.category)}
                   className="cursor-pointer"
                 />
               </div>
@@ -142,7 +148,6 @@ export default function Budget() {
                 id="amountInput"
                 type="number"
                 name="amount"
-                ref={inputRef}
                 className="w-[100%] rounded-[5px] py-[2.5px] px-[10px] outline-none h-[100%]"
                 placeholder="0.00"
                 onChange={formik.handleChange}
@@ -153,16 +158,12 @@ export default function Budget() {
               </div>
             </div>
             <MdLibraryAdd
-              onClick={onAddNewBudget}
+              onClick={onAddNewBudgetToTheList}
               className="h-[30px] w-[30px] color-[red] cursor-pointer"
             />
           </div>
           <div className="w-[50%] bg-[#F5F5F5] text-center rounded-[5px] py-[2.5px]">
-            <button
-              type="submit"
-              onClick={onBudgetConfirm}
-              className="w-[100%] h-[100%]"
-            >
+            <button onClick={onBudgetConfirm} className="w-[100%] h-[100%]">
               Confirm
             </button>
           </div>
@@ -178,7 +179,7 @@ export default function Budget() {
             Set budget
           </button>
         </div>
-        {budgetList.map((x: any) => (
+        {budget.map((x: any) => (
           <div key={generateKey()}>
             <BudgetListItem
               value={75}
