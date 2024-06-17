@@ -14,6 +14,16 @@ interface Props {
   children: any;
 }
 
+// BUDGET FILTER CONSTRUCTION
+type TBudget = { budget: number; category: string };
+interface IBudget {
+  [key: string]: TBudget[];
+}
+
+function filterBudgetData(data: IBudget): TBudget[] {
+  return data['2024-06'];
+}
+
 export function DataContextProvider({ children }: Props) {
   const [settings, setSettings] = useState(settingsData);
   const [expenseList, setExpenseList] = useState(expenseData);
@@ -150,8 +160,8 @@ export function DataContextProvider({ children }: Props) {
       value={{
         themeColorPalette: settings.theme,
         settings,
+        budget: filterBudgetData(budget),
         expenseList: filterData(expenseList, filter.case, filter.options),
-        // expenseList: expenseList,
         incomeList: filterData(incomeList, filter.case, filter.options),
         setFilter,
         filter,

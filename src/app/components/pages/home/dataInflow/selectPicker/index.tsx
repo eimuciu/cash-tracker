@@ -5,11 +5,19 @@ import { useThemeContext } from '@/app/store/themeStore';
 
 const commonClasses = 'w-[100%] mb-[10px] p-[5px] rounded bg-[white]';
 
+interface Props {
+  selectValue: string;
+  setSelectValue: (x: string) => void;
+  selectData: string[];
+  propStyles?: { [key: string]: string | number };
+}
+
 export default function SelectPicker({
   selectValue,
   setSelectValue,
   selectData,
-}: any) {
+  propStyles,
+}: Props) {
   const [showPicker, setShowPicker] = React.useState<boolean>(false);
   const refEl = React.useRef<HTMLDivElement>(null);
   const { themeColorsList }: any = useThemeContext();
@@ -41,6 +49,7 @@ export default function SelectPicker({
           setShowPicker(!showPicker);
         }}
         className={commonClasses + ' cursor-pointer relative'}
+        style={propStyles}
       >
         {!selectValue ? selectData[0] : selectValue}
         <div
